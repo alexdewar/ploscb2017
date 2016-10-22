@@ -1,0 +1,106 @@
+\documentclass[10pt]{article}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{graphicx} % for figures
+\usepackage{ccaption} % captions on different pages
+
+%% BASED ON TEMPLATE GIVEN FOR PLOS
+
+% amsmath package, useful for mathematical formulas
+\usepackage{amsmath}
+% amssymb package, useful for mathematical symbols
+\usepackage{amssymb}
+
+% cite package, to clean up citations in the main text. Do not remove.
+\usepackage{cite}
+
+\usepackage{hyperref}
+
+% line numbers
+\usepackage{lineno}
+
+% ligatures disabled
+\usepackage{microtype}
+\DisableLigatures[f]{encoding = *, family = * }
+
+% rotating package for sideways tables
+%\usepackage{rotating}
+
+% If you wish to include algorithms, please use one of the packages below. Also, please see the algorithm section of our LaTeX guidelines (http://www.plosone.org/static/latexGuidelines) for important information about required formatting.
+%\usepackage{algorithmic}
+%\usepackage{algorithmicx}
+
+% Use doublespacing - comment out for single spacing
+%\usepackage{setspace} 
+%\doublespacing
+
+
+% Text layout
+\topmargin 0.0cm
+\oddsidemargin 0.5cm
+\evensidemargin 0.5cm
+\textwidth 16cm 
+\textheight 21cm
+
+% Bold the 'Figure #' in the caption and separate it with a period
+% Captions will be left justified
+\usepackage[labelfont=bf,labelsep=period,justification=raggedright]{caption}
+
+% Use the PLoS provided BiBTeX style
+%\bibliographystyle{plos2009} % NOW in drosprpaper.tex
+
+% Remove brackets from numbering in List of References
+\makeatletter
+\renewcommand{\@biblabel}[1]{\quad#1.}
+\makeatother
+
+
+% Leave date blank
+\date{}
+
+\pagestyle{myheadings}
+
+%% Include all macros below. Please limit the use of macros.
+
+%% END MACROS SECTION
+
+%%% MY STUFF %%%
+
+% my packages
+
+\usepackage{gensymb}
+\usepackage{setspace} % for 1.5 spacing
+\usepackage{verbatim} % multiline comments
+\usepackage{acronym}
+
+\usepackage{rotating} % sidewaysfigure
+
+\input{acronyms}
+
+\usepackage{todonotes}
+\usepackage{soul}
+%\newcommand{\hltodo}[2]{\texthl{#1}\todo{#2}}
+\newcommand{\hltodo}{}
+\usepackage{pdfcomment}
+
+% header stuff
+\usepackage{fancyhdr}
+\setlength{\headheight}{15.2pt}
+\pagestyle{fancy}
+
+\newcommand{\Matlab}{MATLAB}
+
+\newcommand{\thesiscontcaption}[1]{\caption[#1]{#1 (Continued on next page.)}}
+
+\begin{document}
+
+%\newcommand{\draft}{D8} %% NOW IN drosprpaper.tex
+
+\begin{comment}
+\lhead{\today}
+\chead{Draft: \draft}
+\rhead{Section: \thesection}
+\end{comment}
+
+\doublespacing

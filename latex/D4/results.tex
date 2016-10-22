@@ -1,0 +1,39 @@
+\section*{Results}
+
+\subsection*{Replication of behavioural experiments}
+We first examined whether the output of these populations of \acp{RF} could qualitatively replicate results from the behavioural literature.
+The two tasks we focused on were bar and edge fixation \cite{Neuser2008,Osorio1990} and pattern discrimination \cite{Pan2009,Liu2006,Ernst1999}.
+
+Both R2 and R4d neurons were found to give interesting responses to vertical bars of different widths (Figure~\ref{fig:bar}A).
+The R4d neurons, which are known to play a role in spatial orientation memory for bars \cite{Neuser2008}, showed peaks in activation at $\pm 90\degree$ from the bar's centre, the heading at which an agent performing bar fixation would saccade the most.
+The R2 neurons, however, showed peaks on the inside edges of the largest bars, which is where flies head \cite{Osorio1990}.
+If the outputs for left- and right-hemispheric R2 and R4d neurons are summed separately, this provides sufficient info for bar homing (Figure~1B and C).
+The cells also show increased activity to bar-like objects in natural scenes (Figure~1D).
+
+There is a paradigm for testing pattern recognition in \emph{Drosophila} \cite{Pan2009,Liu2006,Ernst1999}, in which a tethered fly is placed into a drum with repeating visual patterns projected onto the inside (Figure~\ref{fig:recap}A).
+When the fly attempts to rotate about the yaw-axis, the pattern on the drum is shifted by a corresponding amount in the opposite direction, giving closed-loop control.
+Conditioning is aversive: Fixation upon certain portions of the pattern is punished with heat from a laser.
+To simulate this, we examined the difference in activation between rotated and unrotated versions of the patterns (Figure~\ref{fig:recap}B and C); the greater the difference, the more discriminable the patterns are for these neurons.
+
+\subsection*{What information is preserved in these neurons?}
+
+%\subsubsection*{Can a neural network extract stimulus position?}
+We first trained neural networks (see Methods) to see whether they could extract positional information about visual stimuli, using raw views, R2 \ac{RF} values, R4d \ac{RF} values or R2 and R4d \ac{RF} values as inputs.
+The stimuli used were ellipse-like `blobs', with orientation and major-axis length held constant ($\mathrm{orientation} = 0\degree, a = 30\degree$).
+There were 100 possible azimuths and 100 possible elevations, giving a total of 10,000 stimuli.
+Of these, 4000 were used for training and 6000 for testing.
+
+Results are shown in Figure~\ref{fig:elaz}.
+The neural networks were indeed able to extract information about elevation and azimuth based on any of the input types.
+Performance was better with parameter values nearer the middle, as at the extremes the stimuli lay partially outside the visual field.
+Though overall performance was best with raw views, it was also good with the sets of ring neuron inputs, indicating that these ring neurons implicitly convey information about these parameters.
+
+%\subsubsection*{What other properties can a network extract?}
+We next trained the same kind of networks to extract information about properties on the basis of which \emph{Drosophila} are known to be able to discriminate visual stimuli \cite{Pan2009}: orientation, size and elevation.
+The stimuli were again randomly generated ellipse-like blobs.
+Ten different orientations, sizes and elevations were used, giving a total of 1000 stimuli, of which 400 were used for training and 600 for testing.
+
+The networks were again able to extract information about orientation, size and elevation (Figure~\ref{fig:orsiel}).
+The `elevation' parameter, as with the previous experiment, shows poorer performance at the extremes.
+`Orientation' was the parameter with the highest error scores, presumably because it represents a second-order property, unlike elevation and size.
+Nonetheless, all three parameters could be simultaneously estimated by a neural network with ring neuron inputs, indicating that flies could be trained to distinguish arbitrary stimuli differing along these parameters.

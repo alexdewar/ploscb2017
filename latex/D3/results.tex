@@ -1,0 +1,38 @@
+\section{Results}
+
+\subsection*{Can we replicate behavioural experiments?}
+We first examined whether the output of these populations of \acp{RF} could qualitatively replicate results from the behavioural literature.
+The two tasks we focused on were bar and edge fixation \cite{Neuser2008,Osorio1990} and pattern discrimination \cite{Liu2006,Ernst1999}.
+
+Figure~\ref{fig:bar}A and B shows the population response of R4d neurons to bars of two different widths; in Figure~\ref{fig:bar}C we can see the response to a natural image containing a tree.
+The population response was calculated by taking the mean of the individual activations of the \acp{RF}.
+Note that the difference between the activations of the left-hand and right-hand neurons is sufficient to drive fixation to a vertical bar (see Figure~\ref{fig:bar}D and E), a behaviour flies are known to engage in spontaneously \cite{Reichardt1969}.
+
+There is a paradigm for testing pattern recognition in \emph{Drosophila} \cite{Pan2009,Liu2006,Ernst1999}, in which a tethered fly is placed into a drum with repeating visual patterns projected onto the inside (Figure~\ref{fig:recap}A).
+When the fly attempts to rotate about the yaw-axis, the pattern on the drum is shifted by a corresponding amount in the opposite direction, giving the illusion of closed-loop control.
+Conditioning is aversive: Fixation upon certain portions of the pattern is punished with heat from a laser.
+To recreate this paradigm, we used a modified version of the \ac{RIDF} \cite{Philippides2011,Zeil2003}.
+In the standard version of the \ac{RIDF}, an image is recorded at a goal location and homing back to that location is achieved by repeatedly rotating on the spot and heading in the direction for which the \ac{rms} difference between current and goal views is at a minimum.
+In our case, instead of raw pixel content of views, we used the activations of individual R2 neurons.
+The `goal view' was taken to be the activation of the cells when the fly is facing the unpunished pattern.
+The \ac{rms} difference between activation for rotated and unrotated views was then calculated (Figure~\ref{fig:recap}B and C; see Section~\ref{sec:methods:recap} for details); the greater the difference, the more discriminable the patterns are for these neurons.
+
+\subsection*{What information is preserved in these neurons?}
+
+\subsubsection*{Can the neural networks extract stimulus position?}
+We first trained networks to see whether they could extract positional information about visual stimuli.
+The stimuli used were ellipse-like `blobs' (see Section~\ref{sec:methods:stimuli}), with orientation and major-axis length held constant ($\mathrm{orientation} = 0, a = 30$).
+There were 100 possible azimuths (equally spaced between --135\degree\ and 135\degree) and 100 possible elevations (equally spaced between --60\degree\ and 60\degree), giving a total of 10,000 stimuli.
+Of these, 4000 were used for training and 6000 for testing.
+
+Results are shown in Figure~\ref{fig:elaz}.
+
+\subsubsection*{What other properties can a network extract?}
+We next trained networks to extract information about properties on the basis of which \emph{Drosophila} are known to be able to discriminate visual stimuli \cite{Liu2006}: orientation, size and elevation.
+As stimuli we used randomly generated blobs varying systematically along these parameters.
+The size of the blob was determined on the basis of the length of the major axis, ignoring the `wave' component, using the standard equation for the area of an ellipse: $A = \pi ab$.
+The orientation of the blob was altered by using the \texttt{imrotate} function in Matlab, after the blob had been centred on its centre of mass.
+The azimuth, however, was held constant at the mean azimuth for the RFs centres (Section~\ref{sec:methods:preprocessing}) for the left-hand versions, --93\degree.
+Ten different orientations, sizes and elevations were used, giving a total of 1000 stimuli, of which 400 were used for training and 600 for testing.
+
+Results are shown in Figure~\ref{fig:orsiel}.

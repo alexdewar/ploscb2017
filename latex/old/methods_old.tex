@@ -1,0 +1,68 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{a4wide} % for narrower margins
+\usepackage{graphicx} % for figures
+\usepackage{apacite} % APA citation style
+\usepackage{gensymb} % extra symbols
+\usepackage{amstext} % for \text command in math mode, etc.
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{setspace} % for 1.5 spacing
+\usepackage{appendix}
+\usepackage{multirow} % tables
+\usepackage{verbatim} % multiline comments
+
+%opening
+%\title{}
+%\author{}
+
+\begin{document}
+
+\doublespacing
+
+%\maketitle
+
+\section{Methods}
+\subsection{Processing the receptive fields}
+Here, as throughout, Matlab \textregistered\ (MathWorks, Natick, MA, USA) was used to perform all calculations.
+
+The receptive field data were drawn from \citeA{seelig2013feature} (Extended Data Figure 8), which comprised measurements from 7 R2 glomeruli and 14 R4d glomeruli in the lateral triangle; the precise number of flies included varied by glomerulus [stats?].
+To obtain the average receptive field for each glomerulus, the receptive field of each fly was first centred on the largest excitatory region then took the mean pixel values for excitatory and inhibitory regions separately.
+Each was then thresholded at 0.25.
+The inhibitory and excitatory images were then combined into a single matrix, with each excitatory pixel assigned a value of $\frac{1}{N_{\mathrm{exc}}}$ and each inhibitory pixel $-\frac{1}{N_{\mathrm{inh}}}$, where $N_{\mathrm{exc}}$ and $N_{\mathrm{inh}}$ represent the total number of excitatory or inhibitory pixels, respectively.
+These values were chosen so that presentation of a stimulus that was all white would lead to an activation of zero.
+Finally, the averaged receptive field was then shifted so that the centroid of its largest excitatory region was centred on the average across all flies.
+
+In order to calculate the activation for a given averaged receptive field presented with a given stimulus the receptive field sometimes required that the receptive field be resized to the same size as the stimulus. This was accomplished by first separating receptive fields into their excitatory and inhibitory regions, then resizing each individually (using Matlab's \texttt{imresize} function), rethresholding (again at a value of 0.25) and finally recalculating the values for positive/negative pixels according to the formulae above.
+
+\subsection{Neural network experiments}
+These experiments were undertaken to see whether there exists for a given set of stimuli a neural network able to discriminate between them on the basis of specific visual properties: elevation, orientation and size \cite{wystrach2014insect}; \textit{Drosophila} are known to be able to discriminate these features.
+Accordingly we generated stimuli which varied systematically only along these parameters.
+
+\subsubsection{Stimuli}
+The first set of stimuli used were basic ellipses, varying in elevation, orientation and size.
+These were dark ellipses on a light background, described by the equation:
+%        im = hypot((xs*cs-cy*sn)/a1(i,j),(xs*sn+cy*cs)/b(i,j)) > 1;
+$$
+\left( \frac{x\cos \theta - (y-\phi)\sin \theta}{a} \right) ^2 + \left( \frac{x\sin \theta + (y-\phi)\cos \theta}{ a / 2} \right) ^2 \le 1
+$$
+where $\phi$ is elevation, $\theta$ orientation and $a$ size (we took size to be the length of the major axis, not the area of the ellipse).
+Note that the length of the minor axis was always half that of the major axis.
+
+The raw pixel values were converted into inputs for the neural networks by calculating the activations of the R2 and R4d neurons.
+The neural networks were then trained with full-resolution images ($128\times 768$), low-resolution views ($4\times 24$), R2 neuron activations, R4d neuron activations or R2+R4d neuron activations.
+
+There were ``easy'' and ``hard'' datasets: For the ``easy'' set only one of elevation, orientation or size varied at once, whereas for the ``hard'' set all three were varied.
+
+\subsubsection{One-layer networks}
+The one-layer networks used comprised output neurons with a linear activation function.
+The weights were assigned by training the network with the full dataset, and tested with the same dataset.
+
+\subsubsection{Two-layer networks}
+The two-layer networks were composed of multi-layer perceptrons with 10 hidden units \cite{bishop1995neural}, simulated using Netlab (Version 3.2), using the scaled conjugate gradient optimisation function.
+A random quarter of the dataset was used for training, another random quarter for validation and the remainder for testing.
+
+\bibliography{library}
+\bibliographystyle{apacite}
+
+\end{document}

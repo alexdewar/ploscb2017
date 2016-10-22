@@ -1,0 +1,70 @@
+\section*{Discussion}
+A general problem in neuroscience is understanding how sensory systems organise information to be at the service of behaviour. Computational approaches have always been important in this endeavour, as they allow one to simulate the sensory experience of a behaving animal whilst crucially considering how this information is transformed by populations of neurons. Thus we can relate the details of neural circuitry to theories about the requirements of behaviour.
+We are interested in how natural behaviours emerge from the interplay between environment and neural mechanism.
+Work by Seelig and Jayaraman \cite{Seelig2013}, showing the forms of visual receptive fields for ring neurons in the ellipsoid body, opens the possibility of investigating how sensory systems organise information to be at the service of behaviour.
+This raises a few interesting questions.
+First, what information about the visual environment would be conveyed by such receptive fields?
+Second, what behavioural tasks have these cells been implicated in and does the information content of these cells predict the results?
+Finally, what possible natural behaviour(s) could these receptive fields relate to?
+
+One striking feature of the ring neuron receptive fields is that they are on average particularly tuned to vertically oriented objects.
+We also know that fruitflies, like other flies, are strongly attracted to vertical bars.
+This vertical `tuning', which might reflect \emph{Drosophila}'s tree-based life cycle, can be found in other parts of the visual system.
+For example, the receptive fields of a class of first-order interneurons in the \emph{Drosophila} visual system also exhibit a preference for vertical bars \cite{Freifeld2013}.
+Work by Neuser \emph{et al.} \cite{Neuser2008} has shown that R4 (and R3) ring neurons are involved in a spatial orientation memory for bars, with a modified version of Buridan's paradigm, in which flies can be seen to walk back and forth between two vertical bars 180\degree\ apart until exhaustion \cite{Bulthoff1982,Gotz1980}.
+Specifically, the Ignorant Ribosomal-S6 Kinase 2 at the ring neuron synapses is critical \cite{Neuser2008}, as well as \emph{foraging} upstream in the central complex \cite{Kuntz2012}.
+
+Accordingly, we decided to examine the responses of the ring neuron filters to vertical bars and what role they could play in a spatial orientation task.
+We found that both R2 and R4d neurons were responsive to vertical bars of varying widths, particularly to the edges of larger bars and the centres of narrower ones, mirroring real flies' behaviour \cite{Osorio1990}.
+We also showed with a simulation that the cells would have sufficient information to guide homing towards a large vertical object, as with a spatial orientation task \cite{Neuser2008}.
+
+The sensory information provided by these cells could be used in a variety of ways and there are suggestions that R4d neurons could form part of a path integration system \cite{Neuser2008} or be analogous to mammalian head-direction cells \cite{Tomchik2008}.
+Indeed, there is evidence that, as with path integration and head-direction cells, these cells also integrate idiothetic information [cit].
+This raises the intriguing possibility that ring neurons play a role in a short-term memory system in order to facilitate complex behavioural responses which require integration of multiple sources of information over time, rather than simpler reflexive or classically conditioned behaviours.
+%For example, another subset of these cells -- R1 -- has been found to be critical for place homing in an analogue of the Morris water maze task \cite{Ofstad2011} [cite selves].
+In this case, the R4d neurons may be used to encode more complex aspects of visual stimuli, but with a particular preference for vertical bars.
+%The fly could be remembering the position of a stimulus, the history of its own movements or both \cite{Tomchik2008}.
+Work by Guo \emph{et al.} \cite{Guo2015} indicates that R3/R4d neurons, but not R2/R4m, play a role in learned spatial orientation to stimuli other than simple vertical bars.
+Flies tethered in a drum were conditioned to fly toward either the left or right of a visual pattern (such as an inverted `T'); it was found that the absence of these neurons prevented conditioning.
+This suggests a role for R4d cells in remembering the position of a stimulus with respect to the fly's own movements, as would be required in a path integration system.
+Given the ecology of \emph{Drosophila}, the value of knowing the position of large vertical objects such as trees or hanging fruit is obvious, but it seems that these cells are encoding properties of the stimulus in addition to position.
+This could be an analogue of what in mammals is called the `oblique effect' -- improved performance for perceptual tasks when stimuli are aligned in horizontal and vertical orientations \cite{Appelle1972} -- reflecting more general properties of the environment in which these organisms find themselves.
+
+R2 cells, on the other hand, have been found to be critical for conditioning in a pattern learning task \cite{Pan2009}.
+At the synaptic level, expression of \emph{rutabaga} is required \cite{Pan2009}, as is \emph{foraging} upstream of this \cite{Wang2008}.
+Though it is suggested that such pattern recognition relies on distinguishing visual patterns on the basis of higher-order properties, such as size, orientation and elevation \cite{Ernst1999,Pan2009}, it has been found that at the R2 synapses the encoding is independent of any single parameter \cite{Liu2006}.
+%An earlier model of pattern discrimination in \emph{Drosophila} suggested that stimuli were encoded retinotopically \cite{Dill1993}; although this model did account for some of the variance, there are examples of patterns that flies can discriminate that a purely retinotopic model cannot.
+We have shown that differences in the outputs of the R2 filters are significantly correlated with the learning index for pattern pairs shown in Ernst and Heisenberg \cite{Ernst1999}.
+This suggests a possible mechanism by which this discrimination could take place, which is compatible with the finding that R2 neurons do not encode these stimulus properties explicitly \cite{Liu2006}.
+A further advantage of our model is its parsimony:
+Just as recognition memory requires fewer neurons than recall memory, so a memory system which does not require extraction of higher-order visual features should also require fewer neurons.
+Previous computational work has shown that an ant-like agent with a small number of neurons can memorise and recapitulate a route using only raw images \cite{Baddeley2011}.
+Hence, a lower-level `representation' of visual information does not imply that the information cannot be used for a complex behaviour.
+
+Interestingly, flies' spontaneous preference for one of the patterns, which does not involve R2 neurons \cite{Ernst1999}, was not correlated with the values obtained by our simulation.
+This fits with work showing that flies' preference for novelty involved the ellipsoid body but did not require any one of the R1, R3, R2/R4m or R3/R4d neurons specifically \cite{Solanki2015}.
+
+We also found, however, that these cells do not appear to be specifically `pattern recognition' cells.
+For example, a great increase in performance is given by simply having more cells or having the RFs more spread out.
+Moreover, there would be no obvious selection pressure on fruitflies for discriminating arbitrary visual stimuli, as with honeybees, for example.
+Hence, having established that for discrimination to take place the outputs of the ring neurons in and of themselves are sufficient for this behavioural task, we were interested in what information passes through the bottleneck given by this small number of neurons.
+We therefore next examined what types of visual information were \emph{implicitly} conveyed in the cells' outputs, with the use of neural networks.
+In other words, could an agent, given only the outputs of these ring neurons, be trained to discriminate novel stimuli on the basis of higher-order properties, without explicit encoding?
+We found that to a large extent the visual properties suggested to underlie pattern discrimination -- size, orientation and elevation -- were recoverable by a neural network, indicating that the information is present, even if not explicitly encoded.
+This reflects the complex role that these cells could play as a part of other networks within the central complex.
+
+In conclusion, we know that R4d cells provide sufficient information for a bar orientation task and R2 cells for pattern discrimination, although neither of these tasks appear to be the sole function of these sets of cells per se.
+This raises the question, what then are the more general roles of these cells for fly behaviour?
+Evidence from other sources points to a more multipurpose functionality.
+First, the fact that R4d, but \emph{not} R2 cells are involved in a task where flies have to fly towards one or other side of the pattern \cite{Guo2015}, rather than merely avoiding one or another pattern, indicates that they are involved in the encoding of the fly's bearing relative to visual stimuli, perhaps as part of a path integration system.
+Additionally, the ring neurons are known to be multimodal.
+R2 neurons have also been implicated in olfactory behaviours involving a conditioned aversive choice, or an appetitive choice task.
+With aversive conditioning, R2s are implicated in medium- and long-term memory processes \cite{Zhang2013,Zhang2015}.
+They were also involved in regulating preference for oviposition on food with a higher or lower level of ethanol \cite{Azanchi2013}.
+All this indicates that R2s may be involved in modulating action selection, via multimodal operant conditioning.
+This would fit with accounts of the central complex as an action selection system, analogous to the mammalian basal ganglia \cite{Strausfeld2013}.
+
+We feel we have given here not only a novel view on the functions and organisation of the \emph{Drosophila} visual system, but for neural coding in insects more generally.
+In particular, we would like to challenge the idea that a complex behaviour must be supported by a discrete cognitive module to extract abstract features or properties of stimuli.
+\emph{Drosophila}'s limited ability to discriminate patterns using abstract properties seems to be the by-product of a simple visual system tuned to provide information to guide specific behaviours.
+In the future, a combined approach -- behavioural research that incorporates insights and predictions from computational models -- could help pave the way to a mechanistic, quantitative account of \emph{Drosophila} behaviour and its relation to sensory information.

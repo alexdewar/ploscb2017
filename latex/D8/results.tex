@@ -1,0 +1,147 @@
+\section{Results}
+[PRG 4/8/15] 
+
+The neurogenetic tools that are available in Drosophila neuroethology have enabled researchers to identify specific sub-populations of visual cells that are required for particular visually-guided behaviours. More recently this has been augmented by detailed descriptions of the response properties of the visual cells involved. This offers a unique opportunity to investigate the outputs of populations of visual cells in simulations of well-known behavioural experiments (Figure 1A, E). By doing this we can understand the task-specific info provided by sub-populations of visual cells. A corollary of this is that a tighter understanding of the visual information available for the control of specific behaviours enables us to be more precise in the description of the cognitive style of sensori-motor behaviours in insects. 
+
+\subsection{Simulating outputs of ring neurons}
+\label{sec:results:bar}
+Using calcium imaging S+J were able to look at the activity of ring neurons where cell bodies are in spcific glomeruli in the lateral triangle. In their paper they present results from multiple flies which we
+combined \cite{Seelig2013} in order to obtain the `canonical' RFs. This reduced the effects of measurement error and individual difference on the functioning of these RFs (for details, see \emph{Methods}). This gave us a set of 28 R2 and 14 R4d filters.
+
+Like mammalian simple cells [refs refs incl curr biol dispatch], the R2 and R4d ring neurons have RFs characteristic of bar and edge detectors (compare, e.g., R4d glom. 1 and R2 glom. 7 in Fig.~\ref{fig:avkernels}D).
+In contrast, however, the latter are coarser, covering a much larger region of the visual field, and are mostly tuned to orientations at or around the vertical (with a small number horizontally tuned). Output values for a given stimulus can then be calculated by convolution with the averaged filters, after appropriate scaling. This gives a population code whereby the outputs of the set of filters is the encoded 'representation' of the current visual scene.
+
+
+\begin{comment}
+\texthl{
+Things to maybe include: \\
+-- discussion of pid that will be in Fig. 1 (but isn't yet) \\
+-- are RFs orientation detectors or more binary `is it vertical or not' detectors? \\
+-- is this vertical tuning related to ecology? \\
+-- is it something like the oblique effect?
+
+Papers: \\
+-- Neuser et al.'s paper on STM for bar position in R4s \\
+-- other paper about learning a heading relative to a pattern in R4s \\
+-- the new S\&J paper 
+}
+\end{comment}
+
+\subsection{Bar orientation}
+In our first analysis we looked at the response of populations of simulated ring neurons to bars of different widths (1b and c). In a variety of behavioural experiments flies have been tested for their spontaneous orientation towards high contrast blakc bars (ref ref ref). Flies will aim for the centre of narrow bars, and for the edges of wide bars. Looking at the summed output of the ensembles of ring neurons we see that total activation shows peak responses in the same places (1B and 1C). 
+
+R2 neurons respond maximally to the inside edges of large bars, which is where flies head when presented with wide vertical bars [ref]. For R4d neurons, peaks in activation occur at the bar's centre and also at roughly +-90 to it, where saccade amplitude will be greatest for an agent performing bar fixation.
+
+Although we don't know the details of mechanisms down-stream of these ring neurons what this modelling gives is existence proof that sufficient information present is in the sparse code for the control of behaviour. Indeed, we can close the loop between sensory systems and behaviour by designing a simple PID () controller. Figure 1D 
+Thus we see that with simple PID can get bar fixation... [and explain what is in figs]
+
+
+\subsection{Pattern Discrimination}
+\label{sec:results:pattern}
+
+Above we have shown a simple example of how we can relate the information present in an ensemble of sensory cells to a particular behaviour. We now turn to a more complex behaviour.
+
+The standard paradigm for testing pattern discrimination in \emph{Drosophila} \cite{Pan2009,Liu2006,Ernst1999,Dill1993}, involves tethering a fly in a drum with alternating patterns on the inside (Fig.~\ref{fig:recap}A).
+When the fly attempts to rotate about the yaw-axis, the pattern on the drum is rotated by a corresponding amount in the opposite direction, giving closed-loop control.
+Conditioning is aversive: Fixation upon certain portions of one of the patterns is punished with heat from a laser.
+Hence, if the fly can discriminate the patterns, it will orient towards the non-punished pattern. By analysing the information encoded by the visual RFs of the R2 and R4d ring neurons allow us to take a more direct approach to understanding the visual information that flies extract from the world in order to guide complex behaviour. It is the R2 neurons which are critical for pattern discrimination, specifically synaptic plasticity afforded by \emph{rutabaga} \cite{Pan2009,Wang2008,Liu2006,Ernst1999}\todo{to self: fix cits}.
+
+To recreate the visual information perceived by flies in such experiments, we simulated a typical experimental flight arena with a fly tethered in the centre. We then examined the output of the ensembles of ring neurons as we simulate the fly rotating. Figure 1 F,G shows one way we can analyse this by looking at the simple difference between the ensemble outputs for simulated flies looking at patterns within a pattern pair. We do this by taking the Root Mean Square difference between the ensemble ouput for a simulated fly oriented at 0deg (i.e. view centered on one pattern) and the ensemble output when the 'fly' is oriented at 90deg (i.e. centered on the other pattern).
+
+We examined the difference in the output of R2 filters between patterns for each pattern pair (Fig.~\ref{fig:recap}B and C, see \emph{Materials and Methods} for details); the greater the difference, the more discriminable the patterns are given only the information from the ring neuron population. The pairs of patterns we used were drawn from \cite{Ernst1999}. Note: we introduce a comparison here between the predictive power of the RMS difference in the population code from the ensemble of ring neurons and the simple difference in patterns as quantified by the degree of retinal overlap/
+
+We have numbered pattern pairs according to the figure in which they appear in \cite{Ernst1999}, e.g. Set~\emph{(2)} refers to the patterns shown in Fig.~2 of that work (see Fig.~\ref{fig:pattern}). In general, within these groups, the patterns where there was a significant learned preference (in ref) have a greater difference in activity. performance on more 'horizontal' patterns (e.g. 3) and the final three patterns in 12 was poor in the behavioural experiments, but better in simulation. This is perhaps due to the horizontal motion of the patterns in the training (as noted in ref).
+We found a significant correlation between the strength of the learning index in Ernst and Heisenberg \cite{Ernst1999} and the difference we found in R2 activation (Spearman's rank, $n=34, r=.615, p<.005$).
+By contrast, the proportion of retinal overlap was not significantly correlated with the flies' learning index for different pattern pairs (Spearman's rank, $n=34, r= -0.215, p=\mathrm{n.s.}$), suggesting that the outputs of R2 filters more closely approximate \emph{Drosophila} behaviour. A corollary of this is that we see how the ensemble coding changes the dimensionality of the visual coding when compared to a simple retinotopic encoding.
+Interestingly, this implies that flies could reliably discriminate pairs of patterns without explicitly coding for the kinds of visual parameters commonly believed to underlie this discrimination \cite{Pan2009,Liu2006,Ernst1999}.
+We additionally looked at the relationship between the RMS difference in ensemble output and flies' spontaneous preference (Fig.~\ref{fig:pattern}D and E).
+The correlations for the Retinotopic and RF Models were both non-significant, although for the former there was a trend ($p<.1$).
+This is in keeping with research showing that R2 neurons alone are critical for \emph{learned} pattern differences, but not spontaneous preferences, which, by contrast, seem to result from the activity across all subsets of ring neurons \texthl{[cit]}.
+We next discuss specific pattern sets in detail.
+
+\texthl{[AP Notes: good but ordering of fig is wrong. Leave it for now]}
+
+If we turn to Fig.~\ref{fig:pattern}, Set~\emph{(2)}, we can see that these pattern pairs -- unlearnable by flies -- also give only small differences in outputs for the R2 filters.
+This may seem surprising, given that these patterns appear so different from one another to our human eyes (and they are also very dissimilar if compared retinotopically).
+However, the \emph{Drosophila} visual system as compared to the human visual system is far more informationally sparse, particularly in the subsystem we are here examining.
+While the V1 region of human visual cortex contains neurons with small RFs representing a range of orientations across the visual field, these ring neurons have large RFs and poor orientation-resolution.
+Hence, diagonal lines facing left and right, for example, are not discriminable by flies, and nor in fact would perceiving this difference be useful for carrying out a natural behaviour.
+
+\texthl{[AP Notes: above is ok but need to see the fig and relate text to that]}
+
+Other pattern sets, 
+where differences seem to use to be the same eg vertical centre of mass - elicit different responses in fly and simulation.
+For example, Set~\emph{(9)} contains pairs of `triangles' (either a filled equilateral triangle, or a long and short bar arranged on top of one another), one facing up and the other down.
+They are aligned either along the top and bottom or about the vertical centre of mass.
+Flies are able to discriminate the former, but not the latter types of stimuli \cite{Ernst1999}. This difference in discriminability has led to suggestions that flies extract the centre of mass of patterns as an important parameter.
+Likewise, the R2 outputs show a smaller relative difference for the triangles aligned about the centre of mass than not, yet do so without explicitly coding for this parameter.
+However, if the placement and form of the RFs is considered, the reason for the failure becomes more obvious (see Fig.~\ref{fig:simdiffpatts}).
+The excitatory regions of the RFs can be seen to fall roughly across the middles of the triangles that are not aligned about vertical centre of mass; activation will therefore be greater for triangles up one way \emph{vs} another.
+If the triangles are then offset, so as to be aligned about the vertical centre of mass, then the triangles will be about as thick at the points where the R2 RFs will cover them and the difference in activation will be lower.
+
+Another interesting pattern pair, Set~\emph{(6)}, a large and a small square, was readily discriminable by both flies and the R2 filters.This performance has been taken as evidence of size extraction in the visual system. While it could be that flies are explicitly coding the size of the squares, the R2 filters do not and yet are able to readily distinguish these shapes on the basis of size.
+However, this does not mean that the information is not there implicitly (see below). \texthl{[AP Notes: need more than a 'see below' i think. I also think this goes at the very end]}
+
+
+There are, however, some discrepancies.
+The flies in \cite{Ernst1999} in a couple of cases were better at discriminating pairs of horizontal than vertical lines (Set~\emph{(3)} \emph{vs} Set~\emph{(4)}, and the pairs in Set~\emph{(12)}, marked with red Xs in Fig.~\ref{fig:pattern}), whereas the R2 filters performed approximately as well on both.
+This may be because while our R2 filters are being presented with static stimulus pairs, for the flies the patterns were moving around horizontally, as noted in \cite{Ernst1999}.
+\todo{could do simple simulation of this} \texthl{[AP Notes: I think not but just state what this movement would allow]}
+
+We have shown that flies' performance on a pattern discrimination task can be matched with a simple difference metric applied to R2 population activity.
+However, it is not necessarily the case that these cells evolved for the purpose of discriminating arbitrary visual stimuli, as in the experimental task.
+In fact, a simple test involving adding RFs showed that improved performance on this task could have been achieved easily by evolution (data not shown). \texthl{[AP Notes: might need specifics: 
+doubling the number of neurons leads to ... ]}. This suggests that R2 neurons evolved either for a different, specific task, or as more general purpose mechanism for operant conditioning (see \emph{Discussion}). 
+
+\todo{could possibly include bit about designing shapes that look different but give similar activations etc.}
+\texthl{[AP Notes: Yes. Needs discussing and before the last bit about size I think]}
+
+\subsection{What information is preserved in this simple neural code?}
+
+The small number of cells which provide a visual encoding act as a sensory bottleneck with information from x ommatidia condensed onto 28/14 ring neurons. We have shown above how this code provides sufficient information to dicriminate some patterns pairs. However pattern recognition seems unlikely to be a key visually guided behaviour for flies, as discrimination performance can be easily improved with the addition of more neurons.
+
+\todo{I haven't changed this bit yet to reflect the new figures: i.e. first-order and second-order info}
+We were also interested in discovering what properties of visual stimuli, while not explicitly coded for by the ring neurons, may nonetheless be implicitly conveyed in the population outputs.
+To do this, we trained a series of neural networks to discriminate sets of randomly generated stimuli -- ellipse-like `blobs' -- on the basis of specific parameters (see \emph{Materials and Methods} for details).
+The networks were given as inputs either raw images of the stimuli, or the outputs of the R2, R4d or R2 and R4d filters presented with the same stimuli.
+
+We first looked at whether the neural networks could be trained to extract positional information about a stimulus: elevation and azimuth.
+The stimuli used were ellipse-like `blobs', with orientation and major-axis length held constant ($\mathrm{orientation} = 0\degree, a = 30\degree$).
+There were 100 possible azimuths and 100 possible elevations, giving a total of 10,000 stimuli.
+Of these, 4000 were used for training and 6000 for testing.
+Results are shown in Fig.~\ref{fig:elaz}.
+The neural networks were indeed able to extract information about elevation and azimuth based on any of the input types.
+Performance was better with parameter values nearer the middle, as at the extremes the stimuli lay partially outside the visual field.
+Though overall performance was best with raw views, it was also good with the sets of ring neuron inputs, indicating that these ring neurons implicitly convey information about these parameters.
+
+We next trained the same kind of networks to extract information about properties on the basis of which \emph{Drosophila} are known to be able to discriminate visual stimuli \cite{Pan2009,Liu2006,Ernst1999}: orientation, size and elevation.
+The stimuli were again randomly generated ellipse-like blobs.
+Ten different orientations, sizes and elevations were used, giving a total of 1000 stimuli, of which 400 were used for training and 600 for testing.
+The networks were again able to extract information about orientation, size and elevation (Fig.~\ref{fig:orsi}).
+The `elevation' parameter, as with the previous experiment, shows poorer performance at the extremes.
+`Orientation' was the parameter with the highest error scores, presumably because it represents a second-order property, unlike elevation and size.
+Nonetheless, all three parameters could be simultaneously estimated by a neural network with ring neuron inputs, indicating that flies could be trained to distinguish arbitrary stimuli differing along these parameters.
+
+\texthl{[AP Notes: needs to be adapted. Also will be lengthened by explaining bit more about what is done and what is beinf=g seen in the figs. 
+Also might need to say that the error numbers are somewhat arbitrary but that which encoding is best follows what would be expected.]}
+
+%\subsection{Summary}
+In summary, we have shown that information about a number of higher-order properties, taken from the Cognitive Model, passes through the bottleneck of this small number of neurons.
+This indicates that such information could be used in some way upstream of the ring neurons, perhaps as an explicit encoding, although the information could also be used implicitly.
+However, as we have shown in the previous section, in order to perform a pattern discrimination task, such an explicit coding is not necessary.
+Likewise, presumably there are other tasks in which R2 neurons play a role where extraction of these parameters is either not necessary or would even hinder performance.
+
+----------
+Not sure where to put the below
+----------
+This fits with experimental data showing that R4d neurons are required for a short-term memory for the azimuthal direction of a vertical bar \cite{Neuser2008}.
+Specifically, this memory depends on the expression of a molecule involved in memory formation (S6 kinase II) in R3 and R4 ring neurons.
+Mutant flies ($ign^{\emph{58/1}}$) without this expression reoriented towards the new bar in the bar fixation paradigm, but when it disappeared they did not turn to face their original direction.
+When expression was restored in these flies, they would again reorient towards the (invisible) original bar location.
+
+
+Early work into visual pattern discrimination in \emph{Drosophila} suggested that flies were comparing patterns on the basis of retinotopic overlap \cite{Dill1995,Dill1993}.
+This model, although offering predictive power for a limited pattern subset, was shown to be incapable of discriminating other patterns that were however discriminable by flies \cite{Ernst1999} and it is now generally assumed instead that flies are encoding the patterns on the basis of certain higher-order features, viz. size, orientation, elevation and vertical compactness \cite{Ernst1999,Liu2006,Pan2009}.
+Here we refer to these two hypotheses as the `Retinotopic Model' and the `Cognitive Model', respectively.
+
+
