@@ -1,0 +1,3 @@
+Spearman's correlation:
+rho = 0.615173
+p = 0.000108

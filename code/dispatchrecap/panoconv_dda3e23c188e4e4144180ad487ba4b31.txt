@@ -1,0 +1,18 @@
+==== SCP ====
+R2: N = 29; rho = 0.288952; p = 0.128449
+ROL: N = 29; rho = -0.364811; p = 0.051678
+
+==== DCP ====
+R2: N = 32; rho = 0.501696; p = 0.003440
+ROL: N = 32; rho = -0.068018; p = 0.711467
+
+Sig:
+above: 8; below: 0; eq: 0; not given: 0; tot: 8
+------
+NS:
+above: 5; below: 13; eq: 0; not given: 1; tot: 19
+------
+Sig not given:
+above: 3; eq: 3; below: 0; not given: 3; tot: 9
+------
+tot tot: 36
