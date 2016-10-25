@@ -1,0 +1,19 @@
+N(sig) = 8
+N(notsig) = 19
+
+p =
+
+    0.0669
+
+
+h =
+
+     0
+
+
+stats = 
+
+       zval: 1.8322
+    ranksum: 147
+
+P(one-tailed) = 0.033460

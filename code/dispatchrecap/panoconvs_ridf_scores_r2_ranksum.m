@@ -9,4 +9,6 @@ fprintf('N(notsig) = %d\n', sum(notsigs));
 
 % h = kstest(diffr2(testable))
 % [hsw, p, swstat] = swtest(diffr2(testable))
-% [p,h,stats] = ranksum(diffr2(sigs),diffr2(notsigs))
+[p,h,stats] = ranksum(diffr2(sigs),diffr2(notsigs))
+
+fprintf('P(one-tailed) = %f\n', p / 2)
