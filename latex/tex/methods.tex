@@ -1,14 +1,14 @@
 
 \section{Materials and methods}
 
-\subsection{Neurogenetic methods used for estimating ring neuron receptive fields}\todo{new section added}
+\subsection{Neurogenetic methods used for estimating ring neuron receptive fields}
 \label{sec:methods:seelig}
-In this section I shall briefly outline the method employed in \citeA{Seelig2013} to acquire the visual receptive fields used as a basis for the modelling in this chapter (as well as Chapter~\ref{ch:drosonavigation}).
+In this section I shall briefly outline the method employed in \citeA{Seelig2013} to acquire the visual receptive fields used as a basis for the modelling in this paper.
 
 The goal of Seelig and Jayaraman's \cite{Seelig2013} work was to examine responses of lateral triangle microglomeruli (the ring neurons) to visual stimuli.
 For this, they employed two-photon calcium imaging to examine the activity of genetically targeted subsets of microglomeruli, the R2 and R3/R4d neurons.
 Fluorescence was recorded for head-fixed flies held in an arena with a curved display composed of an LED array.
-In order to map the receptive fields, the flies were presented with a series of flashing dots at random locations on the visual display; the fine structure of the receptive fields was then revealed by using white-noise stimuli \cite<see, e.g.,>{Weber2010}.
+In order to map the receptive fields, the flies were presented with a series of flashing dots at random locations on the visual display; the fine structure of the receptive fields was then revealed by using white-noise stimuli \cite{Weber2010}.
 The accuracy of the estimated receptive fields was then verified by correlating predicted with actual responses to novel bar stimuli (and a high degree of correspondence, was found).
 The orientation tuning for the different receptive fields was estimated by presenting the flies with a series of vertical bar stimuli (bright on a dark background) at different elevations, which moved across the display horizontally (in each direction).
 
@@ -62,7 +62,7 @@ K_{i,j} = \left\{
 \right.
 $$
 where $N_\mathrm{exc}$ and $N_\mathrm{inh}$ indicate the number of excitatory and inhibitory pixels, respectively.
-This method of allocating values has the result that the activation (see below) for an all-white or -black image will be zero and was chosen because we are assuming that these filters, like edge detectors, are tuned to respond to relative differences within images and not absolute values.\todo{insertion}
+This method of allocating values has the result that the activation (see below) for an all-white or -black image will be zero and was chosen because we are assuming that these filters, like edge detectors, are tuned to respond to relative differences within images and not absolute values.
 
 The activation of an average kernel, $K$, to the presentation of a greyscale image, $I$, at rotation $\theta$, is then:
 \begin{equation}
@@ -74,7 +74,7 @@ A(I,K,\theta) = {\sum\limits^m_{i=1} \sum\limits^n_{j=1} I_{i,j}(\theta)K_{i,j}}
 
 where $I_{i,j}(\theta)$ and $K_{i,j}$ are the ($i,j$)th pixels of the image and kernel, respectively. This process is illustrated in Figure~\ref{fig:avkernels}A.
 
-\input{\draft/fig_averagekern}
+%\input{\draft/fig_averagekern}
 
 \subsection{Replication of behavioural experiments}
 \label{sec:methods:replication}
@@ -108,7 +108,7 @@ $$
 W(\theta) = \sum_{i=1}^n W_i(\theta) = \sum_{i=1}^n A_i \sin f_i (\theta+\phi_i) 
 $$
 where $A_i$, $f_i$ and $\phi_i$ describe the maximum amplitude, frequency and phase shift of the wave $W_i(\theta)$, respectively.
-This method for generating stimuli allows for a substantial degree of random variation between the stimuli, while not producing shapes that are so irregular as to be unlearnable by a neural network.\todo{insertion}
+This method for generating stimuli allows for a substantial degree of random variation between the stimuli, while not producing shapes that are so irregular as to be unlearnable by a neural network.
 
 In these experiments, $A_i$, $f_i$ and $\phi_i$ were randomly generated and $n=2$.
 $A_i$ was a random value from 0 to 1, $f_i$ were random integers from 1 to 30 and $\phi_i$ was a random value from 0 to $2\pi$.
