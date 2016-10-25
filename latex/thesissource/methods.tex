@@ -1,11 +1,23 @@
 
-\section{Materials and Methods}
+\section{Materials and methods}
+
+\subsection{Neurogenetic methods used for estimating ring neuron receptive fields}\todo{new section added}
+\label{sec:drosopattern:methods:seelig}
+In this section I shall briefly outline the method employed in \citeA{Seelig2013} to acquire the visual receptive fields used as a basis for the modelling in this chapter (as well as Chapter~\ref{ch:drosonavigation}).
+
+The goal of Seelig and Jayaraman's \citeyear{Seelig2013} work was to examine responses of lateral triangle microglomeruli (the ring neurons) to visual stimuli.
+For this, they employed two-photon calcium imaging to examine the activity of genetically targeted subsets of microglomeruli, the R2 and R3/R4d neurons.
+Fluorescence was recorded for head-fixed flies held in an arena with a curved display composed of an LED array.
+In order to map the receptive fields, the flies were presented with a series of flashing dots at random locations on the visual display; the fine structure of the receptive fields was then revealed by using white-noise stimuli \cite<see, e.g.,>{Weber2010}.
+The accuracy of the estimated receptive fields was then verified by correlating predicted with actual responses to novel bar stimuli (and a high degree of correspondence, was found).
+The orientation tuning for the different receptive fields was estimated by presenting the flies with a series of vertical bar stimuli (bright on a dark background) at different elevations, which moved across the display horizontally (in each direction).
+
 \subsection{Turning visual receptive field data into visual filters}
 \label{sec:drosopattern:methods:preprocessing}
-The RFs used in these simulations were based on the data presented in \cite{Seelig2013}.
+The RFs used in these simulations were based on the data presented in \citeA{Seelig2013}.
 We first extract the image representations of the RFs from the figure (Extended Data Figure 8); this gives us images of $112\times 252$ pixels for R2 neurons and $88\times 198$ pixels for R4d.
 Given the visual field is taken as $120\degree\times 270\degree$, this corresponds to a resolution of 1.07\degree\ and 1.36\degree\ per pixel, respectively.
-As data is given for multiple flies, we averaged the RFs for the different glomeruli across flies ($2\le N(\mathrm{R2}) \le 6, 4\le N(\mathrm{R4})\le 7$). This process is summarised in Figure~\ref{fig:avkernels}. Each point on the image was assigned a value ranging from --1 for maximum inhibition to 1 for maximum excitation, based on the values given by the colour scale bars in \cite{Seelig2013}.
+As data is given for multiple flies, we averaged the RFs for the different glomeruli across flies ($2\le N(\mathrm{R2}) \le 6, 4\le N(\mathrm{R4})\le 7$). This process is summarised in Figure~\ref{fig:drosopattern:avkernels}. Each point on the image was assigned a value ranging from --1 for maximum inhibition to 1 for maximum excitation, based on the values given by the colour scale bars in \citeA{Seelig2013}.
 These images were then thresholded to give a kernel $g(i,j)$:
 $$
 g(i,j) = \left\{ \begin{array}{rl}
@@ -15,7 +27,7 @@ g(i,j) = \left\{ \begin{array}{rl}
                   \end{array}
           \right.
 $$
-where $g(i,j)$ is the ($i,j$)th pixel of the kernel, $R_{i,j}$ is the ($i,j$)th value of the processed receptive field image and $T$ is the threshold value, here $0.25$ (Figure~\ref{fig:avkernels}A).
+where $g(i,j)$ is the ($i,j$)th pixel of the kernel, $R_{i,j}$ is the ($i,j$)th value of the processed receptive field image and $T$ is the threshold value, here $0.25$ (Figure~\ref{fig:drosopattern:avkernels}A).
 
 We took the centroid of the largest excitatory region as the `centre' of each of the kernels.
 The excitatory regions were then extracted using \Matlab's \texttt{bwlabeln} function (with eight-connectivity) and the centroid, $(x,y)$, with the \texttt{regionprops} function.
@@ -24,7 +36,7 @@ $$
 \hat{g}(i,j) = \left\{ \begin{array}{ll} g(i+y-\bar{y},j+x-\bar{x}) & \mbox{for } 1\le i+y-\bar{y}\le m \mbox{ and } 1\le j+x-\bar{x}\le n;\\
 0 & \mbox{otherwise.} \end{array} \right.
 $$
-where $\hat{g}(i,j)$ is the recentred kernel (Figure~\ref{fig:avkernels}C).
+where $\hat{g}(i,j)$ is the recentred kernel (Figure~\ref{fig:drosopattern:avkernels}C).
 
 We next calculate the average kernel across flies, $\bar{g}(i,j)$, and threshold again:
 \begin{align*}
@@ -60,17 +72,19 @@ A(I,K,\theta) = {\sum\limits^m_{i=1} \sum\limits^n_{j=1} I_{i,j}(\theta)K_{i,j}}
 \end{array}
 \end{equation}
 
-where $I_{i,j}(\theta)$ and $K_{i,j}$ are the ($i,j$)th pixels of the image and kernel, respectively. This process is illustrated in Figure~\ref{fig:avkernels}A.
+where $I_{i,j}(\theta)$ and $K_{i,j}$ are the ($i,j$)th pixels of the image and kernel, respectively. This process is illustrated in Figure~\ref{fig:drosopattern:avkernels}A.
+
+\input{drosopattern/drosopattern_fig_averagekern}
 
 \subsection{Replication of behavioural experiments}
 \label{sec:drosopattern:methods:replication}
-The equation for describing the bar fixation mechanism shown in Figure~\ref{fig:recap}C is as follows:
+The equation for describing the bar fixation mechanism shown in Figure~\ref{fig:drosopattern:recap}C is as follows:
 $$
 \phi_\mathrm{turn} = \frac{\mathrm{gain}\cdot \pi}{4}\left( \sum\limits_{K\in \mathbf{G}_\mathrm{left}}\max(0,A(I,K,0\degree)) - \sum\limits_{K\in \mathbf{G}_\mathrm{right}}\max(0,A(I,K,0\degree)) \right)
 $$
 where $I$ is the view of the bar from the agent's current location and $\mathbf{G}_\mathrm{left}$ and $\mathbf{G}_\mathrm{right}$ are the sets of left- and right-hemispheric filters. `Gain' is a parameter to control the gain of the system, and here was set to 2.
 
-For the pattern recognition tasks (see Figure~\ref{fig:pattern}), the difference in activation is calculated as follows:
+For the pattern recognition tasks (see Figure~\ref{fig:drosopattern:pattern}), the difference in activation is calculated as follows:
 $$
 D(I) = \sqrt{\frac{\sum\limits_{K\in \mathbf{G}}(A(I,K,0\degree)-A(I,K,90\degree))^2}{|\mathbf{G}|}}
 $$
