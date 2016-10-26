@@ -1,0 +1,12 @@
+>> stats_R2vsSPP
+N(valid) = 29
+N(total) = 36
+
+rho =
+
+   -0.3111
+
+
+pval =
+
+    0.1004
