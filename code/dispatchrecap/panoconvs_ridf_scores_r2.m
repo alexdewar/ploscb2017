@@ -16,7 +16,7 @@ function panoconvs_ridf_scores_r2(dosave)
     showrng = [45 135 225];
     im_size = [120 360];
 
-    dname = '../../data/antoinestim';
+    dname = '../data/patternstim';
     
     if usenothreshkerns
         threshstr = '_nothresh';
@@ -299,11 +299,11 @@ function [dr2,stdr2]=vf_ridf(im,kerns)
     
     acts0 = acts(:,1+size(rim,2)/2);
     rr2 = sqrt(mean(bsxfun(@minus,acts,acts0).^2));
-    rr2 = [rr2,rr2(1)];
+%     rr2 = [rr2,rr2(1)];
     
 %     ths = linspace(-180,180,size(rim,2)+1);
     
-    i90 = 1+size(rim,2)/4;
+    i90 = round((size(rim,2)+1)/4);
     dr2 = rr2(i90); % sign(mean(acts0)-mean(acts(:,i90)))*
     stdr2 = std(rr2)/sqrt(length(rr2));
 end
