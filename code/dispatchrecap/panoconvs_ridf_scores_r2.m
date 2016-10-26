@@ -5,7 +5,7 @@ function panoconvs_ridf_scores_r2(dosave)
     
     showprogbar = true;
     usenothreshkerns = true;
-    scattermarkersize = 6;
+    scattermarkersize = 3;
     
     colcnt = [17 19];
     ncol = length(colcnt);
@@ -117,7 +117,7 @@ function panoconvs_ridf_scores_r2(dosave)
     %% plot figure
 %     barsp = 0.1;
     
-    sz = [19 10];
+    sz = [10 19];
     
     pattylo = 0; %-0.05;
     pattyhi = 0.4;
@@ -229,8 +229,15 @@ function panoconvs_ridf_scores_r2(dosave)
         cY = Y(ysel);
         cr2X = r2X(ysel);
         crolX = rolX(ysel);
+        meanY = mean(cY);
+        
         [rhor2,pr2] = corr(cr2X,cY,'type','Spearman');
+        covr2 = cov(cr2X, cY, 1);
+        meanr2 = mean(cr2X);
+        
         [rhorol,prol] = corr(crolX,cY,'type','Spearman');
+        covrol = cov(crolX, cY, 1);
+        meanrol = mean(crolX);
         
         outtxt = sprintf('%s==== %s ====\nR2: N = %d; rho = %f; p = %f\nROL: N = %d; rho = %f; p = %f\n\n', ...
                  outtxt,whindex,length(cr2X),rhor2,pr2,length(cr2X),rhorol,prol);
@@ -241,7 +248,9 @@ function panoconvs_ridf_scores_r2(dosave)
                      
         alsubplot(whrow,1)
         set(gca,'FontSize',8,'FontName','Arial')
+        hold on
         plot(cr2X(~vsel),cY(~vsel),'kx',cr2X(vsel),cY(vsel),'rx','MarkerSize',scattermarkersize)
+        error_ellipse(covr2, [meanr2, meanY]);
         bestfit(cr2X,cY)
         if whrow==4
             xlabel('R2 difference')
@@ -257,7 +266,9 @@ function panoconvs_ridf_scores_r2(dosave)
         
         alsubplot(whrow,2)
         set(gca,'FontSize',8,'FontName','Arial')
+        hold on
         plot(crolX(~vsel),cY(~vsel),'kx',crolX(vsel),cY(vsel),'rx','MarkerSize',scattermarkersize)
+        error_ellipse(covrol, [meanrol, meanY]);
         if whrow==4
             xlabel('Retinal overlap')
         else
