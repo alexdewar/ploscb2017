@@ -1,0 +1,14 @@
+- don't include figs in pdf
+- don't remove packages from latex header
+- for initial submission upload pdf inc. fig legend but w/o embedded figs
+- refs should be in .tex file, not in separate .bib
+- no \input or \include commands
+- follow instructions in template for fig legends and cits
+- Elements that exceed the width of the text column must be included in an “adjustwidth” environment to display properly. See the template for more information.
+- figs should be as .tiff or .eps
+
+- no length requirement for manuscripts
+- double spaced
+- up to 3 heading levels
+
+- asked to suggest suitable editors and *at least 4* potential reviewers (bearing in mind poss. competing interests)
