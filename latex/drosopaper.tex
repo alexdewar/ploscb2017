@@ -33,8 +33,8 @@
 %\usepackage{algorithmicx}
 
 % Use doublespacing - comment out for single spacing
-%\usepackage{setspace} 
-%\doublespacing
+\usepackage{setspace} 
+\doublespacing
 
 
 % Text layout
@@ -77,12 +77,6 @@
 
 \input{acronyms}
 
-%\usepackage{todonotes}
-%\usepackage{soul}
-%%\newcommand{\hltodo}[2]{\texthl{#1}\todo{#2}}
-%\newcommand{\hltodo}{}
-%\usepackage{pdfcomment}
-
 % header stuff
 \usepackage{fancyhdr}
 \setlength{\headheight}{15.2pt}
@@ -90,18 +84,7 @@
 
 \newcommand{\Matlab}{MATLAB}
 
-%\newcommand{\thesiscontcaption}[1]{\caption[#1]{#1 (Continued on next page.)}}
-
 \begin{document}
-	
-	\begin{comment}
-	\lhead{\today}
-	\chead{Draft: \draft}
-	\rhead{Section: \thesection}
-	\end{comment}
-	
-	\doublespacing
-
 
 % Title must be 150 characters or less
 \begin{flushleft}
@@ -129,7 +112,7 @@ All organisms wishing to survive and reproduce must be able to respond adaptivel
 
 \section{Introduction}
 As with many animals, vision plays a key role in a number of behaviours performed by the fruitfly \emph{Drosophila melanogaster}, including mate-recognition \cite{Agrawal2014}, place homing \cite{Ofstad2011}, visual course control \cite{Borst2014}, collision-avoidance \cite{Tammero2002}, landing \cite{Tammero2002} and escaping a looming object (like a rolled newspaper, for example) \cite{Card2008}. The benefit of studying these visually guided behaviours in \emph{Drosophila} is the range of neurogenetic techniques which give a realistic chance of understanding the neural circuits that underpin them. With that goal in mind, we focus on recent work \cite{Seelig2013} which mapped the receptive fields of a set of visually responsive neurons, the ring neurons of the ellipsoid body. These neurons are surprisingly small in number given that they are key for certain complex behaviours, such as short term spatial memory, pattern discrimination or place memory \cite{Liu2006,Neuser2008,Seelig2015}. To understand their role in these behaviours, we used modelling to bridge the gap between neurogenetic data and behaviour by evaluating neural responses during simulations of fly experiments. In this way we investigate how small populations of visual neurons in \emph{Drosophila} provide behaviourally relevant information.
-sdfsd 
+
 In laboratory assays flies show interesting spontaneous visual behaviours. For instance, flies will orient towards bar stimuli \cite{Reichardt1969,Gotz1987} and in a circular arena with two diametrically placed bars will walk between them for long periods. This spontaneous preference for elongated vertical bars is reduced as the bar is shortened until free-flying flies show a spontaneous aversion to small cube stimuli \cite{Maimon2008}. In addition a number of studies have investigated the process of pattern recognition and its neural underpinnings \cite{Ernst1999,Liu2006,Pan2009}. The standard paradigm involves putting a fly into a closed-loop system where it is tethered in a drum, on the inside of which are two visual stimuli alternating every 90\degree\ (Figure~\ref{fig:recap}E). As the fly attempts to rotate in one direction, the drum counter-rotates in closed loop, giving the illusion of the fly moving in a stable world. To elicit conditioned behaviour, if the fly faces one of the patterns it is punished by a heat beam. Over time if the fly is able to differentiate the patterns it will preferentially face the unpunished pattern. This procedure has been used to demonstrate that flies can differentiate stimulus pairs such as upright and inverted `T' shapes, a small and a large square, and many others \cite{Ernst1999}. That is, flies seem to possess a form of pattern recognition and pattern memory analogous to the better-studied pattern memory of bees \cite{vonFrisch1914,Giurfa1997,Horridge2009}. Interestingly, both bees and flies fail systematically to discriminate certain pattern pairs. 
 
 The control of these visual behaviours is dependent on the central complex of flies, a brain area thought to be involved primarily in spatial representation and mediation between visual input and motor output \cite{Pfeiffer2014}. The central complex comprises the ellipsoid body, the fan-shaped body, the paired noduli and the protocerebral bridge \cite{Young2010}. This part of the brain has been characterised as the site of action selection and organisation and is claimed to be homologous to the basal ganglia in vertebrates \cite{Strausfeld2013}. A particular class of neurons that project to the ellipsoid body of the central complex are `ring neurons', which are known to be involved in visual behaviours (R1: place homing \cite{Sitaraman2008,Sitaraman2010,Ofstad2011}; R2/R4m: pattern recognition \cite{Ernst1999,Liu2006,Pan2009}; R3/R4: bar fixation memory \cite{Neuser2008}). Here we examine how the ring neurons contribute to these behaviours, by simulating the visual input as it would be processed through this small population of visually responsive cells. In particular, we can address why flies might be unable to discriminate certain pattern pairs, whether the neurons are tuned for pattern recognition and, if not, what visually guided behaviours these cells are suited to.
