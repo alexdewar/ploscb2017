@@ -1,4 +1,3 @@
-- see [which?] note
 - add rank sum test into text
 - add details of ROL algorithm to methods and update in-text ref
 - merge figs 4 and 5 and update refs in text as appropriate
