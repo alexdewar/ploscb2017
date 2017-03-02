@@ -1,8 +1,11 @@
-- update section refs to reflect new numberless structure
+- see [which?] note
+- add rank sum test into text
+- add details of ROL algorithm to methods and update in-text ref
 - merge figs 4 and 5 and update refs in text as appropriate
-- make andy's changes to figs
-- produce new pdf
 - convert figures to EPS
+- make andy's changes to figs
+- add author summary
+- produce new pdf
 - fix instances of "work by [cit]"
 - proofread
 - check bibliography
