@@ -1,0 +1,9 @@
+- update section refs to reflect new numberless structure
+- merge figs 4 and 5 and update refs in text as appropriate
+- make andy's changes to figs
+- produce new pdf
+- convert figures to EPS
+- fix instances of "work by [cit]"
+- proofread
+- check bibliography
+- FINALLY: merge bibliography into main document
