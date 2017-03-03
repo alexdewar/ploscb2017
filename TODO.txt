@@ -1,5 +1,4 @@
 - add details of ROL algorithm to methods and update in-text ref
-- convert figures to EPS
 - make andy's changes to figs
 - add author summary
 - produce new pdf
