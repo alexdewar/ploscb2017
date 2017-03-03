@@ -1,4 +1,3 @@
-- add details of ROL algorithm to methods and update in-text ref
 - make andy's changes to figs
 - add author summary
 - produce new pdf
