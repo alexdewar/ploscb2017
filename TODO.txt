@@ -1,6 +1,4 @@
-- make andy's changes to figs
 - add author summary
-- produce new pdf
 - fix instances of "work by [cit]"
 - proofread
 - check bibliography
