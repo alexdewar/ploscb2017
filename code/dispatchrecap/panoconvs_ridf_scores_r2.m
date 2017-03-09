@@ -5,7 +5,7 @@ function panoconvs_ridf_scores_r2(dosave)
     
     showprogbar = true;
     usenothreshkerns = true;
-    scattermarkersize = 6;
+    scattermarkersize = 2;
     
     colcnt = [17 19];
     ncol = length(colcnt);
@@ -88,10 +88,10 @@ function panoconvs_ridf_scores_r2(dosave)
 %             keyboard
             b_patt1 = ~patt1(:);
             b_patt2 = ~patt2(:);
-            Q = sum(b_patt1 & b_patt2);
-            R = sum(~b_patt1 & b_patt2);
-%             T = sum(b_patt1 & ~b_patt2);
-            retol(i) = Q/(Q+R);
+            overlap = sum(b_patt1 & b_patt2);
+%             R = sum(~b_patt1 & b_patt2);
+%             retol(i) = overlap/(overlap+R);
+            retol(i) = 0.5 * (overlap/sum(b_patt1) + overlap/sum(b_patt2));
 %             fprintf('%s: %f, %f\n',fname{i},retol(i),Q/(Q+sum(~b_patt1 & b_patt2)))
 
             [diffr2(i),stdr2(i)] = vf_ridf(im,kerns);
