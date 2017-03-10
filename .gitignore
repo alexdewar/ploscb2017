@@ -4,6 +4,7 @@
 *~
 *.backup
 *.bak
+*.sav
 *.~lock.*#
 
 .sync/
