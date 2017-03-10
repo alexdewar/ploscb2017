@@ -1,3 +1,5 @@
+- add acknowledgments
+- discussion
 - re-examine fly quiverplot following paul's comments
 - add author summary
 - fix instances of "work by [cit]"
