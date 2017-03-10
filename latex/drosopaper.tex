@@ -1,11 +1,79 @@
+% Template for PLoS
+% Version 2.0 July 2014
+%
+% To compile to pdf, run:
+% latex plos.template
+% bibtex plos.template
+% latex plos.template
+% latex plos.template
+% dvipdf plos.template
+%
+% % % % % % % % % % % % % % % % % % % % % %
+%
+% -- IMPORTANT NOTE
+%
+% Be advised that this is merely a template 
+% designed to facilitate accurate translation of manuscript content 
+% into our production files. 
+%
+% This template contains extensive comments intended 
+% to minimize problems and delays during our production 
+% process. Please follow the template 
+% whenever possible.
+%
+% % % % % % % % % % % % % % % % % % % % % % % 
+%
+% Once your paper is accepted for publication and enters production, 
+% PLEASE REMOVE ALL TRACKED CHANGES in this file and leave only
+% the final text of your manuscript.
+%
+% DO NOT ADD EXTRA PACKAGES TO THIS TEMPLATE unless absolutely necessary.
+% Packages included in this template are intentionally
+% limited and basic in order to reduce the possibility
+% of issues during our production process.
+%
+% % % % % % % % % % % % % % % % % % % % % % %
+%
+% -- FIGURES AND TABLES
+%
+% DO NOT INCLUDE GRAPHICS IN YOUR MANUSCRIPT
+% - Figures should be uploaded separately from your manuscript file. 
+% - Figures generated using LaTeX should be extracted and removed from the PDF before submission. 
+% - Figures containing multiple panels/subfigures must be combined into one image file before submission.
+% See http://www.plosone.org/static/figureGuidelines for PLOS figure guidelines.
+%
+% Tables should be cell-based and may not contain:
+% - tabs/spacing/line breaks within cells to alter layout
+% - vertically-merged cells (no tabular environments within tabular environments, do not use \multirow)
+% - colors, shading, or graphic objects
+% See http://www.plosone.org/static/figureGuidelines#tables for table guidelines.
+%
+% For sideways tables, use the {rotating} package and use \begin{sidewaystable} instead of \begin{table} in the appropriate section. PLOS guidelines do not accomodate sideways figures.
+%
+% % % % % % % % % % % % % % % % % % % % % % % %
+%
+% -- EQUATIONS, MATH SYMBOLS, SUBSCRIPTS, AND SUPERSCRIPTS
+%
+% IMPORTANT
+% Below are a few tips to help format your equations and other special characters according to our specifications. For more tips to help reduce the possibility of formatting errors during conversion, please see our LaTeX guidelines at http://www.plosone.org/static/latexGuidelines
+%
+% Please be sure to include all portions of an equation in the math environment, and for any superscripts or subscripts also include the base number/text. For example, use $mathrm{mm}^2$ instead of mm$^2$ (do not use \textsuperscript command).
+%
+% DO NOT USE the \rm command to render mathmode characters in roman font, instead use $\mathrm{}$
+% For bolding characters in mathmode, please use $\mathbf{}$ 
+%
+% Please add line breaks to long equations when possible in order to fit our 2-column layout. 
+%
+% For inline equations, please do not include punctuation within the math environment unless this is part of the equation.
+%
+% For spaces within the math environment please use the \; or \: commands, even within \text{} (do not use smaller spacing as this does not convert well).
+%
+%
+% % % % % % % % % % % % % % % % % % % % % % % %
+
+
+
 \documentclass[10pt]{article}
-
-\usepackage[utf8]{inputenc}
-
-\usepackage{graphicx} % for figures
-\usepackage{ccaption} % captions on different pages
-
-%% BASED ON TEMPLATE GIVEN FOR PLOS
 
 % amsmath package, useful for mathematical formulas
 \usepackage{amsmath}
@@ -19,7 +87,6 @@
 
 % line numbers
 \usepackage{lineno}
-\linenumbers
 
 % ligatures disabled
 \usepackage{microtype}
@@ -66,23 +133,18 @@
 
 %% END MACROS SECTION
 
-%%% MY STUFF %%%
-
 % my packages
-
-\usepackage{gensymb}
 \usepackage{verbatim} % multiline comments
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{gensymb} % for \degree command
 
 \usepackage{acronym}
 \acrodef{RF}{receptive field}
 \acrodef{RIDF}{rotational image difference function}
 \acrodef{rms}[r.m.s.]{root mean square}
 \acrodef{ANN}{artificial neural network}
-
-% header stuff
-\usepackage{fancyhdr}
-\setlength{\headheight}{15.2pt}
-\pagestyle{fancy}
 
 \newcommand{\Matlab}{MATLAB}
 
@@ -149,7 +211,7 @@ To emphasise the independence of apparent similarity of patterns and the visual 
 
 There are, however, some discrepancies where the learning performance of flies for a particular pattern pair does not match the r.m.s. difference of our R2 population code. In some cases flies are better at discriminating pairs of patterns that discriminate along the vertical rather than horizontal axis (Set~\emph{(3)} vs Set~\emph{(4)}, and the pairs in Set~\emph{(12)}, marked with red Xs in Figure~\ref{fig:pattern}). In contrast, the r.m.s. difference in the R2 population code discriminates horizontal and vertical patterns equally. This is because our R2 filters are being presented with static stimulus pairs to simulate a fly oriented towards the centre of a pattern, for flies the patterns were moving horizontally but fixed in the vertical axis (as noted in \cite{Ernst1999}) making it harder for flies to resolve horizontal information.
 
-Overall, we have shown that the behavioural performance of flies on a pattern discrimination task is approximated by a simple difference metric applied to the population activity of a small number of simulated R2 cells. However, it is curious that both flies and the population of simulated R2 cells are bad at a variety of seemingly simple pattern discriminations which raises the question of why evolution has not optimised the visual system for this task. A simple thought experiment is helpful in considering the purpose of the visual code provided by the R2 neurons. If we double the number of R2 neurons in our population by inserting additional RFs of the same forms at random points on the visual field, then the r.m.s. difference for centre of mass-aligned triangles increases to levels similar to those for pattern pairs easily discriminated by flies (data not shown). We can therefore see how the pattern discrimination ability of an R2-like neuronal population could easily have been improved over evolutionary time without need for any radical architectural changes, simply through the addition of more R2 cells. We propose that, given how easily improved performance could have been achieved through evolution, there must be little selection pressure specifically for a specialised pattern recognition module in flies.
+Overall, we have shown that the behavioural performance of flies on a pattern discrimination task is approximated by a simple similarity metric applied to the population activity of a small number of simulated R2 cells. However, it is curious that both flies and the population of simulated R2 cells are bad at a variety of seemingly simple pattern discriminations which raises the question of why evolution has not optimised the visual system for this task. A simple thought experiment is helpful in considering the purpose of the visual code provided by the R2 neurons. If we double the number of R2 neurons in our population by inserting additional RFs of the same forms at random points on the visual field, then the r.m.s. difference for centre of mass-aligned triangles increases to levels similar to those for pattern pairs easily discriminated by flies (data not shown). We can therefore see how the pattern discrimination ability of an R2-like neuronal population could easily have been improved over evolutionary time without the need for any radical architectural changes. We therefore propose that there must be little selection pressure specifically for a specialised pattern recognition module in flies.
 
 \begin{comment}
 Sig:
@@ -165,28 +227,34 @@ tot tot: 36
 \end{comment}
 
 \subsection*{What information is preserved in this simple neural code?}
-Having such a small number of cells providing a visual encoding is a sensory bottleneck with information from 3000 ommatidia condensed onto 28 R2 or 14 R4d ring neurons. We have shown that this code provides sufficient information to discriminate some pattern pairs, but that, as performance could be improved with the addition of more ring neurons, general purpose pattern recognition seems unlikely to be the purpose of the Ring neuron system. The question thus arises as to what information this system is tuned to extract. Examining the pattern pairs which flies and the R2 population were able to discriminate we see that certain pattern parameters are implicitly coded for in the R2 population. Sets~\emph{(6)} and \emph{(9)} (Figure~\ref{fig:pattern}) suggest that, for instance, shape size and vertical centre of mass are parameters that can be recovered from the R2 population code after the sensory bottleneck.
+Having a small number of cells that provide a visual encoding of a complex scene is a sensory bottleneck with information from 3000 ommatidia condensed onto 28 R2 or 14 R4d ring neurons. We have shown that this code provides sufficient information to discriminate some pattern pairs, but that, as performance could be improved with the addition of more ring neurons, general purpose pattern recognition seems unlikely to be the purpose of the Ring neuron system. The question thus arises as to what information this system is tuned to extract. Examining the pattern pairs which flies and the R2 population were able to discriminate we see that certain pattern parameters are implicitly coded for in the R2 population. Sets~\emph{(6)} and \emph{(9)} (Figure~\ref{fig:pattern}) suggest that, for instance, shape size and vertical centre of mass may be parameters that can be recovered from the R2 population code after this sensory bottleneck.
 
-Here we therefore address in more general terms the shape information implicitly conveyed in the ring neuron population code. To do this, we generated large sets of ellipse-like ‘blobs’  that varied in size (specified by major-axis length), position (azimuth and elevation) and orientation. The blob generation procedure was also stochastic so that the precise shape of each blob was random and different to all others (see Methods, \emph{Stimuli}). We then trained an artificial neural network (ANN) to recover this shape information from either a raw image of the shape (a control condition) or from the output of the R2/R4d population. Here we use ANNs as statistical engines interrogating the output of the ring neuron population code to determine the shape information that is implicit to the code and has therefore made it through the sensory bottleneck. 
-We first examined whether ANNs could be trained to extract positional information (elevation and azimuth) of randomly-generated blobs with orientation, $\theta$, and major-axis length, a, held constant ($\theta=0\degree, a = 30\degree$). There were 100 possible azimuths and 100 possible elevations, giving a total of 10,000 stimuli. Of these, 4000 were used for training and 6000 for testing. Performance on the test set (Figure~\ref{fig:elazorsi}) shows that ANNs are indeed able to extract information about elevation and azimuth based on any of the input types (raw, R2 or R4d). Performance was better with parameter values near the middle. At the extremes, portions of the stimuli lay outside the visual field of the simulated fly meaning stimuli begin to disappear ‘off the edge’ of the visual field (Figure~\ref{fig:elazorsi}A and B), making the task a harder one (i.e., is it a large object projecting outside the visual field, or a smaller one just on the edge of the field of view?). While performance was best when raw views were input (Figure~\ref{fig:elazorsi}C and D), position information could still be reliably extracted from ring neuron outputs. The R2 code performs better than the R4d and the addition of R4d RFs to the R2 code, while adding dimensionality, does not improve performance, suggesting that either an R2-like encoding is sufficient to extract positional information, or that the information in the two codes is redundant. Thus small populations of ring neurons retain positional information.
+Here we address in more general terms the question of what shape information is implicitly conveyed in the ring neuron population code. To do this, we generated large sets of ellipse-like ‘blobs’  that varied in size (specified by major-axis length), position (azimuth and elevation) and orientation. The blob generation procedure was stochastic so that the precise shape of each blob was random and unique (see \emph{Materials and methods}). We then trained an artificial neural network (ANN) to recover this shape information from either a raw image of the shape (a control condition) or from the output of the R2/R4d populations that had been shown the blobs. Here we use ANNs as statistical engines interrogating the output of the ring neuron population code to determine if shape information is implicit to the code and has therefore made it through the sensory bottleneck. We first examined whether ANNs could be trained to extract positional information (elevation and azimuth) of randomly-generated blobs with orientation, $\theta$, and major-axis length, a, held constant ($\theta=0\degree, a = 30\degree$). There were 100 possible azimuths and 100 possible elevations, giving a total of 10,000 stimuli. Of these, 4000 were used for training and 6000 for testing. Performance on the test set (Figure~\ref{fig:elazorsi}) shows that ANNs are indeed able to extract information about elevation and azimuth based on any of the input types (raw, R2 or R4d). Performance was better with parameter values near the middle. At the extremes, portions of the stimuli lay outside the visual field of the simulated fly meaning stimuli begin to disappear ‘off the edge’ of the visual field (Figure~\ref{fig:elazorsi}A and B), making the task harder (i.e., is it a large object projecting outside the visual field, or a smaller object within it?). While performance was best when raw views were input (Figure~\ref{fig:elazorsi}C and D), position information could still be reliably extracted from ring neuron outputs. The R2 code performs better than the R4d and the addition of R4d RFs to the R2 code, while adding dimensionality, does not improve performance, suggesting that either an R2-like encoding is sufficient to extract positional information, or that the information in the two codes is redundant. Thus small populations of ring neurons retain positional information.
 
 We next trained ANNs to decode information about shape orientation and size. The stimuli were again randomly generated blobs at different positions but this time ten different orientations and sizes were used, giving a total of 1000 stimuli, of which 400 were used for training and 600 for testing. The ANNs were again able to extract this shape information from raw images and the ring neuron outputs (Figure~\ref{fig:elazorsi}E--H). Orientation was the parameter with the highest error score, possibly because its calculation necessitates using a second-order statistic (the covariance of the shape). Nonetheless, both parameters could be simultaneously estimated by an ANN neural network fed with ring neuron outputs. 
 In summary, we have shown that information about a number of shape properties passes through the bottleneck created by the small number of ring neurons. This indicates that such information is available downstream of the ring neurons for the guidance of behaviour.
 
 \section*{Discussion}
-A general problem in neuroscience is understanding how sensory systems organise information to be at the service of behaviour. Computational approaches have always been important in this endeavour, as they allow simulation of the sensory experience of a behaving animal meaning that one can investigate how this information is transformed by populations of neurons into behaviour. In this way, we can relate the details of neural circuitry to theories about the requirements of behaviour. Work by \cite{Seelig2013}, showing the forms of visual receptive fields for ring neurons projecting to the ellipsoid body of flies, gave us the opportunity to investigate how these neurons transform information and how this information relates to specific behaviours. In particular, we have shown that despite the size of the code, the outputs of the ring neurons could subserve both bar following and limited pattern recognition and implicitly convey information about shape parameters. We now discuss the implications of our findings.
+A general problem in neuroscience is understanding how sensory systems organise information to be at the service of behaviour. Computational approaches can be important in this endeavour, as they allow simulation of the sensory experience of a behaving animal meaning that one can investigate how this information is transformed by populations of neurons into behaviour. In this way, we can relate the details of neural circuitry to theories about the requirements of behaviour. Work by \cite{Seelig2013}, showing the forms of visual receptive fields for ring neurons projecting to the ellipsoid body of flies, gave us the opportunity to investigate how these neurons transform information and how this information relates to specific behaviours. In particular, we have shown that despite the size of the code, the outputs of the ring neurons could subserve both bar following and limited pattern recognition and implicitly convey information about shape parameters. We now discuss the implications of our findings.
 
 \subsection*{Are flies performing pattern recognition?}
 R2 cells are critical for conditioning in a pattern learning task \cite{Pan2009} Now that we know the visual characteristics of these cells, we can investigate how pattern discrimination is implemented. Previously, it has been suggested that pattern recognition relies on distinguishing visual patterns on the basis of higher-order properties, such as size, orientation and elevation \cite{Pan2009,Ernst1999}, however it has been found that at the R2 synapses the encoding is independent of any single parameter \cite{Liu2006}. Both of these views are consistent with our analysis. Size and position information are preserved in the R2 population code but do not need to be extracted by specific subpopulations of cells.
 
-Going one step further we found that the patterns of activity in the R2 population code are a good fit with the learning index of flies for pattern pairs, as shown in \cite{Ernst1999}. We also found, however, that these cells do not appear to be specifically ‘pattern recognition’ cells as performance is increased by simply having more cells or spreading the RFs out more widely. Any selection pressure on flies’ ability to discriminate patterns (as bees need to do for instance) would surely have led to a larger R2 population or, more likely, visual input to the Mushroom Body, and therefore we can be confident that ring neurons have not been tuned for arbitrary pattern recognition. We therefore suggest caution if research on flies is used to understand the neural basis of pattern recognition.
-Interestingly, flies’ spontaneous preference for patterns, which does not involve R2 neurons \cite{Ernst1999}, was not correlated with the values obtained in our simulation. This fits with work showing that flies’ preference for novelty involved the ellipsoid body but did not require any one of the R1, R3, R2/R4m or R3/R4d subsets of neurons specifically \cite{Solanki2015}. 
+Going one step further we found that the patterns of activity in the R2 population code are a good fit with the learning index of flies for pattern pairs, as shown in \cite{Ernst1999}. We also found, however, that these cells do not appear to be specifically ‘pattern recognition’ cells as performance would be increased by simply having more cells or spreading the RFs out more widely. Any selection pressure on flies’ ability to discriminate patterns (as bees need to do for instance) would surely have led to a larger R2 population or, more likely, visual input to the mushroom body \cite{Ehmer2002,Wolf1998}, and therefore we can be confident that ring neurons have not been tuned for arbitrary pattern recognition. We therefore suggest caution if research on flies is used to understand the neural basis of pattern recognition or visual cognition \cite{Menzel2001}. Interestingly, flies’ spontaneous preference for patterns, which does not involve R2 neurons \cite{Ernst1999}, was not correlated with the values obtained in our simulation. This fits with work showing that flies’ preference for novelty involved the ellipsoid body but did not require any one of the R1, R3, R2/R4m or R3/R4d subsets of neurons specifically \cite{Solanki2015}.
+
+Unlike for bees, pattern recognition does not seem likely to be an ecologically important behaviour in flies. However, behavioural experiments show some [something] ability (3). \\
+	(1) might be by-product of other behaviours \\
+	(2) danger of interpreting discrimination as meaning flies...
+
+Can we cite Biosystems in here?
 
 \subsection*{Short-term memory for object position in flies}
-One striking feature of the ring neuron receptive fields is that they are in general tuned to vertically oriented objects. We know that fruit flies are strongly attracted to vertical bars, a finding that has been leveraged across a range of behavioural paradigms (bar fixation: \cite{Neuser2008}). In one, single flies are placed into a virtual-reality arena, with two vertical stripes shown 180\degree\ apart. In this scenario, flies typically head back and forth between the two bars. Occasionally, however, the bars would disappear when a fly crossed the arena’s midline and a new bar appears at 90\degree\ to the old ones. Flies respond by reorienting to this new target, which then also disappears, whereupon flies will resume their initial heading, even though the original bars are no longer there. This indicates that directional information is stored in short-term memory and updated. Work by \cite{Neuser2008} has shown that R4 (and R3) ring neurons are involved in a spatial orientation memory for bars. 
-Accordingly, we examined the responses of the ring neuron filters to vertical bars and what role they could play in a spatial orientation task. We found that both R2 and R4d neurons were responsive to vertical bars of varying widths, particularly to the edges of larger bars and the centres of narrower ones, mirroring fly behaviour \cite{Osorio1990}. We also showed that the cells provide sufficient information to guide homing towards a large vertical object, as with a spatial orientation task \cite{Neuser2008}. Finally, we showed that information about the azimuth of stimuli makes it through the sensory bottleneck and whilst the population code does not perfectly maintain orientation information, it is a good detector of vertical bars.
+One striking feature of the ring neuron receptive fields is that they are in general tuned to vertically oriented objects. We know that fruit flies are strongly attracted to vertical bars, a finding that has been leveraged across a range of behavioural paradigms (bar fixation: \cite{Neuser2008}). In one, single flies are placed into a virtual-reality arena, with two vertical stripes shown 180\degree\ apart. In this scenario, flies typically head back and forth between the two bars. Occasionally, however, the bars disappear when a fly crossed the arena’s midline and a new bar is presented at 90\degree\ to the originals. Flies respond by reorienting to this new target, which then also disappears, whereupon flies will resume their initial heading, even though the original bars are no longer there. This indicates that directional information is stored in short-term memory and updated. Work by \cite{Neuser2008} has shown that R4 (and R3) ring neurons are involved in a spatial orientation memory for bars. Accordingly, we examined the responses of the ring neuron filters to vertical bars and what role they could play in a spatial orientation task. We found that both R2 and R4d neurons were responsive to vertical bars of varying widths, mimicking flies' preference for the edges of larger bars and the centres of narrower ones \cite{Osorio1990}. We also showed that the cells provide sufficient information to guide homing towards a large vertical object, as with a spatial orientation task \cite{Neuser2008}. Finally, we showed that information about the azimuth of stimuli makes it through the sensory bottleneck and whilst the population code does not perfectly maintain orientation information, it is a good detector of vertical bars.
 
-The sensory information provided by these cells could be used in a variety of ways and there are suggestions that R4d neurons could form part of a ‘path integration’ system \cite{Neuser2008} or be analogous to mammalian head-direction cells \cite{Tomchik2008}. Indeed, there is evidence that, as with path integration and head direction cells, these cells also integrate idiothetic information \cite{Zars2009}. This raises the intriguing possibility that ring neurons play a role in a short-term memory system in order to facilitate complex behavioural responses which require integration of multiple sources of information over time, rather than simpler reflexive or classically conditioned behaviours. The fly could be remembering the position of a stimulus, the history of its own movements, or both \cite{Tomchik2008}. Work by \cite{Guo2015} indicates that R3/R4d neurons, but not R2/R4m, play a role in learned spatial orientation to stimuli other than simple vertical bars. Flies tethered in a drum were conditioned to fly toward either the left or right of a visual pattern (such as an inverted ‘T’); it was found that the absence of these neurons prevented conditioning. This suggests a role for R4d cells in remembering the position of a stimulus with respect to the fly’s own movements, as would be required in a path integration system. 
+How the visual information provided by these cells might be integrated in the general sensorimotor architecture of the central complex is still an open question. It might be PI or operant association of action + stimuli.
+
+Condense: \\
+R4d neurons could form part of a ‘path integration’ system \cite{Neuser2008} or be analogous to mammalian head-direction cells \cite{Tomchik2008}. Indeed, there is evidence that, as with path integration and head direction cells, these cells also integrate idiothetic information \cite{Zars2009}. This raises the intriguing possibility that ring neurons play a role in a short-term memory system in order to facilitate complex behavioural responses which require integration of multiple sources of information over time, rather than simpler reflexive or classically conditioned behaviours. The fly could be remembering the position of a stimulus, the history of its own movements, or both \cite{Tomchik2008}. Work by \cite{Guo2015} indicates that R3/R4d neurons, but not R2/R4m, play a role in learned spatial orientation to stimuli other than simple vertical bars. Flies tethered in a drum were conditioned to fly toward either the left or right of a visual pattern (such as an inverted ‘T’); it was found that the absence of these neurons prevented conditioning. This suggests a role for R4d cells in remembering the position of a stimulus with respect to the fly’s own movements, as would be required in a path integration system.
 
 \subsection*{Summary}
 We have given here a novel insight into the functions and organisation of the \emph{Drosophila} visual system, and additionally raised issues regarding neural coding in insects more generally. In particular, we challenge the idea that a complex behaviour must be supported by a discrete cognitive module to extract abstract features or properties of stimuli. \emph{Drosophila}’s limited ability to discriminate patterns using abstract properties seems to be the by-product of a simple visual system tuned to provide information to guide specific behaviours. In the future, a combined approach – behavioural research that incorporates insights and predictions from computational models – could help pave the way to a mechanistic, quantitative account of insect behaviour and its relation to sensory information.
@@ -194,19 +262,15 @@ We have given here a novel insight into the functions and organisation of the \e
 \section*{Materials and methods}
 \subsection*{Neurogenetic methods used for estimating ring neuron receptive fields}
 \label{sec:methods:seelig}
-In this section I shall briefly outline the method employed in \cite{Seelig2013} to acquire the visual receptive fields used as a basis for the modelling in this paper.
-
-The goal of Seelig and Jayaraman's \cite{Seelig2013} work was to examine responses of lateral triangle microglomeruli (the ring neurons) to visual stimuli.
+The goal of Seelig and Jayaraman's \cite{Seelig2013} work was to examine responses of lateral triangle microglomeruli (which house the cell bodies of the ring neurons) to visual stimuli.
 For this, they employed two-photon calcium imaging to examine the activity of genetically targeted subsets of microglomeruli, the R2 and R3/R4d neurons.
 Fluorescence was recorded for head-fixed flies held in an arena with a curved display composed of an LED array.
-In order to map the receptive fields, the flies were presented with a series of flashing dots at random locations on the visual display; the fine structure of the receptive fields was then revealed by using white-noise stimuli \cite{Weber2010}.
+In order to map the receptive fields, the flies were presented with a series of flashing dots at random locations on the visual display; the fine structure of the receptive fields (RFs) was then revealed by using white-noise stimuli \cite{Weber2010}.
 The accuracy of the estimated receptive fields was then verified by correlating predicted with actual responses to novel bar stimuli (and a high degree of correspondence, was found).
-The orientation tuning for the different receptive fields was estimated by presenting the flies with a series of vertical bar stimuli (bright on a dark background) at different elevations, which moved across the display horizontally (in each direction).
 
 \subsection*{Turning visual receptive field data into visual filters}
 \label{sec:methods:preprocessing}
-The RFs used in these simulations were based on the data presented in \cite{Seelig2013}.
-We first extract the image representations of the RFs from the figure (Extended Data Figure 8); this gives us images of $112\times 252$ pixels for R2 neurons and $88\times 198$ pixels for R4d.
+To create the visual filters which represent RFs, we first extract the image representations of the RFs from \cite{Seelig2013} (Extended Data Figure 8); this gives us images of $112\times 252$ pixels for R2 neurons and $88\times 198$ pixels for R4d.
 Given the visual field is taken as $120\degree\times 270\degree$, this corresponds to a resolution of 1.07\degree\ and 1.36\degree\ per pixel, respectively.
 As data is given for multiple flies, we averaged the RFs for the different glomeruli across flies ($2\le N(\mathrm{R2}) \le 6, 4\le N(\mathrm{R4})\le 7$). This process is summarised in Figure~\ref{fig:avkernels}. Each point on the image was assigned a value ranging from --1 for maximum inhibition to 1 for maximum excitation, based on the values given by the colour scale bars in \cite{Seelig2013}.
 These images were then thresholded to give a kernel $g(i,j)$:
