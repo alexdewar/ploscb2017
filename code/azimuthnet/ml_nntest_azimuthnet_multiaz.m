@@ -61,7 +61,7 @@ function ml_nntest_azimuthnet_multiaz(dosave,whnet,whtodo,dolabelerrs,whcvar,fig
     
     figsz = [20 10];
     docombine = isempty(whcvar);
-    dname = fullfile(mfiledir,'../../data/ANNs');
+    dname = fullfile(mfiledir,'../drosodata/ANNs');
     prefix = ['ellblob_' netsuffixes{whnet}];
     ptrain = 0.4;
 
