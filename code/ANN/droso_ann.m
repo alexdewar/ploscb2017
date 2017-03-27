@@ -14,6 +14,10 @@ switch whnet
         nvar = 3;
         vnames = {'or','si','el','az'};
 end
+
+ticklabels = {0:30:90, [], -60:30:60, -135:45:0};
+tickvnames = {'or','si','el','az'}; 
+
 if nargin < 4
     dolabelerrs = false;
 end
@@ -238,9 +242,15 @@ for i = 1:ncvar
         
         if i==ncvar
             xlabel(tlabels{whtodo(j)})
+            ticks = ticklabels{strcmp(tickvnames,vnames{whtodo(j)})};
+            if ~isempty(ticks)
+                set(gca,'XTick',ticks)
+            end
+            set(gca,'YTick',get(gca,'XTick'))
         else
             set(gca,'XTick',[])
         end
+        
         if whnet~=1 && whnet~=4 && ~docombine && j==ceil(size(t,2)/2)
             title(sprintf('%s=%.2f',vnames{whcvar},ucvar(i)))
         end
