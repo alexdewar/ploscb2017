@@ -210,7 +210,7 @@ if doplot
 end
 
 cols = 'brgm';
-labels = {'views','R2','R4d','R2+R4d'};
+labels = {'Raw views','R2','R4d','R2+R4d'};
 
 if whnet==1 || whnet==4
     tlabels = {'Elevation (deg)','Azimuth (deg)'};
@@ -241,7 +241,7 @@ for i = 1:ncvar
         andy_setbox
         
         if i==ncvar
-            xlabel(tlabels{whtodo(j)})
+            title(tlabels{whtodo(j)})
             ticks = ticklabels{strcmp(tickvnames,vnames{whtodo(j)})};
             if ~isempty(ticks)
                 set(gca,'XTick',ticks)
@@ -256,9 +256,10 @@ for i = 1:ncvar
         end
         if j==1
             if ncvar==1
-                ylabel('Mean square error')
+                ylabel({'Estimate recovered', 'from visual code'})
             end
         end
+        xlabel('True value')
         
         if ncvar==1
             alsubplot(2,j)
@@ -283,6 +284,9 @@ for i = 1:ncvar
             end
         end
         errorbar(1:4,meanval(j,:,i),zeros(1,4),errval(j,:,i),'k','LineStyle','none');
+        if j==1
+            ylabel('Mean square error')
+        end
         ylim([0 .1])
         set(gca,'YTick',0:0.02:0.1)
         axis square
