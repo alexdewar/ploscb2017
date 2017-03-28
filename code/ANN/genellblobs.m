@@ -26,7 +26,7 @@ pgeb.orsiel_az = linspace(-135,135,22);
 pgeb.elaz_or = linspace(0,90,5);
 pgeb.useblackblobs = true;
 pgeb.usenothreshkerns = true;
-pgeb.rim_size = [2 7; 4 7; 3 14];
+pgeb.rim_size = [4 7];
 
 rim_px_n = prod(pgeb.rim_size,2);
 rim_whpx = cumsum([0; rim_px_n]);
@@ -55,7 +55,7 @@ else
 end
 
 if ~debug
-    dname = fullfile(mfiledir,'../../data/ANNs');
+    dname = fullfile(mfiledir,'../drosodata/ANNs');
     if ~exist(dname,'dir')
         mkdir(dname)
     end
@@ -107,6 +107,7 @@ for i = 1:length(whnet)
         startprogbar(50,ndata);
     end
     c = 1;
+                            bad_blob = false;
     while c <= ndata
         while true
             scale(c) = pgeb.scalemax*rand;
@@ -142,7 +143,6 @@ for i = 1:length(whnet)
         try
             ind = sub2ind(pgeb.blob_im_size,min(pgeb.blob_im_size(1),round(pgeb.blob_im_size(1)/2+ys)),round(pgeb.blob_im_size(2)/2+xs));
         catch
-            %             disp('sub2ind')
             continue
         end
         im(ind) = true;
@@ -182,9 +182,17 @@ for i = 1:length(whnet)
         
         x_kern(c,:) = getacts(im,rkerns);
         
+        bad_blob = false;
         for k = 1:length(rim_px_n)
             rim = imresize(im,pgeb.rim_size(k,:),'bilinear');
+            if all(rim(:)==rim(1))
+                bad_blob = true;
+            end
+            
             x_im(c,rim_whpx(k)+1:rim_whpx(k+1)) = rim(:);
+        end
+        if bad_blob
+            continue
         end
         
         if ~debug && progbar
@@ -196,6 +204,6 @@ for i = 1:length(whnet)
 
     if ~debug
         fname = sprintf('%s/ellblob_%s_job%07d_ind%05d.mat',dname,netsuffixes{whnet(i)},pgeb.apollo_job,pgeb.apollo_starti);
-        savemeta(fname,'x_im','x_kern','el','az','orients','areas','pgeb','majoraxis','minoraxis','aerr');
+        savemeta(fname,'x_im','x_kern','el','az','orients','areas','pgeb','majoraxis','minoraxis','aerr','truearea');
     end
 end

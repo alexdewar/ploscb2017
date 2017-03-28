@@ -55,7 +55,7 @@ elseif ~isempty(whcvar)
 end
 
 doonelayer = false;
-doloadpreprocess = true;
+doloadpreprocess = false;
 
 figsz = [20 10];
 docombine = isempty(whcvar);
