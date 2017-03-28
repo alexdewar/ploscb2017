@@ -272,11 +272,11 @@ for i = 1:ncvar
         end
         set(gca,'FontSize',8)
         hold on
-        if i==ncvar
+%         if i==ncvar
             alcolorbar(meanval(j,:,i),cols,labels);
-        else
-            alcolorbar(meanval(j,:,i),cols,[]);
-        end
+%         else
+%             alcolorbar(meanval(j,:,i),cols,[]);
+%         end
         if ncvar>1 || dolabelerrs
             for k = 1:size(meanval,2)
                 text(k,meanval(j,k,i)+errval(j,k,i),sprintf(' %.3f',meanval(j,k,i)),'Rot',90);
@@ -284,6 +284,7 @@ for i = 1:ncvar
         end
         errorbar(1:4,meanval(j,:,i),zeros(1,4),errval(j,:,i),'k','LineStyle','none');
         ylim([0 .1])
+        set(gca,'YTick',0:0.02:0.1)
         axis square
         
         andy_setbox
