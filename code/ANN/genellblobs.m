@@ -6,7 +6,7 @@ function genellblobs(whnet,apollo_starti)
 % constants
 debug = false;
 netsuffixes = { 'elaz', 'orsiel+az', 'orsiel', 'elaz+or' };
-netnvars = [ 2, 3, 3, 2 ];
+netnvars = [ 2, 4, 3, 2 ];
 if debug
     disp('DEBUG MODE, NOT SAVING')
 end
@@ -22,11 +22,11 @@ pgeb.zrrng = [0.05 0.125];
 pgeb.im_size = [120 270];
 pgeb.blob_im_size = [120 360];
 % pgeb.orsiel_az = -120:30:0; % for orsiel+az
-pgeb.orsiel_az = linspace(-135,135,22);
+pgeb.orsiel_az = linspace(-135,0,22);
 pgeb.elaz_or = linspace(0,90,5);
 pgeb.useblackblobs = true;
 pgeb.usenothreshkerns = true;
-pgeb.rim_size = [4 7];
+pgeb.rim_size = [3 14];
 
 rim_px_n = prod(pgeb.rim_size,2);
 rim_whpx = cumsum([0; rim_px_n]);
@@ -181,11 +181,13 @@ for i = 1:length(whnet)
         end
         
         x_kern(c,:) = getacts(im,rkerns);
+        im_double = im2double(im);
         
         bad_blob = false;
         for k = 1:length(rim_px_n)
-            rim = imresize(im,pgeb.rim_size(k,:),'bilinear');
+            rim = imresize(im_double,pgeb.rim_size(k,:),'bilinear');
             if all(rim(:)==rim(1))
+                warning('bad blob!')
                 bad_blob = true;
             end
             

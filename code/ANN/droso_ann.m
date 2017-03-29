@@ -103,9 +103,15 @@ if nargin >= 9
     load(fullfile(dname,loadfn));
 else
     fname_preprocess = fullfile(dname,sprintf('fig_%s_td%s_%s%s.mat',matfileremext(fname_ellblob),tdtfstr,prefix,paramstr));
-    if doloadpreprocess && exist(fname_preprocess,'file')
+    fexist = exist(fname_preprocess,'file');
+    if doloadpreprocess && fexist
+        fprintf('loading fig data from previous run (%s)\n',fname_preprocess);
         load(fname_preprocess);
     else
+        if fexist
+            warning('generating new fig data, although there is already a fig data file saved')
+        end
+        
         load(fullfile(dname,fname_ellblob));
         
         switch whnet
@@ -125,11 +131,18 @@ else
             
             %             usz = unique(t(:,2));
             
-            fvsel = t(:,fixedv)==fixedval; %& t(:,2)==usz(11);
+            fvsel = t(:,fixedv)==fixedval;
+            oldfixedval = fixedval;
+            if ~any(fvsel)
+                [~,I]=min(abs(t(:,fixedv)-fixedval));
+                fixedval = t(I,fixedv);
+                warning('no value of %s matches %f; using closest match (%f)',vnames{fixedv},oldfixedval,fixedval);
+                fvsel = t(:,fixedv)==fixedval;
+            end
+            
             t = t(fvsel,:);
             x_im = x_im(fvsel,:);
             x_kern = x_kern(fvsel,:);
-            
             
             fprintf('fixing %s at %.2f\n',vnames{fixedv},fixedval)
         end
