@@ -55,7 +55,8 @@ elseif ~isempty(whcvar)
 end
 
 doonelayer = false;
-doloadpreprocess = false;
+doloadpreprocess = true;
+dosavepreprocess = doloadpreprocess;
 
 figsz = [20 10];
 docombine = isempty(whcvar);
@@ -202,7 +203,7 @@ else
             end
         end
         
-        if doloadpreprocess
+        if dosavepreprocess
             %droso_ann(dosave,whnet,whtodo,dolabelerrs,whcvar,figno,fixedv,fixedval,loadfn,loadfnparams)
             savemeta(fname_preprocess,'ut','yy','yerr','meanval','errval','fname_ellblob','t','ucvar','ncvar','pgeb','ntrain','ntest','ndata','fname_ellblob', ...
                 'whnet','whtodo','whcvar','fixedv','fixedval')
@@ -284,13 +285,12 @@ for i = 1:ncvar
                 title(sprintf('%s=%.2f',vnames{whcvar},ucvar(i)))
             end
         end
+        
         set(gca,'FontSize',8)
         hold on
-%         if i==ncvar
-            alcolorbar(meanval(j,:,i),cols,labels);
-%         else
-%             alcolorbar(meanval(j,:,i),cols,[]);
-%         end
+        
+        alcolorbar(meanval(j,:,i),cols,labels);
+        
         if ncvar>1 || dolabelerrs
             for k = 1:size(meanval,2)
                 text(k,meanval(j,k,i)+errval(j,k,i),sprintf(' %.3f',meanval(j,k,i)),'Rot',90);
