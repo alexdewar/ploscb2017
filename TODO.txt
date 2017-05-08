@@ -1,7 +1,0 @@
-- update text to reflect changes to fig4
-- amend acknowledgments
-- look at discussion again
-- re-examine fly quiverplot following paul's comments
-- proofread
-- check bibliography
-- FINALLY: merge bibliography into main document
