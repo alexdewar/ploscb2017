@@ -1,0 +1,87 @@
+
+Dear Dr Dewar,
+
+Thank you very much for submitting your manuscript, 'Neural coding in the visual system of Drosophila melanogaster: How do small neural populations support visually guided behaviours?', to PLOS Computational Biology. As with all papers submitted to the journal, yours was fully evaluated by the PLOS Computational Biology editorial team, and in this case, by independent peer reviewers. The reviewers appreciated the attention to an important topic but identified some aspects of the manuscript that should be improved.
+
+We would therefore like to ask you to modify the manuscript according to the review recommendations before we can consider your manuscript for acceptance. Your revisions should address the specific points made by each reviewer and we encourage you to respond to particular issues raised. Moreover, we suggest adding some discussion of how these results might be affected if spike timing, rather than firing rates alone, were incorporated into the model.
+
+In addition, when you are ready to resubmit, please be prepared to provide the following:
+(1) A detailed list of your responses to the review comments and the changes you have made in the manuscript. We require a file of this nature before your manuscript is passed back to the editors.
+(2) A copy of your manuscript with the changes highlighted (encouraged). We encourage authors, if possible to show clearly where changes have been made to their manuscript e.g. by highlighting text.
+(3) PLOS offers a figure-checking tool, PACE (http://pace.apexcovantage.com/), to help authors to ensure all figures meet PLOS requirements so that the quality of published figures is as high as possible. Please use this tool to help you format your figures.
+PACE is a digital diagnostic and conversion tool for figure files. It will provide information about any failed check(s) and, if able, will automatically convert the figure file into an acceptable file that passes quality checks. PACE requires you to register for an account to ensure your figure files are processed securely.
+(4) A striking still image to accompany your article (optional). If the image is judged to be suitable by the editors, it may be featured on our website and might be chosen as the issue image for that month. These square, high-quality images should be accompanied by a short caption. Please note as well that there should be no copyright restrictions on the use of the image, so that it can be published under the Open-Access license and be subject only to appropriate attribution.
+
+Before you resubmit your manuscript, please consult our Submission Checklist to ensure your manuscript is formatted correctly for PLOS Computational Biology: http://www.ploscompbiol.org/static/checklist.action. Some key points to remember are:
+
+- Figures uploaded separately as TIFF or EPS files (if you wish, your figures may remain in your main manuscript file in addition).
+- Supporting Information uploaded as separate files, titled 'Dataset', 'Figure', 'Table', 'Text', 'Protocol', 'Audio', or 'Video'.
+- Funding information in the 'Financial Disclosure' box in the online system.
+
+We hope to receive your revised manuscript within the next 30 days. If you anticipate any delay in its return, we ask that you let us know the expected resubmission date by email at ploscompbiol@plos.org.
+
+If you have any questions or concerns while you make these revisions, please let us know.
+
+Sincerely,
+
+Daniel Bush
+Associate Editor
+PLOS Computational Biology
+
+Lyle Graham
+Deputy Editor
+PLOS Computational Biology
+
+A link appears below if there are any accompanying review attachments. If you believe any reviews to be missing, please contact ploscompbiol@plos.org immediately:
+
+
+Reviewer's Responses to Questions
+
+Comments to the Authors:
+Please note here if the review is uploaded as an attachment.
+
+Reviewer #1: In this paper, the authors use computational methods to investigate the performance of neurons that are thought to mediate a range of complex behaviours in Drosophila, including pattern recognition. They use receptive field data that has recently been obtained experimentally to investigate the information that would be provided by these neurons, particularly when viewing different patterns. The authors match their findings to those of behavioural experiments and find that the output of their simulations agree well with the flies' behaviour. They then use neural network modelling to investigate how well the output of these neurons can be used to identify visual features.
+
+This is a clear, well-written paper with a style and organisation that is easy to follow. The findings are interesting and of value to anyone interested in understanding the relationship between sensory input and behavioural output in biological systems.
+
+I have one major comment
+Page 9: First line under the title 'What information is preserved in this simple neural code'. I do not agree that the stimuli were complex scenes. I am missing a discussion on how the output of the neurons would perform in natural scenes and an elaboration of the relationship between the output of these neurons in a natural context. All of the experimental data has been acquired in artificial situations with highly simplified stimuli and it leaves me wondering about how these neurons would respond to more natural objects with the image statistics of a natural background. I understand that the lack of experimental data using such stimuli limits their ability to provide a clear answer to this question but I still think that it should be addressed in some way in the discussion. For example, could you address the question of whether it is likely that using naturalistic objects on a naturalistic background would change the output of the neurons? Could motion parallax provide additional shape information that is not present in the 2D stimuli presented?
+
+Minor comments on the text:
+
+Page 3, 4th line from the bottom: add 'the' before 'direction' or reorganise the end of this sentence for clarity
+Page 7, 3rd line from the top: add 'B' to (Figure 2) for clarity
+Page 7, 3rd line from the bottom: add 't' to 'though'
+Page 14, 6th line after the heading: there is a word missing here 'Each point on the is initially...'
+Page 22, Figure 1 legend: it would be helpful to the reader if it were made explicit that the blue crosses are in 1A rather than 1B
+Figure 1B: the contrast between the blue and green is not very high, consider using different colours. The legends are too large and cover the data (I understand that this is symmetrical but it would help the reader to get a clearer picture of the responses to each edge).
+
+Reviewer #2: Neuronal coding in the visual system of Drosophila melanogaster: How do small neural populations support visually guided behaviours?
+
+General Comments:
+The main contribution of this paper is the demonstration that a small population of neurones in the central complex are well suited for encoding information about size, position and orientation of objects. The details related to the extraction of kernels, calculation of R4d and R2, and the replication of behavioural experiments are well presented. The simulation tests are fairly detailed and easy to follow, and the results appear accurate. However, the motivation behind the author’s model is not well justified.
+1. Previous models, based on the same data (Seeling and Jayaraman 2015) have already been proposed (e.g. A Cope et.al., reference #30). Although the authors refer to alternative models, the article lacks a systematic comparison between their model and previously proposed models. More specifically, it is not clear, why the authors have not used a ring attractor.
+2. A tremendous amount of information is already known about the visual system of Drosophila. However, the authors have modelled R4d and R2 neurones with simple linear filters, by using kernels. It will be beneficial to at least discuss why the use of linear filters is appropriate.
+3. The authors compare the discriminability of patterns using a distance measure between Rfs. This approach is relatively similar to methods suggested by the author themselves in other articles for place recognition or navigation (e.g. Dewar, A.D. et. al, 2014. What is the relationship between visual environment and the form of ant learning-walks? An in silico investigation of insect navigation. Adaptive Behavior). It is frustrating that authors do not link their present model to other existing models of place recognition and pattern recognition.
+Also, the authors often refer to which patterns flies can or can not discriminate. It should be noted that the discrimination capabilities of animal heavily depend on the training method (see for example A Dyer et. al. 2004 Bumblebees (Bombus terrestris) sacrifice foraging speed to solve difficult colour discrimination tasks. J.Comp.Physiol.A 190, doi:10.1007/s00359-004-0547-y) .
+Finally, in the last paragraph of ‘Pattern discrimination in flies and ring neuron population codes’, the authors suggest that the addition of Rfs improve the patterns discrimination. However, the data are not shown without apparent reasons.
+
+Specific Comments:
+
+Page 4 (Results, first paragraph): The author should give an intuitive explanation for the use of average filters. The sentence ‘Though this averaging … we examine’ is not justified properly.
+
+Page 6 (Results: Pattern discrimination in flies and ring neurone population codes, paragraph 2): The root mean square is used as discriminability measure without motivation and therefore sounds arbitrary. It should be noted that other metrics exist: absolute difference, kullback-leibler, bayesian information criterion, etc.
+
+Page 13 (Discussion, Do flies recognise patterns?, paragraph 3): The author used we in ‘… we have shown that the information ...’ although referring to published work from different authors, reference #2 previously
+
+Page 14 (Materials and methods, Turning visual receptive field data into visual filters). The authors should ask Seeling and Jayaraman for their original data instead of extracting values from figures for better precision and clarity.
+ 
+Reviewers who wish to reveal their identities to the authors and other reviewers should include their name here (optional). These names will not be published with the manuscript, should it be accepted.
+
+Reviewer #1: (No Response)
+
+Reviewer #2: (No Response)
+
+
+ 
+
