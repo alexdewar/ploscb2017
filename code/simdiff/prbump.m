@@ -1,4 +1,8 @@
-function prbump
+function prbump(dosave)
+if ~nargin
+    dosave = false;
+end
+
 cd(fullfile(mfiledir,'..'))
 
 dname = './drosodata/antoinestim/touse/';
@@ -115,19 +119,21 @@ else
 end
 
 figure(1);clf
-alsubplot(3,length(fnames),1,1);
+% alsubplot(3,length(fnames),1,1);
+set(gca,'FontSize',8,'FontName','Arial')
 for i = 1:length(fnames)
     cdiffs = diffs(:,:,i);
     
-    alsubplot(1,i)
-    imshow(cim{i});
-
-    alsubplot(2,i)
-    imshow(rim{i});
+%     alsubplot(1,i)
+%     imshow(cim{i});
+% 
+%     alsubplot(2,i)
+%     imshow(rim{i});
 
     means = mean(cdiffs);
     
-    alsubplot(3,i)
+%     alsubplot(3,i)
+    subplot(1,length(fnames),i)
     barerr([diff1(i),means],[0 std(cdiffs)])
     andy_setbox
     set(gca,'XTick',1:length(nkerns)+1,'XTickLabel',[length(kerns),nkerns])
@@ -138,6 +144,10 @@ for i = 1:length(fnames)
         set(gca,'YTickLabel',[])
     end
     ylim([0 .25])
+end
+
+if dosave
+    savefig('prbump',[21 5]);
 end
 
     function exrad(c)
