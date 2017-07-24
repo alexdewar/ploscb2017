@@ -715,6 +715,8 @@ AP has also received funding from the European Union’s Seventh Framework Progr
 %}
 %\label{Figure_label}
 %\end{figure}
+
+% Figure 1 (recap)
 \begin{figure}[htp]
 	\caption{
 		{\bf Simulation of two behavioural experiments with \emph{Drosophila} to examine the outputs of the R2 and R4d \acp{RF}.}
@@ -737,19 +739,22 @@ AP has also received funding from the European Union’s Seventh Framework Progr
 	\label{fig:recap}
 \end{figure}
 
+% Figure 2 (simdiffpatts)
 \begin{figure}[htp]
 	\caption{
 		{\bf R2 cells do not encode detailed shape information.}
 		A--C: The discriminability of pattern pairs can vary greatly independently of the apparent difference between visual stimuli.
 		A: A pattern pair made up of a triangle and its inverse with both triangles aligned to their lowest points.
 		B: The same triangles, but this time aligned by their centres of mass, make another pattern pair.
-		C: The difference in activation between 0\degree\ and 90\degree\ for all R2 \ac{RF} filters for the triangles from A (white bars) and B (black bars). The mean activation difference is greater for the triangles in A than in B. The red square marks the output of the ring neuron \ac{RF} shown in A and B. 
-		D--F: We can also generate shapes that appear similar yet produce a large mean difference in \ac{RF} activation (D) or appear different and produce similar \ac{RF} activations (E). The stimuli here are `blobs' of the form described in Materials and methods. An optimisation was performed in \Matlab\ (\texttt{fminsearch} function) to minimise the ratio of blob difference to difference in activation (D) or its inverse (E). Pairs of stimuli are shown in grey and green whereas in the simulation both are black.
-		F: The corresponding activations of the different R2 \acp{RF} to the blobs in D and E. Two similar patterns give a mean difference in activity of 11.0\% and two very different patterns give a mean difference in activity of 5.10\%. The dotted line indicates the mean activation for the blob in D and the dashed line for the blob in E.
+		C: The difference in activation between 0\degree\ and 90\degree\ for all R2 \ac{RF} filters for the triangles from A (white bars) and B (black bars). The mean activation difference is greater for the triangles in A than in B. The red square marks the output of the ring neuron \ac{RF} shown in A and B.
+		D and E: Discriminability performance improves with number of RFs, for two `difficult' patterns (centre-of-mass-aligned triangles, inset). This suggests that these cells are unlikely to be a `module' for pattern discrimination, as it is trivially easy to improve performance in this manner.
+		F and G: We can also generate shapes that appear similar yet produce a large mean difference in \ac{RF} activation (G, top) or appear different and produce similar \ac{RF} activations (G, bottom). The stimuli here are `blobs' of the form described in Materials and methods. An optimisation was performed in \Matlab\ (\texttt{fminsearch} function) to minimise the ratio of blob difference to difference in activation (G, top) or its inverse (G, bottom). Pairs of stimuli are shown in grey and green whereas in the simulation both are black.
+		F: The corresponding activations of the different R2 \acp{RF} to the blobs in G. Two similar patterns give a mean difference in activity of 11.0\% and two very different patterns give a mean difference in activity of 5.10\%. The dotted line indicates the mean activation for the blob in D and the dashed line for the blob in E.
 	}
 	\label{fig:simdiffpatts}
 \end{figure}
 
+% Figure 3 (pattern)
 \begin{figure}[htp]
 	\caption{
 		{\bf Outputs of simulated R2 cells and degree of retinal overlap for published pattern pairs.}
@@ -770,6 +775,7 @@ AP has also received funding from the European Union’s Seventh Framework Progr
 	\label{fig:pattern}
 \end{figure}
 
+% Figure 4 (elazorsi)
 \begin{figure}[htp]
 	\caption{
 		{\bf How much shape information is preserved in the R2 population code?}
@@ -783,17 +789,7 @@ AP has also received funding from the European Union’s Seventh Framework Progr
 	\label{fig:elazorsi}
 \end{figure}
 
-% old, split figure legends for figs 4 and 5
-\begin{comment}
-Neural networks were trained to estimate the elevation and azimuth of randomly generated `blob' stimuli ($N=10,000$) from raw views ($N=36$~pixels; blue), R2 neurons ($N=28$; red), R4d neurons ($N=14$; green) or R2 and R4 neurons ($N=42$; magenta). For each visual input a network was trained 100 times and average performance with blobs that were not part of the training set was taken.
-A and B: Plots of elevation and azimuth of the test visual stimuli \emph{vs} the mean network output ($N=100$). The dashed line indicates ideal performance (i.e. $y=x$) and the thickness of the lines at each point shows standard error.
-The possible values of elevation and azimuth were constrained by the size of the fruit fly visual field (approx. $120\degree \times 270\degree$). Within this range there were 22 possible values.
-C and D: Average network performance (mean square error) for networks trained to recover elevation (C) or azimuth (D) and for each type of visual input (colour code as above). Standard error is shown, but is very small.
-Neural networks were trained to estimate the orientation and size of randomly generated 'blob' stimuli ($N=1000$) from different visual encodings (details same as for Figure~\ref{fig:elaz}).
-A and B: Network performance in recovering stimulus orientation and size. Orientation was constrained between 0\degree\ and 90\degree, to avoid the problem of aliasing, and varied with 22 levels (conventions as in Figure~\ref{fig:elaz}).
-C and D: Average network performance (mean square error) for networks trained to recover orientation (C) or size (D) and for each type of visual input (colour code as previously). Standard error is shown, but is very small.
-\end{comment}
-
+% Figure 5 (avkernels)
 \begin{figure}[htp]
 	\caption{
 		{\bf The algorithm for obtaining average \acp{RF}.}
