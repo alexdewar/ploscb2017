@@ -36,9 +36,12 @@ end
 
 canplaceorig = canplace;
 
+% % show where RFs can be placed
 % figure(1);clf
 % imshow(canplace)
 % keyboard
+
+% if fig data is already generated, load
 figdatfn = sprintf('drosodata/prbump_%d.mat',nreps);
 if exist(figdatfn,'file')
     load(figdatfn)
@@ -56,17 +59,23 @@ else
     
     diffs = NaN(nreps,length(knum),length(fnames));
     
+    % run the simulation nreps times
     startprogbar(1,nreps)
     for r = 1:nreps
+        % knum indicates multiplier for number of kernels (we also test 
+        % just using originals)
         for i = 1:length(knum)
-            canplace = canplaceorig;
-            szfac = 1/sqrt(knum(i));
+            canplace = canplaceorig; % reset each time
+            szfac = 1/sqrt(knum(i)); % scale each kernel appropriately, giving area == 1/knum(i)
             
+            % randomly place each kernel, meaning each kernel is placed
+            % knum(i) times (inc. its original position)
             ks = zeros(size(rkerns,1),size(rkerns,2),nkerns(i));
             for j = 1:length(kerns)
                 ck = kerns(j).k;
                 ccent = kerns(j).cent;
                 
+                % trim kernel
                 anyy = any(ck,2);
                 anyx = any(ck);
                 ybeg = find(anyy,1);
@@ -75,34 +84,35 @@ else
                 xend = find(anyx,1,'last');
                 sck = ck(ybeg:yend,xbeg:xend);
                 
+                % resize kernel
                 sck = resizekernel(sck,szfac,0.25);
                 scent = szfac*[ccent(1)-xbeg+1,ccent(2)-ybeg+1];
                 
-                %             figure(2);clf
-                %             showkernel(sck,scent)
-                %             keyboard
+%                 figure(2);clf
+%                 showkernel(sck,scent)
+%                 keyboard
                 
                 addexkern(sck,rcents(j,:),scent,j);
                 
                 for k = 1:knum(i)-1
-                    placei = find(canplace);
+                    placei = find(canplace); % posible points to place
                     [ky,kx] = ind2sub(newsz,placei(randi(length(placei))));
                     addexkern(sck,[kx ky],scent,k*length(kerns)+j);
                     exrad([kx ky]);
                 end
                 
-                %             figure(1);clf
-                %             subplot(1,4,1)
-                %             showkernel(exkerns(:,:,i),rcents(i,:));
-                %             subplot(1,4,2)
-                %             showkernel(rkerns(:,:,i),rcents(i,:));
-                %             title(sprintf('%.2f ',rcents(i,:)))
-                %             subplot(1,4,3)
-                %             showkernel(kerns(i))
-                %             title(sprintf('%.2f ',kerns(i).cent));
-                %             subplot(1,4,4)
-                %             showkernel(exkerns(:,:,i+nkerns),[kx ky]);
-                %             keyboard
+%                 figure(1);clf
+%                 subplot(1,4,1)
+%                 showkernel(exkerns(:,:,i),rcents(i,:));
+%                 subplot(1,4,2)
+%                 showkernel(rkerns(:,:,i),rcents(i,:));
+%                 title(sprintf('%.2f ',rcents(i,:)))
+%                 subplot(1,4,3)
+%                 showkernel(kerns(i))
+%                 title(sprintf('%.2f ',kerns(i).cent));
+%                 subplot(1,4,4)
+%                 showkernel(exkerns(:,:,i+nkerns),[kx ky]);
+%                 keyboard
             end
             
             for j = 1:length(fnames)
@@ -115,8 +125,31 @@ else
         end
     end
     
+    % save fig data
     save(figdatfn,'rkerns','tcim','trim','diffs','diff1','cim','rim');
 end
+
+    function exrad(c)
+        canplace = canplace & hypot(yi-c(2),xi-c(1)) > offrad;
+    end
+
+    function addexkern(kern,newcent,oldcent,ind)
+        toshift = floor(newcent-oldcent);
+        
+        % make new shifted and resized kernel
+        ckern = zeros(newsz);
+        ckern(1:size(kern,1),1:size(kern,2)) = kern;
+        ckern = shiftmat(ckern,toshift(1),toshift(2));
+        
+        % renormalise values
+        pos = ckern>0;
+        neg = ckern<0;
+        ckern(pos) = 1/sum(pos(:));
+        ckern(neg) = -1/sum(neg(:));
+        
+        % add to array
+        ks(:,:,ind) = ckern;
+    end
 
 figure(1);clf
 % alsubplot(3,length(fnames),1,1);
@@ -149,27 +182,5 @@ end
 if dosave
     savefig('prbump',[21 5]);
 end
-
-    function exrad(c)
-        canplace = canplace & hypot(yi-c(2),xi-c(1)) > offrad;
-    end
-
-    function addexkern(kern,newcent,oldcent,ind)
-        npre = floor(newcent-oldcent);
-        
-        ckern = zeros(newsz);
-        ckern(1:size(kern,1),1:size(kern,2)) = kern;
-        ckern = shiftmat(ckern,npre(1),npre(2));
-        
-        %         yind = max(1,npre(2)+1):min(newsz(1),npre(2)+ssz(1));
-        %         xind = max(1,npre(1)+1):min(newsz(2),npre(1)+ssz(2));
-        %         ckern = kern(1:length(yind),1:length(xind));
-        pos = ckern>0;
-        neg = ckern<0;
-        ckern(pos) = 1/sum(pos(:));
-        ckern(neg) = -1/sum(neg(:));
-        
-        ks(:,:,ind) = ckern;
-    end
 
 end
