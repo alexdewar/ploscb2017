@@ -292,8 +292,6 @@ function bestfit(x,y)
 end
 
 function [dr2,stdr2]=vf_ridf(im,kerns)
-%     kerns = cell2mat(shiftdim({kerns.k},-1));
-    
     ksz = size(kerns);
     rim = imresize(im,[ksz(1),ceil(360*ksz(2)/270)]);
     xoff = (size(rim,2)-ksz(2))/2;
@@ -304,18 +302,18 @@ function [dr2,stdr2]=vf_ridf(im,kerns)
         acts(:,i) = shiftdim(sum(sum(bsxfun(@times,crim(:,xoff+(1:ksz(2))),kerns)),2));
     end
     
-%     for i = 1:size(im,2)
-%         [acts(:,i),kerns] = getneuronactivations(circshift(im,[0 i-1-ceil(size(im,2)/2)]),kerns);
-%     end
-    
     acts0 = acts(:,1+size(rim,2)/2);
-    rr2 = sqrt(mean(bsxfun(@minus,acts,acts0).^2));
-%     rr2 = [rr2,rr2(1)];
+    diffs = bsxfun(@minus,acts,acts0);
+    rr2 = sqrt(mean(diffs.^2));
     
-%     ths = linspace(-180,180,size(rim,2)+1);
+    rr2_abs = mean(abs(diffs));
+    rr2_mi = zeros(size(rr2_abs));
+    for i = 1:size(acts,2)
+        rr2_mi(:,i) = mutualinfo(100*acts(:,i),100*acts0);
+    end
     
     i90 = round((size(rim,2)+1)/4);
-    dr2 = rr2(i90); % sign(mean(acts0)-mean(acts(:,i90)))*
+    dr2 = rr2(i90);
     stdr2 = std(rr2)/sqrt(length(rr2));
 end
 
