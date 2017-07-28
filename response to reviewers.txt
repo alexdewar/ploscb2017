@@ -5,6 +5,7 @@ All minor corrections done.
 
 Reviewer #2:
 1. There appears to be some confusion here. We are modelling the data in Seelig and Jayaraman's 2013 paper, which looked at the visual receptive fields of ring neurons cf. their 2015 paper which looked at PI (both in Nature).
+
 2. Seelig and Jayaraman veried the RFs with the standard white noise stimuli technique (their refs 37,41). This is now mentioned in the text.
 
 3.
@@ -14,6 +15,6 @@ Reviewer #2:
 
 "Specific comments":
 p4 - justification added to text
-p6 - other difference metrics exist: abs diff, kullback-leibler, bayesian information criterion, etc.
+p6 - other difference metrics exist: abs diff, kullback-leibler, bayesian information criterion, etc. [started]
 p13 - corrected
 p14 - [get original data from S&J - do this?]
