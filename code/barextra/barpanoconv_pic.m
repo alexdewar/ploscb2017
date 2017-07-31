@@ -62,21 +62,27 @@ for i = 1:length(imfns)
 
     figure(i);clf
     
-    subplot(5,1,1)
+    alsubplot(7,1,1,1)
     imagesc(im)
     axis off
     
-    subplot(5,1,2)
+    alsubplot(2)
     indivplot(ths,vals_r2_l,'R2 L');
     
-    subplot(5,1,3)
+    alsubplot(3)
     indivplot(ths,vals_r2_r,'R2 R');
     
-    subplot(5,1,4)
+    alsubplot(4)
+    indivplot(ths,[vals_r2_l; vals_r2_r],'R2 both');
+    
+    alsubplot(5)
     indivplot(ths,vals_r4_l,'R4 L');
     
-    subplot(5,1,5)
+    alsubplot(6)
     indivplot(ths,vals_r4_r,'R4 R');
+    
+    alsubplot(7)
+    indivplot(ths,[vals_r4_l; vals_r4_r],'R4 both');
 
     if dosave
         savefig(sprintf('vw_barpic_%s',imfn(1:end-4)),[20 6]);
@@ -87,10 +93,12 @@ end
 function indivplot(ths,vals,label)
 maxval = max(abs(vals(:)));
 normvals = vals / maxval;
+mnormvals = mean(normvals);
+normmnormvals = mnormvals / max(abs(mnormvals(:)));
 
 hold on
 plot(ths,normvals)
-plot(ths,mean(normvals),'k--','LineWidth',3);
+plot(ths,mnormvals,'k',ths,normmnormvals,'k--','LineWidth',3);
 xlim([ths(1) ths(end)])
 ylim([-1 1])
 set(gca,'FontSize',8,'XTick',-180:45:180);
