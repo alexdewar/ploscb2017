@@ -3,7 +3,7 @@ if ~nargin
     dosave=false;
 end
 
-imfns = {'intree.jpg','intree2.jpg','moretrees.jpg'};
+imfns = {'tree1.jpg','tree2.jpg','tree3.jpg'};
 
 thresh = 0.25;
 fov = 270;
@@ -36,11 +36,11 @@ for i = 1:length(imfns)
         pfunc = @panoconv;
 
         disp('R2 L')
-        vals_r2_l = pfunc(im,rkerns_r2,fov);
+        vals_r2_l = pfunc(im,rkerns_r2(:,:,r2_l),fov);
         disp('R2 R')
         vals_r2_r = pfunc(im,rkerns_r2(:,:,~r2_l),fov);
         disp('R4 L')
-        vals_r4_l = pfunc(im,rkerns_r4,fov);
+        vals_r4_l = pfunc(im,rkerns_r4(:,:,r4_l),fov);
         disp('R4 R')
         [vals_r4_r,ths] = pfunc(im,rkerns_r4(:,:,~r4_l),fov);
         disp('.')
