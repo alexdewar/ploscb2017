@@ -62,30 +62,30 @@ for i = 1:length(imfns)
 
     figure(i);clf
     
-    alsubplot(7,1,1,1)
+    alsubplot(4,1,1,1)
     imagesc(im)
     axis off
     
+%     alsubplot(2)
+%     indivplot(ths,vals_r2_l,'R2 left hemisphere only');
+%     
+%     alsubplot(3)
+%     indivplot(ths,vals_r2_r,'R2 right hemisphere only');
+%     
+%     alsubplot(4)
+%     indivplot(ths,[vals_r2_l; vals_r2_r],'R2 all');
+    
     alsubplot(2)
-    indivplot(ths,vals_r2_l,'R2 L');
+    indivplot(ths,vals_r4_l,'R4 left hemisphere only');
     
     alsubplot(3)
-    indivplot(ths,vals_r2_r,'R2 R');
+    indivplot(ths,vals_r4_r,'R4 right hemisphere only');
     
     alsubplot(4)
-    indivplot(ths,[vals_r2_l; vals_r2_r],'R2 both');
-    
-    alsubplot(5)
-    indivplot(ths,vals_r4_l,'R4 L');
-    
-    alsubplot(6)
-    indivplot(ths,vals_r4_r,'R4 R');
-    
-    alsubplot(7)
-    indivplot(ths,[vals_r4_l; vals_r4_r],'R4 both');
+    indivplot(ths,[vals_r4_l; vals_r4_r],'R4 all');
 
     if dosave
-        savefig(sprintf('vw_barpic_%s',imfn(1:end-4)),[20 6]);
+        savefig(sprintf('vw_barpic_%s',imfn(1:end-4)),[20 30]);
     end
 
 end
