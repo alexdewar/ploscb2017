@@ -85,10 +85,13 @@ for i = 1:length(imfns)
 end
 
 function indivplot(ths,vals,label)
+maxval = max(abs(vals(:)));
+normvals = vals / maxval;
+
 hold on
-plot(ths,vals)
-plot(ths,mean(vals),'k--','LineWidth',3);
+plot(ths,normvals)
+plot(ths,mean(normvals),'k--','LineWidth',3);
 xlim([ths(1) ths(end)])
-ylim([-0.5 0.5])
+ylim([-1 1])
 set(gca,'FontSize',8,'XTick',-180:45:180);
 title(label)
