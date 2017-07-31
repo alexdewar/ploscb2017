@@ -8,6 +8,8 @@ imfns = {'tree1.jpg','tree2.jpg','tree3.jpg'};
 thresh = 0.25;
 fov = 270;
 
+dosavefigdat = true;
+
 datadir = fullfile(mfiledir,'../drosodata/barextra');
 if ~exist(datadir,'dir')
     mkdir(datadir);
@@ -33,7 +35,7 @@ for i = 1:length(imfns)
     if exist(datafn,'file')
         load(datafn);
     else
-        pfunc = @panoconv;
+        pfunc = @panoconv_all;
 
         disp('R2 L')
         vals_r2_l = pfunc(im,rkerns_r2(:,:,r2_l),fov);
@@ -45,34 +47,27 @@ for i = 1:length(imfns)
         [vals_r4_r,ths] = pfunc(im,rkerns_r4(:,:,~r4_l),fov);
         disp('.')
 
-        save(datafn,'vals*','ths');
+        if dosavefigdat
+            save(datafn,'vals*','ths');
+        end
     end
 
     %% endhash
+    
+    ths(end+1) = -ths(1);
+    vals_r2_l(:,end+1) = vals_r2_l(:,1);
+    vals_r2_r(:,end+1) = vals_r2_r(:,1);
+    vals_r4_l(:,end+1) = vals_r4_l(:,1);
+    vals_r4_r(:,end+1) = vals_r4_r(:,1);
 
     figure(i);clf
-    % plot(ths,vals_r2_l,ths,vals_r2_r,'b--', ...
-    %      ths,vals_r4_l,'g',ths,vals_r4_r,'g--')
     hold on
-    plot(ths,vals_r2_l,ths,vals_r2_r,'b--')
-    plot(ths,vals_r4_l,'g',ths,vals_r4_r,'g--')
-    % alpha 0.5
+    plot(ths,mean(vals_r2_l),ths,mean(vals_r2_r),'b--')
+    plot(ths,mean(vals_r4_l),'g',ths,mean(vals_r4_r),'g--')
 
-    xlim([-180 180])
-
-    % axis square
-
-    % ylim(0.5*[-1 1])
+    xlim([ths(1) ths(end)])
 
     set(gca,'FontSize',8,'XTick',-180:180:180); %,'YTick',-0.5:0.5:0.5);
-    % plot(ths,mean(vals(lefts,:)),'k',ths,mean(vals(~lefts,:)),'k--')
-
-
-    % subplot(1,2,2)
-    % plot(ths,mean(vals(~lefts,:)),'k--');
-
-    % ylabel('Activation')
-    % axis tight
 
     if dosave
         savefig(sprintf('vw_barpic_%s',imfn(1:end-4)),[20 6]);

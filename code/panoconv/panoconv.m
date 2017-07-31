@@ -11,18 +11,15 @@ xoff = round(0.5*size(im,2)*(1-fov/360));
 xrng = size(im,2);
 xvals = round(linspace(xrng/2,-xrng/2-1,nangs));
 
-% if nangs==size(im,2)
-%     
-% else
-    acts = NaN(nangs,1);
-    for i = 1:nangs
-        rim = circshift(im,[0 xvals(i)]);
-        cim = rim(:,1+xoff:end-xoff);
+acts = NaN(nangs,1);
+for i = 1:nangs
+    rim = circshift(im,[0 xvals(i)]);
+    cim = rim(:,1+xoff:end-xoff);
 
-        acts(i) = mean(getacts(cim,rkerns));
-    end
-% end
+    acts(i) = mean(getacts(cim,rkerns));
+end
 
 if nargout==2
-    angs = linspace(-180,180,nangs);
+    angs = linspace(-180,180,nangs+1);
+    angs = angs(1:end-1);
 end

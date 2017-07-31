@@ -3,7 +3,7 @@ if nargin < 3;
     fov = 360;
 end
 if nargin < 4
-    nangs = size(im,2);
+    nangs = fov;
 end
 
 % how much to trim from image
