@@ -10,8 +10,6 @@
 .sync/
 *.!sync
 
-code/**/*.pdf
-
 latex/**/*.pdf
 !latex/figures/*.pdf
 

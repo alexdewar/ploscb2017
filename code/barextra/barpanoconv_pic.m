@@ -72,18 +72,29 @@ for i = 1:length(imfns)
     axis tight
     pbaspect([size(ims{i},2),size(ims{i},1),1])
     
-    plot(ths,[mean(cvals); diff(cvals)],'LineWidth',3);
-    plot(ths,cvals,'LineWidth',2,'LineStyle','--');
+    plot(ths,cvals,'LineWidth',3,'LineStyle','--');
+    plot(ths,mean(cvals),'LineWidth',3);
 
-    set(gca,'XTick',-180:45:180);
-    xlabel('Angle')
+    set(gca,'XTick',-180:90:180);
+    xlabel('Angle (deg)')
     ylabel('Mean activation')
     
-    legend({'mean', 'diff', 'left', 'right'})
-    
-    title(imfns{i})
+    andy_setbox
 end
+legend({'Left RFs', 'Right RFs', 'Mean'},'Location','SouthEast')
 
 if dosave
-    savefig('vw_barpic',[20 15]);
+    %savefig('vw_barpic',[20 15]);
+    
+    figi = 1;
+    while true
+        fname = sprintf('figures/barextra/%04d_vw_barpic.svg',figi);
+        if ~exist(fname,'file')
+            break
+        end
+        figi = figi+1;
+    end
+    
+    fprintf('Saving to %s...\n',fname);
+    saveas(gcf,fname);
 end
