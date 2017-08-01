@@ -286,15 +286,44 @@ However, a set of neurons can serve diverse functions, making the story more com
 
 One of the advantages of studying insects is the potential for describing their neural processes with modelling.
 In this way, simulations can help bridge the gap between biology and behaviour \cite{Webb2009}.
-{\textbf
+\textbf{
 We have shown that the sensory bottleneck produced by small populations of cells are not a barrier to the specific information that is required for particular behaviours.
 However, this modelling work, and the neuroscience that invited it, do suggest caution when proposing that flies possess general visual cognition, which makes sense given the limited bandwidth of the sensory signal from the small populations.
 }
 We thus hope that future experiments, grounded in both the ecological needs of the animal and the information given by neural circuits, will be able to better inform the next generation of models, and vice versa.
 
+\subsection*{Conclusion}
+The goal of this work was to investigate the computational properties of ring neuron RFs; that is, to examine the behavioural uses to which these RFs could by put by a fruit fly.
+In particular, we sought to examine the evidence indicating a role for these cells in pattern discrimination and offer an alternative explanation for previous findings.
+
+Of course, we have, by necessity, used a greatly simplified neural code and set of stimulus inputs compared to what would be available to a real, behaving animal.
+One aspect we have not considered here is the effect of movement and temporal information, though it will no play an important role (and may explain the result for pattern set X).
+For example, information about depth can be acquired by moving on the spot, as locusts do to estimate distance before a jump (cite Collett).
+[discuss other models of pattern discrimination from bee literature and active vision etc.]
+
+The ability of animals to perform a given task is also known to be highly dependent on the training method used.
+For instance, appetitive vs aversive conditioning...
+[I think there is neural evidence of flies encoding less `quality' information for aversive stimuli]
+
+Recent work has helped elucidate the complex connectivity of \emph{Drosophila} CX.
+Of particular note here is the role the CX has been shown to play in orientation behaviours, including with the celestial compass [cite Homberg].
+For example, the newly discovered connectivity for R4d ring neurons is suggestive of a ring attractor-type network [cite Seelig \& Jayaraman, Cope et al.], showing that the circuit is able to retain a heading in short-term memory \cite{Neuser2008}, somewhat analogously to mammalian head direction cells [cite the review that states this].
+In this present work we have merely looked at the output of RF cells and so did not include a memory component in the `system', although it is reasonable to expect that this should improve an agent's ability to discriminate patterns or scenes:
+it means that the agent could scan a pattern horizontally and when it recognises a particular feature, could then remember this azimuth.
+[this is a bit rough, but the general idea I wanted to convey was that if you can remember a heading then you are not restricted to using the RFs as static filters]
+The mechanism by which this same circuit could perform angular integration has also been recently shown [cite Green et al. and Turner-Evans \& Jayaraman papers], which could comprise part of the fly's path integration system [see also Kim and Dickinson].
+
+Another layer of complexity which is not considered in this work is the much richer array of sensory information that a fly has in its natural environment compared to the artificial stimuli used here.
+The major obstacle here is that there have been few experiments examining `natural' behaviour in \emph{Drosophila}.
+One such experiment (described in Dickinson), from more than thirty years ago, showed that flies were able to navigate to a food source over several kilometres away, which must have involved at least some elaborate visually guided piloting.
+Only with a deeper knowledge of fruit fly ecology will we be able to close the loop between brain, body and environment and thus obtain a full understanding of the whole system.
+[also mention new fig in this para]
+
 \section*{Materials and methods}
-\subsection*{Neurogenetic methods used for estimating ring neuron receptive fields}\todo{section added for thesis -- needed?}
+\subsection*{Neurogenetic methods used for estimating ring neuron receptive fields}
 \label{sec:methods:seelig}
+\todo{section added for thesis -- needed?}
+
 The goal of Seelig and Jayaraman's work \cite{Seelig2013} was to examine responses of lateral triangle microglomeruli (which house the cell bodies of the ring neurons) to visual stimuli.
 For this, they employed two-photon calcium imaging to examine the activity of genetically targeted subsets of microglomeruli, the R2 and R3/R4d neurons.
 Fluorescence was recorded for head-fixed flies held in an arena with a curved display composed of an LED array.
