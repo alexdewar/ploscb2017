@@ -195,13 +195,10 @@ To investigate such issues, we use a synthetic approach whereby investigations, 
 
 \section*{Results}
 Here we analyse the task-specific information provided by visually responsive ring neurons by simulating their responses during well-known behavioural experiments. To do this we use data from Seelig and Jayaraman \cite{Seelig2013} who used calcium imaging to examine the \acp{RF} of ring neurons whose cell bodies are in specific glomeruli in the lateral triangle. As the \acp{RF} of glomeruli are remarkably consistent across flies \cite{Seelig2013}, we combine them to reduce measurement error and obtain sets of ‘canonical’ \acp{RF}, which can be thought of as visual filters.
-%Though this averaging process will produce \acp{RF} that are more regular than those reported for individual flies, we feel this process is better than using \acp{RF} from a specific fly as, firstly, some of the irregularity in the \acp{RF} presumably derives from measurement error, and, secondly, it is unlikely that smoother edges on the \acp{RF} give an ‘unfair advantage’ in the tasks we examine.
 The averaging process assumes a certain amount of underlying homogeneity for each glomerulus across flies, which we feel is justified given their similar forms between flies;
 the advantage of this approach is that it reduces the measuring noise on the RFs.
-\todo{is this enough?}
 This process (for details, see Materials and methods) gave us a set of 28 R2 and 14 R4d filters (14 and 7 on each side, respectively).
-We treat these as simple linear filters, as the original RFs on which they are based were linear, verified using the standard white-noise technique \cite{Seelig2013}.
-\todo{Is this true?}
+We treat these as simple linear filters, following \cite{Seelig2013}, as we are not attempting here to model outputs at the neuronal level.
 To investigate the information these cells encode, we calculate outputs for a given visual stimulus by convolving it with the averaged ring neuron filters. This gives a population code where the outputs of the set of filters is the encoded ‘representation’ of the current visual stimulus. We interrogate these encodings to understand the information they contain, focusing on the relationships to specific behaviours.
 
 \subsection*{Orientation towards bar stimuli}
@@ -317,7 +314,7 @@ For this, they employed two-photon calcium imaging to examine the activity of ge
 Fluorescence was recorded for head-fixed flies held in an arena with a curved display composed of an LED array.
 In order to map the receptive fields, the flies were presented with a series of flashing dots at random locations on the visual display; the fine structure of the receptive fields (\acp{RF}) was then revealed by using white-noise stimuli \cite{Weber2010}.
 The accuracy of the estimated receptive fields was then verified by correlating predicted with actual responses to novel bar stimuli (and a high degree of correspondence was found).
-\todo{mention that S+J used convolution which is a linear operation}
+The predicted responses were calculated by convolving RF outputs with a calcium response function.
 
 \subsection*{Turning visual receptive field data into visual filters}
 \label{sec:methods:preprocessing}
