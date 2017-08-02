@@ -502,7 +502,7 @@ AP has also received funding from the European Union’s Seventh Framework Progr
 		A: A pattern pair made up of a triangle and its inverse with both triangles aligned to their lowest points.
 		B: The same triangles, but this time aligned by their centres of mass, make another pattern pair.
 		C: The difference in activation between 0\degree\ and 90\degree\ for all R2 \ac{RF} filters for the triangles from A (white bars) and B (black bars). The mean activation difference is greater for the triangles in A than in B. The red square marks the output of the ring neuron \ac{RF} shown in A and B.
-		D and E: Discriminability performance improves with number of RFs, for two `difficult' patterns (centre-of-mass-aligned triangles, inset). This suggests that these cells are unlikely to be a `module' for pattern discrimination, as it is trivially easy to improve performance in this manner.
+		D and E: Discriminability performance improves with number of RFs, for two sets of `difficult' patterns (centre-of-mass-aligned triangles/bars, insets). Bars show mean r.m.s. difference between the activation of 28, 56 and 112 RFs to each pattern. For 28 RFs we use the R2 RFs. For 56 and 112 RFs, new filters are added in random, non-overlapping positions on the visual field (see Materials and methods). As there is some stochasticity in this process, differences are averaged over 1000 trials with error bars showing standard deviation. 
 		F and G: We can also generate shapes that appear similar yet produce a large mean difference in \ac{RF} activation (G, top) or appear different and produce similar \ac{RF} activations (G, bottom). The stimuli here are `blobs' of the form described in Materials and methods. An optimisation was performed in \Matlab\ (\texttt{fminsearch} function) to minimise the ratio of blob difference to difference in activation (G, top) or its inverse (G, bottom). Pairs of stimuli are shown in grey and green whereas in the simulation both are black.
 		F: The corresponding activations of the different R2 \acp{RF} to the blobs in G. Two similar patterns give a mean difference in activity of 11.0\% and two very different patterns give a mean difference in activity of 5.10\%. The dotted line indicates the mean activation for the blob in D and the dashed line for the blob in E.
 	}
@@ -562,15 +562,10 @@ AP has also received funding from the European Union’s Seventh Framework Progr
 % Figure 6 (naturalstim)
 \begin{figure}[htp]
 	\caption{
-		{\bf Outputs of R4d filters to natural stimuli.}
-		The mean output of R4d RFs is shown for the left- and right-hemispheric RFs (blue and red dashed lines) as well as the mean across hemispheres (solid yellow line).
-		The values are normalised to the greatest mean output value for left or right RFs in both images (i.e. the $y$-scale is the same for the upper and lower graphs).
-		A: Response of filters to distant trees.
-		The filters -- both left and right -- seem to respond preferentially to the positions of trees.
-		Though there is not a clear difference in the left and right signals, this is sufficient information for a fly to identify and approach large vertical objects from a distance.
-		B: Response of filters to a nearby tree.
-		The filters again respond to salient, vertically oriented portions on the image (hanging branches).
-		In this case, there is a difference in the left and right signals, which could additionally provide information about which direction a fly should turn, if it wished to move further into the tree's branches.
+		{\bf Mean output of R4d RFs as they are shifted azimuthally across two natural images.}
+		Mean across all R4s is shown in yellow together with the left- and right-hemispheric RFs (blue and red dashed lines, respectively) with values normalised to the greatest absolute mean value of left or right RFs across all azimuths and both images (i.e. the $y$-scale is the same for A and B).
+		A: Response of filters to distant trees. Many R4d RFs respond preferentially to the positions of trees meaning outputs -- both mean, left and right -- peak in the centre of trees and tend to dip when facing azimuths with more sky or light. There are minor differences between the direction at which left and right signals peak, but there is sufficient information in the mean responses to allow a fly to head towards large vertical objects from a distance.
+		B: Response of filters to a nearby tree. Mean responses again peak when facing salient, vertically oriented portions of the image (hanging branches) and dip at lighter portions meaning flies could identify and head towards these regions. While left and right responses peak together in some cases, for the peaks at --120\degree\ and 60\degree\ there is an asymmetry in the left and right signals which could provide steering information to allow a fly to navigate towards these targets in a similar fashion to Figure~\ref{fig:recap}A--D.
 	}
 	\label{fig:naturalstim}
 \end{figure}
