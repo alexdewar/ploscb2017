@@ -293,31 +293,20 @@ However, this modelling work, and the neuroscience that invited it, do suggest c
 We thus hope that future experiments, grounded in both the ecological needs of the animal and the information given by neural circuits, will be able to better inform the next generation of models, and vice versa.
 
 \subsection*{Conclusion}
-The goal of this work was to investigate the computational properties of ring neuron RFs; that is, to examine the behavioural uses to which these RFs could by put by a fruit fly.
-In particular, we sought to examine the evidence indicating a role for these cells in pattern discrimination and offer an alternative explanation for previous findings.
+The goal of this work was to investigate the information encoded in a population of visually responsive ring neurons, in simulations of classic pattern discrimination assays.
+Our aim was to examine the behavioural uses to which the information encoded in this population of cells could be put to by a fruit fly.
+Of course, a full understanding of these neurons requires detailed knowledge of how they interact with other neural circuits as flies produce complex behaviour in natural environments.
+That is, we need to understand brain, behaviour and environment.
 
-Of course, we have, by necessity, used a greatly simplified neural code and set of stimulus inputs compared to what would be available to a real, behaving animal.
-One aspect we have not considered here is the effect of movement and temporal information, though it will no play an important role (and may explain the result for pattern set X).
-For example, information about depth can be acquired by moving on the spot, as locusts do to estimate distance before a jump (cite Collett).
-[discuss other models of pattern discrimination from bee literature and active vision etc.]
+A sensible starting point when considering the brain is to ask how the visual information encoded in Ring Neuron populations is integrated with the central complex circuitry.
+Recent work has shown the presence of a ring attractor network [cite Seelig \& Jayaraman, Cope et al Green et al. and Turner-Evans Jayaraman papers.] in the Ellipsoid Body of the Central Complex which is updated by visual and proprioceptive information.
+This circuit is able to retain a heading in short-term memory [8] and the information provided by the cells we have modelled could be useful in contributing information about the position of behaviourally relevant objects.
+Of course, there are many details to be determined. Such as the dynamics of neural coding in this circuit and the sensory pathways that lead to the observed receptive fields (but see NEW JAYARAMAN PAPER NAT NEUROSCIENCE).
 
-The ability of animals to perform a given task is also known to be highly dependent on the training method used.
-For instance, appetitive vs aversive conditioning...
-[I think there is neural evidence of flies encoding less `quality' information for aversive stimuli]
-
-Recent work has helped elucidate the complex connectivity of \emph{Drosophila} CX.
-Of particular note here is the role the CX has been shown to play in orientation behaviours, including with the celestial compass [cite Homberg].
-For example, the newly discovered connectivity for R4d ring neurons is suggestive of a ring attractor-type network [cite Seelig \& Jayaraman, Cope et al.], showing that the circuit is able to retain a heading in short-term memory \cite{Neuser2008}, somewhat analogously to mammalian head direction cells [cite the review that states this].
-In this present work we have merely looked at the output of RF cells and so did not include a memory component in the `system', although it is reasonable to expect that this should improve an agent's ability to discriminate patterns or scenes:
-it means that the agent could scan a pattern horizontally and when it recognises a particular feature, could then remember this azimuth.
-[this is a bit rough, but the general idea I wanted to convey was that if you can remember a heading then you are not restricted to using the RFs as static filters]
-The mechanism by which this same circuit could perform angular integration has also been recently shown [cite Green et al. and Turner-Evans \& Jayaraman papers], which could comprise part of the fly's path integration system [see also Kim and Dickinson].
-
-Another layer of complexity which is not considered in this work is the much richer array of sensory information that a fly has in its natural environment compared to the artificial stimuli used here.
-The major obstacle here is that there have been few experiments examining `natural' behaviour in \emph{Drosophila}.
-One such experiment (described in Dickinson), from more than thirty years ago, showed that flies were able to navigate to a food source over several kilometres away, which must have involved at least some elaborate visually guided piloting.
-Only with a deeper knowledge of fruit fly ecology will we be able to close the loop between brain, body and environment and thus obtain a full understanding of the whole system.
-[also mention new fig in this para]
+Despite the immense promise and productivity of Drosophila neuroscience research, there is a lack of information about natural visually guided behaviours and how they relate to the sensory ecology of flies (Dickinson ANN REV ENTOMOL).
+In Figure XX we show that behaviourally relevant information is still maintained in the outpur of R4d cells wven for complex scenes.
+Taking this further, we could consider how an active fly in a complex environment might be able to shape its own visual input to give us a better understand of the true potential of the fly as a pattern discriminator.
+More generally, it is only with a deeper knowledge of fruit fly ecology will we be able to close the loop between brain, body and environment and thus obtain a full understanding of the whole system.
 
 \section*{Materials and methods}
 \subsection*{Neurogenetic methods used for estimating ring neuron receptive fields}
