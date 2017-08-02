@@ -441,16 +441,6 @@ maxamp = 1;
 The blobs were first generated, according to the above equation, as images of $120\times 270$ pixels.
 For the `raw view' stimuli, these images were resized, using \Matlab's \texttt{imresize} function, to $2\times 14$ pixels, thus giving the same number of inputs as there are R2 filters ($n=28$).
 
-\begin{comment}
-\subsubsection*{Grading performance of neural networks}
-The performance of neural networks was graded by calculating the \ac{rms} difference between the matrix of true values for the parameters with the network's output:
-$$
-E(\mathbf{y},\mathbf{t}) = \sqrt{\frac{\sum\limits_{i=1}^{n} (\mathbf{y}_i-\mathbf{t}_i)^2}{n}}
-$$
-where $E(\mathbf{y},\mathbf{t})$ is the mean error score, computed from the vector of outputs given by the network, $\mathbf{y}$, and the vector of true values, $\mathbf{t}$.
-Hence, for a network that computed the values of all parameters accurately, a graph of the network's output \emph{vs.} the true values would give the line $y=x$ and an error score of 0 over the whole range of values.
-\end{comment}
-
 \subsection*{Acknowledgements}
 AD, PG and AP are funded by EPSRC (grant code: EP/P006094/1).
 AW is funded by the Fyssen Foundation.
@@ -534,12 +524,12 @@ AP has also received funding from the European Union’s Seventh Framework Progr
 \begin{figure}[htp]
 	\caption{
 		{\bf How much shape information is preserved in the R2 population code?}
-		Neural networks were trained to estimate various properties of randomly generated `blob' stimuli ($N=10,000$) from raw views ($N=36$~pixels; blue), R2 neurons ($N=28$; red), R4d neurons ($N=14$; green) or R2 and R4 neurons ($N=42$; magenta). Panels A--D show results for networks trained with elevation and azimuth and panels E--H for size and elevation. For each visual input a network was trained 100 times and average performance with blobs that were not part of the training set was taken.
-		A and B: Plots of elevation and azimuth of the test visual stimuli \emph{vs} the mean network output ($N=100$). The dashed line indicates ideal performance (i.e. $y=x$) and the thickness of the lines at each point shows standard error.
+		Neural networks were trained to estimate various properties of randomly generated `blob' stimuli ($n=10,000$) from raw views ($n=36$~pixels; blue), R2 neurons ($n=28$; red), R4d neurons ($n=14$; green) or R2 and R4 neurons ($n=42$; magenta). Panels A--D show results for networks trained with elevation and azimuth and panels E--H for size and elevation. For each visual input a network was trained 100 times and average performance with blobs that were not part of the training set was taken.
+		A and B: Plots of elevation and azimuth of the test visual stimuli \emph{vs} the mean network output ($n=100$). The dashed line indicates ideal performance (i.e. $y=x$) and the thickness of the lines at each point shows standard error.
 		The possible values of elevation and azimuth were constrained by the size of the fruit fly visual field (approx. $120\degree \times 270\degree$). Within this range there were 22 possible values.
-		C and D: Average network performance (mean square error) for networks trained to recover elevation (C) or azimuth (D) and for each type of visual input (colour code as above). Standard error is shown, but is very small.
+		C and D: Average network performance (\ac{rms} error) for networks trained to recover elevation (C) or azimuth (D) and for each type of visual input (colour code as above). Standard error is shown, but is very small.
 		E and F: Network performance in recovering stimulus orientation and size. Orientation was constrained between 0\degree\ and 90\degree, to avoid the problem of aliasing, and varied with 22 levels.
-		G and H: Average network performance (mean square error) for networks trained to recover orientation (C) or size (D) and for each type of visual input (colour code as previously). Standard error is shown, but is very small.
+		G and H: Average network performance (\ac{rms} error) for networks trained to recover orientation (E) or size (F) and for each type of visual input (colour code as previously). Standard error is shown, but is very small.
 	}
 	\label{fig:elazorsi}
 \end{figure}
@@ -552,7 +542,7 @@ AP has also received funding from the European Union’s Seventh Framework Progr
 		The `centre' is then calculated as the centroid of the largest excitatory region (+).
 		B: Aligning two \acp{RF}.
 		The new centre is taken as the average of the centre of both \acp{RF} and the \acp{RF} are then shifted so that the centres are aligned.
-		C: Averaging the \acp{RF} for this glomerulus over all flies ($N=7$), following alignment.
+		C: Averaging the \acp{RF} for this glomerulus over all flies ($n=7$), following alignment.
 		Note that this the left-hemispheric version; the right-hemispheric version is its mirror.
 		D: Averaged R2 and R4d filters.
 	}
