@@ -377,7 +377,6 @@ The activation of an average kernel, $K$, to the presentation of a greyscale ima
 A(I,K,\theta) = {\sum\limits^m_{i=1} \sum\limits^n_{j=1} I_{i,j}(\theta)K_{i,j}}, &\mathrm{where\ } 0 \le I_{i,j}(\theta) \le 1
 \end{array}
 \end{equation}
-
 where $I_{i,j}(\theta)$ and $K_{i,j}$ are the ($i,j$)th pixels of the image and kernel, respectively. This process is illustrated in Figure~\ref{fig:avkernels}A.
 
 \subsection*{Replication of behavioural experiments}
@@ -393,6 +392,7 @@ $$
 D(I) = \sqrt{\frac{\sum\limits_{K\in \mathbf{G}}(A(I,K,0\degree)-A(I,K,90\degree))^2}{|\mathbf{G}|}}
 $$
 where $\mathbf{G}$ is the set of R2 filters, $I$ is the current pattern pair and $A(\cdot,\cdot,\cdot)$ is the activation of the kernel to the pattern, as described in Equation~\ref{eq:act}.
+The choice of r.m.s. difference as a difference function is somewhat arbitrary, though the choice of difference function should not be too important as we are using a normalised code for RF outputs; alternatively one could use mean absolute difference or mutual information etc.
 
 The retinal overlap for two binary patterns, $A$ and $B$, is calculated in two steps. Firstly we measure the number of overlapping pixels between $A$ and $B$; this value is referred to as $Q$. Next the proportion of pixels which this overlap represents for $A$ and $B$ is calculated and, finally, we calculate the retinal overlap as the average of these two values:
 $$
