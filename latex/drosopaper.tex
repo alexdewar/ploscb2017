@@ -818,7 +818,7 @@ AP has also received funding from the European Union’s Seventh Framework Progr
 		D and E: Scatter plots of R2 difference (the `\ac{RF} Model') and retinal overlap \emph{vs} learning index ($\overline{\mathrm{DCP}}$).
 		A significant correlation was found for the \ac{RF} Model (Spearman's rank, $n=32, \rho=.502, p < .005$) but not the Retinotopic Model ($n=32, \rho=-.00960, p=\mathrm{n.s.}$).
 		As two data points on the far right in panel D could be outliers, we reran the analysis excluding these points and found that the correlation was still significant, albeit less so ($n=30, \rho=.420, p < .05$).
-		}
+	}
 	\label{fig:pattern}
 \end{figure}
 
@@ -832,7 +832,7 @@ AP has also received funding from the European Union’s Seventh Framework Progr
 		C and D: Average network performance (mean square error) for networks trained to recover elevation (C) or azimuth (D) and for each type of visual input (colour code as above). Standard error is shown, but is very small.
 		E and F: Network performance in recovering stimulus orientation and size. Orientation was constrained between 0\degree\ and 90\degree, to avoid the problem of aliasing, and varied with 22 levels.
 		G and H: Average network performance (mean square error) for networks trained to recover orientation (C) or size (D) and for each type of visual input (colour code as previously). Standard error is shown, but is very small.
-		}
+	}
 	\label{fig:elazorsi}
 \end{figure}
 
@@ -847,8 +847,24 @@ AP has also received funding from the European Union’s Seventh Framework Progr
 		C: Averaging the \acp{RF} for this glomerulus over all flies ($N=7$), following alignment.
 		Note that this the left-hemispheric version; the right-hemispheric version is its mirror.
 		D: Averaged R2 and R4d filters.
-		}
+	}
 	\label{fig:avkernels}
+\end{figure}
+
+% Figure 6 (naturalstim)
+\begin{figure}[htp]
+	\caption{
+		{\bf Outputs of R4d filters to natural stimuli.}
+		The mean output of R4d RFs is shown for the left- and right-hemispheric RFs (blue and red dashed lines) as well as the mean across hemispheres (solid yellow line).
+		The values are normalised to the greatest mean output value for left or right RFs in both images (i.e. the $y$-scale is the same for the upper and lower graphs).
+		A: Response of filters to distant trees.
+		The filters -- both left and right -- seem to respond preferentially to the positions of trees.
+		Though there is not a clear difference in the left and right signals, this is sufficient information for a fly to identify and approach large vertical objects from a distance.
+		B: Response of filters to a nearby tree.
+		The filters again respond to salient, vertically oriented portions on the image (hanging branches).
+		In this case, there is a difference in the left and right signals, which could additionally provide information about which direction a fly should turn, if it wished to move further into the tree's branches.
+	}
+	\label{fig:naturalstim}
 \end{figure}
 
 \end{document}
