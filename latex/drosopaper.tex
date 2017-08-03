@@ -352,33 +352,25 @@ $$
 \hat{g}(i,j) = \left\{ \begin{array}{ll} g(i+y-\bar{y},j+x-\bar{x}) & \mbox{for } 1\le i+y-\bar{y}\le m \mbox{ and } 1\le j+x-\bar{x}\le n;\\
 0 & \mbox{otherwise.} \end{array} \right.
 $$
-where $\hat{g}(i,j)$ is a recentred kernel (Figure~\ref{fig:avkernels}C).
+\noindent where $\hat{g}(i,j)$ is a recentred kernel (Figure~\ref{fig:avkernels}C).
 
-We next calculate the average kernel across flies, $\bar{g}(i,j)$, and threshold again:
-\begin{align*}
-\bar{g}(i,j) &= \left\{ \begin{array}{rl}
--1 & \mbox{for } c \le -T; \\
-1 & \mbox{for } c \ge T; \\
-0 & \mbox{otherwise.} 
-\end{array} \right. \\
-\mbox{where } c &= \frac{1}{|\mathbf{G}|}\sum\limits_{\hat{g} \in \mathbf{G}} \hat{g}(i,j)
-\end{align*}
-where $\mathbf{G}$ is the set of kernels being averaged and $T$ is the threshold (again: 0.25). Note that instead of thresholding then averaging the raw images, $R$, before thresholding them again, we could have averaged the raw pixel values. The reason we did not do so was to reduce noise on the raw images; tests showed a negligible difference in performance when doing the latter.
-
-In order to calculate the activation for a given RF to an image the RF must first be resized to the same size as the image.
-This is accomplished by resizing the average RF, $\bar{g}(i,j)$ (using MATLAB's \texttt{imresize} function with appropriate normalisation).
-Finally, the kernel is rethresholded and the excitatory and inhibitory regions are assigned different values:
+In order to calculate the activation for a given RF on presentation of an image the RF must first be resized to have the same number of pixels as the image.
+This is accomplished by resizing the average RF, $\bar{g}(i,j)$, using Matlab's \texttt{imresize} function with bilinear interpolation and then scaled to $[-1,1]$.
+Finally, the filter is thresholded and the excitatory and inhibitory regions are assigned different normalised values:
 $$
 K_{i,j} = \left\{
 \begin{array}{rl}
-\frac{1}{N_\mathrm{exc}}, & \mbox{for } \bar{g}(i,j) = 1; \\
--\frac{1}{N_\mathrm{inh}}, & \mbox{for } \bar{g}(i,j) = -1; \\
+\bar{g}(i,j)\div S_\mathrm{exc}, & \mbox{for } \bar{g}(i,j) > 0; \\
+-\bar{g}(i,j)\div S_\mathrm{inh}, & \mbox{for } \bar{g}(i,j) < 0; \\
 0, & \mbox{otherwise.}
 \end{array}
 \right.
 $$
-where $N_\mathrm{exc}$ and $N_\mathrm{inh}$ indicate the number of excitatory and inhibitory pixels, respectively.
-This method of allocating values has the result that the activation (see below) for an all-white or -black image will be zero and was chosen because we are assuming that these filters, like edge detectors, are tuned to respond to relative differences within images and not absolute values.
+\noindent where $S_\mathrm{exc}$ and $S_\mathrm{inh}$ indicate the sums of excitatory and inhibitory pixels, respectively.
+This method of normalising values has the result that the activation (see below) for an all-white or -black image will be zero.
+Other normalisation schemes are possible, but the choice is somewhat arbitrary, as we are only interested in the differences in output values.
+Furthermore, RFs are sensitive to contrast differences, so a zero-sum filter, as seen in edge detectors, is appropriate.
+Additionally, assigning biologically relevant values is not possible because of a lack of data.
 
 The activation of an average kernel, $K$, to the presentation of a greyscale image, $I$, at rotation $\theta$, is then:
 \begin{equation}

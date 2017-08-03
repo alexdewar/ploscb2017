@@ -1,5 +1,5 @@
 function showkernel_nothresh(kern)
-load('vf_kernels','neuroncolormap')
+load('vf_kernels_nothresh','neuroncolormap')
 
 pos = kern > 0;
 neg = kern < 0;
