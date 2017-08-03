@@ -285,7 +285,7 @@ For example, elsewhere we have shown that the information content of ring neuron
 
 \subsection*{Conclusion}
 The goal of this work was to investigate the information encoded in a population of visually responsive ring neurons, in simulations of classic pattern discrimination assays.
-Our aim was to examine the behavioural uses to which the information encoded in this population of cells could be put to by a fruit fly.
+Our aim was to examine the behavioural uses to which the information encoded in this population of cells could be put by a fruit fly.
 Of course, a full understanding of these neurons requires detailed knowledge of how they interact with other neural circuits as flies produce complex behaviour in natural environments.
 Hence we need to understand the interaction between brain, behaviour and environment \cite{Chiel1997}.
 
@@ -293,12 +293,16 @@ For the brain, a sensible starting point is to ask how ring neurons and the info
 Recent work has shown the presence of a ring attractor network \cite{Seelig2015,Cope2017,Green2017,Turner-Evans2017} in the ellipsoid body of the central complex which integrates both visual and proprioceptive information.
 This circuit is able to retain a heading in short-term memory \cite{Neuser2008} and thus the cells we have modelled could be useful in contributing information about the position of behaviourally relevant objects.
 Of course, there are many details to be determined, such as the dynamics of neural coding in this circuit and the sensory pathways that lead to the observed receptive fields \cite{Sun2017}.
-This task is additionally complicated by the variety of behaviours in which these cells have been implicated:
+In the current study we have not considered neural dynamics and have assumed that the information would be extracted as rate codes.
+While this is a common assumption for models of visual perception (e.g. \cite{Hubel1962}) we note that information could be extracted via a timing code, perhaps even more efficiently -- especially if the fly is actively perceiving its environment.
+Though it is possible to convert from an analogue neural network to a spiking neural network \cite{Diehl2015}, more work would be needed to establish this.
+Finally, the story is complicated further by the sheer variety of behaviours in which these cells have been implicated:
 for example, different subsets of R2 neurons have also been implicated in an olfactory decision task \cite{Azanchi2013} and in sleep drive \cite{Liu2016}.
 
-The sensory ecology of fruit flies is still largely a mystery (but see \cite{Dickinson2014}), despite the immense promise and productivity of \emph{Drosophila} neuroscience research.
+The sensory ecology of fruit flies is still largely a mystery (see \cite{Dickinson2014}), despite the immense promise and productivity of \emph{Drosophila} neuroscience research.
 We thus know relatively little about `natural' \emph{Drosophila} visual behaviours -- in contrast to bees, for which we know much about behaviour but comparatively little about the nervous system.
-One pertinent example of this is visual pattern recognition, where for bees we have a good understanding of the real world challenge facing a forager bee, which has enabled models of pattern recognition to be developed for bees \cite{Horridge2000}.
+One pertinent example of this is visual pattern recognition, where for bees we have a good understanding of the real world challenge facing a forager.
+This has enabled models of pattern recognition to be developed for bees \cite{Horridge2000}.
 Without a detailed understanding of sensory ecology and the natural behaviour of flies, it is hard to understand what type of pattern vision flies might need.
 However, some fly behaviours are easier to relate to the natural environment.
 Flies show an innate attraction to long bar like objects, on which they might perch \cite{Maimon2008} and in Figure~\ref{fig:naturalstim} we show how that behaviourally relevant information is still maintained in the output of R4d cells even for complex scenes.
@@ -317,7 +321,7 @@ We thus hope that future experiments, grounded in both the ecological needs of t
 The goal of Seelig and Jayaraman's work \cite{Seelig2013} was to examine responses of lateral triangle microglomeruli (which house the cell bodies of the ring neurons) to visual stimuli.
 For this, they employed two-photon calcium imaging to examine the activity of genetically targeted subsets of microglomeruli, the R2 and R3/R4d neurons.
 Fluorescence was recorded for head-fixed flies held in an arena with a curved display composed of an LED array.
-In order to map the receptive fields, the flies were presented with a series of flashing dots at random locations on the visual display; the fine structure of the receptive fields (RFs) was then revealed by using white-noise stimuli \cite{Weber2010}.
+In order to map the RFs, the flies were presented with a series of flashing dots at random locations on the visual display; the fine structure of the RFs was then revealed by using white-noise stimuli \cite{Weber2010}.
 The accuracy of the estimated receptive fields was then verified by correlating predicted with actual responses to novel bar stimuli (and a high degree of correspondence was found).
 The predicted responses were calculated by convolving RF outputs with a calcium response function.
 
