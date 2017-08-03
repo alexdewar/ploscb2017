@@ -181,7 +181,7 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1920"
-     inkscape:window-height="1025"
+     inkscape:window-height="1051"
      id="namedview6"
      showgrid="false"
      units="cm"
@@ -189,11 +189,11 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:zoom="0.99999999"
-     inkscape:cx="193.92627"
-     inkscape:cy="339.05855"
-     inkscape:window-x="0"
-     inkscape:window-y="31"
+     inkscape:zoom="2"
+     inkscape:cx="326.40677"
+     inkscape:cy="694.32812"
+     inkscape:window-x="1680"
+     inkscape:window-y="0"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg2"
      showguides="false">
@@ -211,7 +211,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -1932,29 +1932,6 @@
       </g>
     </g>
   </g>
-  <text
-     y="25.57708"
-     x="252.78865"
-     id="text3335"
-     style="line-height:0%">
-    <tspan
-       style="font-variant:normal;font-weight:normal;font-size:9.9999876px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-       x="252.78865 259.45862 264.45862 266.67859 275.00854 280.56854 283.34857 288.90857 291.68854 295.01855 300.57855 306.13855 311.69855"
-       y="25.57708"
-       sodipodi:role="line"
-       id="tspan3337">Azimuth (deg)</tspan>
-  </text>
-  <text
-     xml:space="preserve"
-     style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-     x="145.24892"
-     y="25.577078"
-     id="text6394"><tspan
-       sodipodi:role="line"
-       id="tspan6396"
-       x="145.24892"
-       y="25.577078"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial">Elevation (deg)</tspan></text>
   <g
      id="g2021"
      transform="translate(0.01220703,0.34793091)">
@@ -8245,4 +8222,27 @@
          x="316.18335">)</tspan>
     </text>
   </g>
+  <text
+     y="25.57708"
+     x="252.78865"
+     id="text3335"
+     style="line-height:0%">
+    <tspan
+       style="font-variant:normal;font-weight:normal;font-size:9.9999876px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       x="252.78865 259.45862 264.45862 266.67859 275.00854 280.56854 283.34857 288.90857 291.68854 295.01855 300.57855 306.13855 311.69855"
+       y="25.57708"
+       sodipodi:role="line"
+       id="tspan3337">Azimuth (deg)</tspan>
+  </text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="145.24892"
+     y="25.577078"
+     id="text6394"><tspan
+       sodipodi:role="line"
+       id="tspan6396"
+       x="145.24892"
+       y="25.577078"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial">Elevation (deg)</tspan></text>
 </svg>
