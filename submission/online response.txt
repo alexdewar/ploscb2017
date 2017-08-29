@@ -1,0 +1,29 @@
+Re: %MS_NUMBER%
+%ARTICLE_TITLE%
+
+Dear %PRODTASK_ASSIGNEDBY%,
+
+Firstly, I would like to apologise for missing the deadline. I hope this will not cause any inconvenience.
+
+I have attached updated files for the manuscript, including a PDF annotated with the (small number of) changes we have made.
+
+In addition, I wish to make a number of changes to the metadata as it appeared in the "formatting requests" document:
+- To the "author contributions", could you please list Paul Graham and Andrew Philippides under "funding acquisition" and Paul Graham (in addition to Andrew Philippides) under "supervision".
+- For the "data availability statement", we are currently waiting for a DOI from the university for our dataset. However, we would like it to read: "All data created during this research are openly available from the University of Sussex data repository at XXX" where XXX will be the DOI.
+- We wish to change the corresponding author to Andrew Philippides (email: andrewop@sussex.ac.uk, ORCID: 000-0001-5503-0467).
+- In the title, we would like to have the words "Drosophila melanogaster" italicised.
+- In the short title, we would like to have "Drosophila" italicised.
+
+Finally, I am happy with the financial disclosure as it is listed in the document we were sent. However, I am slightly confused as later in the document we were instructed to amend our financial disclosure on the online submission system, which seems not to be possible at this stage (I can't see an option on the website). Additionally we were instructed to include the sentence "The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript" which is absent from the amended financial disclosure section which you sent us.
+
+"Manuscript Requirements"
+1. We have moved the figure legends into the text as instructed. However, this contradicts PLOS's tex template which we were following, where the figure legends are at the end.
+2. and 3. were carried out
+4. No part of any figure from references 52 and 53 were copied in Figure 1, which is all entirely original.
+5. mentions the financial disclosure section -- see comment above
+
+"Figure Requirements"
+We have amended our figure files as requested.
+
+Best wishes,
+Alex Dewar
