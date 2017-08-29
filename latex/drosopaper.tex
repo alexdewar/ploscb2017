@@ -197,6 +197,29 @@ To investigate the information that these cells encode, we calculate outputs for
 \subsection*{Orientation towards bar stimuli}
 We first consider experiments in which flies are presented with bar stimuli, as flies are known to spontaneously orient towards black bars \cite{Gotz1987}, aiming for the centres of narrow bars and the edges of wide bars \cite{Osorio1990}. We therefore decided to examine the responses of simulated ring neurons to bars of different widths (Figure~\ref{fig:recap}A and B). The summed outputs of the ensembles of ring neurons show peaks to the bars of different widths, which broadly matches experimental results (Figure~\ref{fig:recap}B). For instance, R2 neurons respond maximally to the inside edges of large bars, while peak activity in R4d neurons occurs at bar centres and also at roughly $\pm 90\degree$. While we do not know the details of mechanisms downstream of the ring neurons and hence how their activity is transformed into action, the simulation is an existence proof that the information needed to control the observed behaviour is present in the sparse ring neuron code.
 
+% Figure 1 (recap)
+\begin{figure}[htp]
+	\caption{
+		{\bf Simulation of two behavioural experiments with \emph{Drosophila} to examine the outputs of the R2 and R4d RFs.}
+		A: A diagram showing Buridan's paradigm \protect\cite{Gotz1980,Bulthoff1982}. If a fly is placed in an arena between two large vertical bars, it will walk back and forth until exhaustion.
+		B: The mean output of R2 (blue) and R4d (red) filters to bars of different widths from two points in the arena (indicated in panel A with crosses) across headings.
+		C: The summed outputs of R2 and R4d filters can be used to drive orientation towards a bar stimulus with a simple
+		proportional-integral-derivative (PID) controller.
+		D: A vector field of orientations for a simulated fly driven by the simple PID controller.
+		Note that this is not intended as a descriptive model of how bar attraction in flies operates, but as an illustration of the information latent in the outputs of the ring neurons, hence why many of the `flies' in the vector plot would miss the bar.
+		E: The fly is held tethered in a drum. As the fly attempts to rotate about its yaw-axis, the drum rotates in the opposite direction, thus allowing the fly to select the portion of the pattern in view.
+		By monitoring the fly's heading, one can surmise whether there is a spontaneous preference for one of the patterns.
+		Whether the fly can learn to head towards one pattern is tested by adding a laser that punishes the fly for facing one of the patterns.
+		Shown inside the drum are the visual RFs for one pair of left- and right-side glomeruli.
+		F and G: The r.m.s. difference in output for R2 RFs as the pattern is rotated.
+		The reference activities are the RF outputs when the simulated flies are at 0\degree.
+		Patterns with a greater difference in activity at 0\degree\ \emph{vs} 90\degree\ (indicated by dotted lines) should be more discriminable by flies.
+		For two pairs of patterns we show that there is a much smaller difference in output when the triangles are aligned about the vertical centre of mass (G) than not (F).
+		This mirrors real flies' performance on this task \cite{Ernst1999}.
+	}
+	\label{fig:recap}
+\end{figure}
+
 We further demonstrate this point by closing the loop between sensory systems and behaviour using a simple model of a fly viewing a bar in which the fly’s heading is controlled by the difference between the summed activation of left and right ring neurons (Figure~\ref{fig:recap}C; see Materials and methods for details). The simulated fly approaches the bar from different distances, demonstrating centre-aiming when far from the bar and fixation of the edges when it is nearer and the bar’s apparent size is thus greater (Figure~\ref{fig:recap}D). Through this example, we can see how the information present in this small population of visually responsive ring neurons can control a specific behaviour. We now turn to a more complex behaviour: pattern discrimination. 
 
 \subsection*{Pattern discrimination in flies and ring neuron population codes}
@@ -205,6 +228,42 @@ The standard paradigm involves putting a fly into a closed-loop system where it 
 To recreate the visual information perceived by flies in such experiments, we simulated the typical experimental flight arena with a fly tethered in the centre. We then examined the output of the ensembles of ring neurons for a fly rotating in the drum and looked at the difference in the activation code when the agent was facing the different patterns of a pair. Our logic is that if the ensemble codes were identical, it would be impossible for the patterns to be discriminated by interrogating the outputs of ring neurons alone. Similarly, the greater the difference in the ring neuron ensemble activation codes when looking at the pattern pairs, the easier they would be to discriminate (Figure~\ref{fig:recap}F and G; see Materials and methods for details). Our discriminability measure is the root mean square (r.m.s.) difference between ensemble outputs when the (virtual) fly faces different azimuths in the drum. In this way, we can compare the ensemble output when the `fly' is oriented at 0\degree\ (i.e. with the view centred on one pattern) and the ensemble output at other azimuths (Figure~\ref{fig:recap}). We henceforth treat this as a measure of `discriminability' of patterns, following the experimental work that we are modelling, though of course in reality an animal's ability to discriminate stimuli is not an absolute value and varies depending on many factors, including task and training procedure \cite{Dyer2004}. The r.m.s. difference, as compared to the view at 0\degree, rises as the fly rotates in the drum, peaking as it faces the space in between the patterns and dropping to a minimum when facing the centre of the next pattern (Figure~\ref{fig:recap}F and G). For some pairs of patterns, there is still an appreciable r.m.s. difference between the codes when facing the centres of each pattern, thus enabling their discrimination. However, in the example of Figure~\ref{fig:recap}F and G, if we displace the patterns vertically, we see a drop in the r.m.s. difference between activation codes when the fly fixates the patterns. This is despite the fact that, to the human eye, the patterns still appear very different. Interestingly, the pattern pair in Figure~\ref{fig:recap}G is also harder to discriminate for flies.
 
 In this way, we can use the difference between ensemble codes when flies face the patterns to re-examine the discriminability of pattern pairs tested with flies. One illustrative example is pattern set~\emph{(9)} from Figure~\ref{fig:pattern}, which contains pairs of ‘triangles’ (either a filled equilateral triangle, or a long and short bar arranged on top of one another), one facing up and the other down. \emph{Drosophila} are able to discriminate these pattern pairs when they are aligned along the top and bottom, but not when aligned about the vertical centres of mass\cite{Ernst1999}. Looking at the placement and form of the R2 RFs allows us to determine where this difference comes from (Figure~\ref{fig:simdiffpatts}). The excitatory regions of the RFs fall roughly across the middle of triangles that are not aligned about their vertical centres of mass and therefore the difference in width at this point will lead to differences in activation. If the triangles are offset (Figure~\ref{fig:simdiffpatts}B) so as to be aligned about their vertical centres of mass, their width will be similar for the regions of peak R2 coverage and the difference in activation will be lower. Thus the failure to discriminate features with an equivalent vertical centre of mass can be explained by the shape of the RFs interacting with the patterns directly. It is not necessary to invoke an additional system that extracts and compares the vertical centres of mass of the patterns.
+
+% Figure 2 (simdiffpatts)
+\begin{figure}[htp]
+	\caption{
+		{\bf R2 cells do not encode detailed shape information.}
+		A--C: The discriminability of pattern pairs can vary greatly, independently of the apparent difference between visual stimuli.
+		A: A pattern pair made up of an upright and an inverted triangle, aligned along their top and bottom.
+		B: Another pattern pair, consisting of the same triangles as in A, but aligned about their vertical centres of mass.
+		C: The difference in activation between 0\degree\ and 90\degree\ for all R2 RF filters for the triangles from A (white bars) and B (black bars). Discriminability is greater for the triangles in A than in B. The red asterisk marks the output of the ring neuron RF shown in A and B.
+		D and E: Performance improves with number of RFs, for two sets of `difficult' patterns (centre-of-mass-aligned triangles/bars, insets). Bars show mean r.m.s. difference between the activation of 28, 56 and 112 RFs to each pattern. For 28 RFs we use the R2 RFs. For 56 and 112 RFs, one and three extra sets of R2 filters, respectively, are added in random, non-overlapping positions on the visual field (see Materials and methods for details). As there is some stochasticity in this process, differences are averaged over 1000 trials with error bars showing standard deviation. 
+		F and G: We can also generate shapes that appear similar yet produce a large mean difference in RF activation (G, top) or appear different and produce similar RF activations (G, bottom). The stimuli here are `blobs' of the form described in Materials and methods. To generate the stimuli, an optimisation was performed in MATLAB (\texttt{fminsearch} function) to minimise the ratio of blob difference to difference in activation (G, top) or its inverse (G, bottom). Pairs of stimuli are shown in grey and green whereas in the simulation both are black.
+		F: The corresponding activations of the different R2 RFs to the blobs in G. Two similar patterns give a mean difference in activity of 11.0\% and two very different patterns give a mean difference in activity of 5.10\%. The dotted line indicates the mean activation for the blob in the upper panel and the dashed line for the blob in the lower.
+	}
+	\label{fig:simdiffpatts}
+\end{figure}
+
+% Figure 3 (pattern)
+\begin{figure}[htp]
+	\caption{
+		{\bf Outputs of simulated R2 cells and degree of retinal overlap for published pattern pairs.}
+		Difference in R2 RF output partly predicts whether patterns are discriminable by flies, but not whether there is a spontaneous preference.
+		By contrast, retinal overlap predicts whether there is a spontaneous preference, but not whether the patterns will be discriminable.
+		The patterns tested here are drawn from \protect\cite{Ernst1999} and are grouped according to the figures in which they appear in that work; the corresponding figure numbers are shown in parentheses.
+		All patterns for which the significance of `learning preference' (`$\overline{\mathrm{DCP}}$' in \protect\cite{Ernst1999}) was given are included.
+		A: Grey bars indicate that the learning index for the pattern was significant (i.e. $p<.05$ in \protect\cite{Ernst1999}).
+		A higher score indicates a greater r.m.s. difference in R2 activity and thus that the pattern was more discriminable by the simulation.
+		Performance on more `horizontal' patterns (e.g. \emph{(3)} and the final three patterns in \emph{(12)}) was poor in the behavioural experiments, but better in simulation.
+		This is perhaps due to the horizontal motion of the patterns in training, as noted in \protect\cite{Ernst1999}.
+		B and C: Scatter plots of R2 difference (the `RF Model') and retinal overlap (the `Retinotopic Model') \emph{vs} spontaneous preference (`$\overline{\mathrm{SCP}}$' in \protect\cite{Ernst1999}) shown in \protect\cite{Ernst1999}.
+		A significant correlation was found for the Retinotopic Model ($n=29; \rho = -0.370509; p < .05$) but not the RF Model (Spearman's rank, $n=29, \rho=.289, p=\mathrm{n.s.}$).
+		D and E: Scatter plots of R2 difference (the `RF Model') and retinal overlap \emph{vs} learning index ($\overline{\mathrm{DCP}}$).
+		A significant correlation was found for the RF Model (Spearman's rank, $n=32, \rho=.502, p < .005$) but not the Retinotopic Model ($n=32, \rho=-.00960, p=\mathrm{n.s.}$).
+		As two data points on the far right in panel D could be outliers, we reran the analysis excluding these points and found that the correlation was still significant, albeit less so ($n=30, \rho=.420, p < .05$).
+	}
+	\label{fig:pattern}
+\end{figure}
 
 Performance on poorly discriminated patterns can be improved, however, by simply adding more RFs of the same form. Figure~\ref{fig:simdiffpatts}D and E shows the increase in performance with number of RFs for two such pattern pairs: triangles and triangularly shaped horizontal bars aligned about the centre of mass (from pattern set~\emph{(9)} in Figure~\ref{fig:pattern}; see Materials and methods for details). This demonstrates that the patterns could be discriminated by flies simply with the addition of more RFs centred in other portions of the visual field.
 
@@ -242,6 +301,20 @@ Examining the pattern pairs which flies and the R2 population were able to discr
 Pattern sets~\emph{(6)} and \emph{(9)} (Figure~\ref{fig:pattern}) suggest that, for instance, stimulus size and vertical centre of mass are parameters that can be recovered from the R2 population code after this sensory bottleneck.
 
 We now address in more general terms the question of what shape information is implicitly conveyed in the ring neuron population code. To do this, we generated large sets of ellipse-like ‘blob’ stimuli varying in size (specified by major-axis length), position (azimuth and elevation) and orientation. The blob generation procedure was stochastic and so the precise shape of each blob was random and unique (see Materials and methods). We then trained an artificial neural network (ANN) to recover this shape information from either a raw image of the shape (the control condition) or from the output of the R2/R4d populations on presentation of the blobs. We are using ANNs here as statistical engines interrogating the output of the ring neuron population code to determine if shape information is implicit to the code and has therefore passed through the sensory bottleneck. We first examined whether ANNs could be trained to extract positional information (the elevation and azimuth) of randomly generated blobs. Note that as the blobs are initially aligned about their centres of mass, elevation is equivalent to vertical centre of mass. The blobs varied along four parameters: elevation ($\ge -60\degree$ and $\le 60\degree$), azimuth ($\ge -135\degree$ and $\le 0\degree$), orientation ($\ge 0\degree$ and $\le 90\degree$) and major-axis length ($\ge 12.79\degree$ and $\le 60$). Each parameter had 22 possible values, giving a total of 234,256 ($=22^4$) stimuli. Of these, approximately 40\% ($n=93,702$) were used for training and the remainder ($n=140,554$) for testing. Results for the test set (Figure~\ref{fig:elazorsi}A--D) show that ANNs are indeed able to extract information about elevation and azimuth from any of the input types (`raw', `R2', `R4d' or `R2+R4d'). Performance was better with parameter values near the middle: at the extremes, portions of the stimuli lay outside the visual field of the simulated fly, meaning stimuli begin to disappear ‘off the edge’ of the visual field (Figure~\ref{fig:elazorsi}A and B), making the task harder (i.e., is this a large object projecting outside the visual field, or a smaller object at the edge?). While performance was best with raw views as inputs (Figure~\ref{fig:elazorsi}C and D), positional information could still be reliably extracted from ring neuron outputs. The R2 code performs better than the R4d and the addition of R4d RFs to the R2 code (`R2+R4d'), while adding dimensionality, does not improve performance, suggesting that either an R2-like encoding is sufficient to extract positional information, or that the information in the two codes is redundant. Thus small populations of ring neurons retain positional information.
+
+% Figure 4 (elazorsi)
+\begin{figure}[htp]
+	\caption{
+		{\bf How much shape information is preserved in the R2 population code?}
+		ANNs were trained to estimate various properties of randomly generated `blob' stimuli ($n=93,702$) from raw views ($3\times 14 = 42$ pixels; blue), R2 neurons ($n=28$; red), R4d neurons ($n=14$; green) or R2 and R4d neurons ($n=42$; magenta). Panels A--D show results for networks trained with elevation and azimuth and panels E--H for orientation and size. For each visual input a network was trained 100 times and average performance with blobs that were not part of the training set was taken.
+		A and B: Plots of elevation and azimuth of the test visual stimuli \emph{vs} the mean network output ($n=140,554$). The dashed line indicates ideal performance (i.e. $y=x$) and the thickness of the lines at each point shows standard error.
+		The possible values of elevation and azimuth were constrained by the size of the fruit fly visual field (approx. $120\degree \times 270\degree$). Within this range there were 22 possible values.
+		C and D: Average network performance (r.m.s. error) for networks trained to recover elevation (C) or azimuth (D) for each type of visual input (colour code as above; $n(\mathrm{train}) = 4259, n(\mathrm{test}) = 6389$). Standard error is shown, but is very small.
+		E and F: Network performance in recovering stimulus orientation and size. Orientation was constrained between 0\degree\ and 90\degree, to avoid the problem of aliasing, and varied with 22 levels.
+		G and H: Average network performance (r.m.s. error) for networks trained to recover orientation (G) or size (H) and for each type of visual input (colour code as previously). Standard error is shown, but is very small.
+	}
+	\label{fig:elazorsi}
+\end{figure}
 
 We next trained ANNs to decode information about stimulus orientation and size.
 The stimuli were random blobs, as before, with the same possible values for elevation, orientation and size.
@@ -310,6 +383,17 @@ Flies show an innate attraction to long bar like objects, on which they might pe
 Taking this further, we could consider how an active fly in a complex environment might be able to shape its own visual input to give us a better understanding of the true potential of the fly as a pattern discriminator.
 More generally, it is only with a deeper knowledge of fruit fly ecology that we will be able to close the loop between brain, body and environment and thus obtain a full understanding of the whole system.
 
+% Figure 5 (naturalstim)
+\begin{figure}[htp]
+	\caption{
+		{\bf Mean output of R4d RFs as they are shifted azimuthally across two natural panoramic images.}
+		Mean across all R4d RFs is shown in yellow together with the left- and right-side RFs (blue and red dashed lines, respectively) with values normalised to the greatest absolute mean value of left or right RFs across all azimuths and both images (i.e. the $y$-scale is the same for A and B).
+		A: Response of filters to distant trees. Many R4d RFs respond preferentially to the positions of trees, meaning outputs -- both mean, left and right -- peak in the centre of trees and tend to dip when facing azimuths with more sky or lighter areas. There are minor differences between the direction at which left and right signals peak, but there is sufficient information in the mean responses to allow a fly to head towards large vertical objects from a distance.
+		B: Response of filters to a nearby tree. Mean responses again peak when facing salient, vertically oriented portions of the image (hanging branches) and dip at lighter portions, meaning flies could identify and head towards these regions. While left and right responses peak together in some cases, for the peaks at --120\degree\ and 60\degree\ there is an asymmetry in the left and right signals which could provide steering information to allow a fly to navigate towards these targets in a similar fashion to the model used in Figure~\ref{fig:recap}A--D.
+	}
+	\label{fig:naturalstim}
+\end{figure}
+
 One of the advantages of studying insects is the potential for describing their neural processes with modelling.
 In this way, simulations can help bridge the gap between biology and behaviour \cite{Webb2009}.
 We have shown that the sensory bottleneck produced by small populations of cells is not a barrier to the specific information that is required for particular behaviours.
@@ -344,6 +428,21 @@ g(i,j) = \left\{ \begin{array}{rl}
 \right.
 $$
 where $g(i,j)$ is the ($i,j$)th pixel of the kernel, $R_{i,j}$ is the ($i,j$)th value of the processed RF image and $T$ is the threshold value, here $0.25$ (Figure~\ref{fig:avkernels}A).
+
+% Figure 6 (avkernels)
+\begin{figure}[htp]
+	\caption{
+		{\bf The algorithm for obtaining average RFs.}
+		A: The raw image (left; fly glomerulus 1) is thresholded so as to give excitatory and inhibitory regions of uniform intensity (right).
+		The `centre' is then calculated as the centroid of the largest excitatory region (+).
+		B: Aligning two RFs.
+		The new centre is taken as the average of the centre of both RFs and the RFs are then shifted so that the centres are aligned.
+		C: Averaging the RFs for this glomerulus over all flies ($n=7$), following alignment.
+		Note that this the left-side version; the right-side version is its mirror.
+		D: Averaged R2 and R4d filters.
+	}
+	\label{fig:avkernels}
+\end{figure}
 
 We take the centroid of the largest excitatory region as the `centre' of each of the kernels.
 The excitatory region is then extracted using MATLAB's \texttt{bwlabeln} function (with eight-connectivity) and its centroid, $(x,y)$, with the \texttt{regionprops} function.
@@ -802,104 +901,5 @@ The funders had no role in study design, data collection and analysis, decision 
 %}
 %\label{Figure_label}
 %\end{figure}
-
-% Figure 1 (recap)
-\begin{figure}[htp]
-	\caption{
-		{\bf Simulation of two behavioural experiments with \emph{Drosophila} to examine the outputs of the R2 and R4d RFs.}
-		A: A diagram showing Buridan's paradigm \protect\cite{Gotz1980,Bulthoff1982}. If a fly is placed in an arena between two large vertical bars, it will walk back and forth until exhaustion.
-		B: The mean output of R2 (blue) and R4d (red) filters to bars of different widths from two points in the arena (indicated in panel A with crosses) across headings.
-		C: The summed outputs of R2 and R4d filters can be used to drive orientation towards a bar stimulus with a simple
-		proportional-integral-derivative (PID) controller.
-		D: A vector field of orientations for a simulated fly driven by the simple PID controller.
-		Note that this is not intended as a descriptive model of how bar attraction in flies operates, but as an illustration of the information latent in the outputs of the ring neurons, hence why many of the `flies' in the vector plot would miss the bar.
-		E: The fly is held tethered in a drum. As the fly attempts to rotate about its yaw-axis, the drum rotates in the opposite direction, thus allowing the fly to select the portion of the pattern in view.
-		By monitoring the fly's heading, one can surmise whether there is a spontaneous preference for one of the patterns.
-		Whether the fly can learn to head towards one pattern is tested by adding a laser that punishes the fly for facing one of the patterns.
-		Shown inside the drum are the visual RFs for one pair of left- and right-side glomeruli.
-		F and G: The r.m.s. difference in output for R2 RFs as the pattern is rotated.
-		The reference activities are the RF outputs when the simulated flies are at 0\degree.
-		Patterns with a greater difference in activity at 0\degree\ \emph{vs} 90\degree\ (indicated by dotted lines) should be more discriminable by flies.
-		For two pairs of patterns we show that there is a much smaller difference in output when the triangles are aligned about the vertical centre of mass (G) than not (F).
-		This mirrors real flies' performance on this task \cite{Ernst1999}.
-	}
-	\label{fig:recap}
-\end{figure}
-
-% Figure 2 (simdiffpatts)
-\begin{figure}[htp]
-	\caption{
-		{\bf R2 cells do not encode detailed shape information.}
-		A--C: The discriminability of pattern pairs can vary greatly, independently of the apparent difference between visual stimuli.
-		A: A pattern pair made up of an upright and an inverted triangle, aligned along their top and bottom.
-		B: Another pattern pair, consisting of the same triangles as in A, but aligned about their vertical centres of mass.
-		C: The difference in activation between 0\degree\ and 90\degree\ for all R2 RF filters for the triangles from A (white bars) and B (black bars). Discriminability is greater for the triangles in A than in B. The red asterisk marks the output of the ring neuron RF shown in A and B.
-		D and E: Performance improves with number of RFs, for two sets of `difficult' patterns (centre-of-mass-aligned triangles/bars, insets). Bars show mean r.m.s. difference between the activation of 28, 56 and 112 RFs to each pattern. For 28 RFs we use the R2 RFs. For 56 and 112 RFs, one and three extra sets of R2 filters, respectively, are added in random, non-overlapping positions on the visual field (see Materials and methods for details). As there is some stochasticity in this process, differences are averaged over 1000 trials with error bars showing standard deviation. 
-		F and G: We can also generate shapes that appear similar yet produce a large mean difference in RF activation (G, top) or appear different and produce similar RF activations (G, bottom). The stimuli here are `blobs' of the form described in Materials and methods. To generate the stimuli, an optimisation was performed in MATLAB (\texttt{fminsearch} function) to minimise the ratio of blob difference to difference in activation (G, top) or its inverse (G, bottom). Pairs of stimuli are shown in grey and green whereas in the simulation both are black.
-		F: The corresponding activations of the different R2 RFs to the blobs in G. Two similar patterns give a mean difference in activity of 11.0\% and two very different patterns give a mean difference in activity of 5.10\%. The dotted line indicates the mean activation for the blob in the upper panel and the dashed line for the blob in the lower.
-	}
-	\label{fig:simdiffpatts}
-\end{figure}
-
-% Figure 3 (pattern)
-\begin{figure}[htp]
-	\caption{
-		{\bf Outputs of simulated R2 cells and degree of retinal overlap for published pattern pairs.}
-		Difference in R2 RF output partly predicts whether patterns are discriminable by flies, but not whether there is a spontaneous preference.
-		By contrast, retinal overlap predicts whether there is a spontaneous preference, but not whether the patterns will be discriminable.
-		The patterns tested here are drawn from \protect\cite{Ernst1999} and are grouped according to the figures in which they appear in that work; the corresponding figure numbers are shown in parentheses.
-		All patterns for which the significance of `learning preference' (`$\overline{\mathrm{DCP}}$' in \protect\cite{Ernst1999}) was given are included.
-		A: Grey bars indicate that the learning index for the pattern was significant (i.e. $p<.05$ in \protect\cite{Ernst1999}).
-		A higher score indicates a greater r.m.s. difference in R2 activity and thus that the pattern was more discriminable by the simulation.
-		Performance on more `horizontal' patterns (e.g. \emph{(3)} and the final three patterns in \emph{(12)}) was poor in the behavioural experiments, but better in simulation.
-		This is perhaps due to the horizontal motion of the patterns in training, as noted in \protect\cite{Ernst1999}.
-		B and C: Scatter plots of R2 difference (the `RF Model') and retinal overlap (the `Retinotopic Model') \emph{vs} spontaneous preference (`$\overline{\mathrm{SCP}}$' in \protect\cite{Ernst1999}) shown in \protect\cite{Ernst1999}.
-		A significant correlation was found for the Retinotopic Model ($n=29; \rho = -0.370509; p < .05$) but not the RF Model (Spearman's rank, $n=29, \rho=.289, p=\mathrm{n.s.}$).
-		D and E: Scatter plots of R2 difference (the `RF Model') and retinal overlap \emph{vs} learning index ($\overline{\mathrm{DCP}}$).
-		A significant correlation was found for the RF Model (Spearman's rank, $n=32, \rho=.502, p < .005$) but not the Retinotopic Model ($n=32, \rho=-.00960, p=\mathrm{n.s.}$).
-		As two data points on the far right in panel D could be outliers, we reran the analysis excluding these points and found that the correlation was still significant, albeit less so ($n=30, \rho=.420, p < .05$).
-	}
-	\label{fig:pattern}
-\end{figure}
-
-% Figure 4 (elazorsi)
-\begin{figure}[htp]
-	\caption{
-		{\bf How much shape information is preserved in the R2 population code?}
-		ANNs were trained to estimate various properties of randomly generated `blob' stimuli ($n=93,702$) from raw views ($3\times 14 = 42$ pixels; blue), R2 neurons ($n=28$; red), R4d neurons ($n=14$; green) or R2 and R4d neurons ($n=42$; magenta). Panels A--D show results for networks trained with elevation and azimuth and panels E--H for orientation and size. For each visual input a network was trained 100 times and average performance with blobs that were not part of the training set was taken.
-		A and B: Plots of elevation and azimuth of the test visual stimuli \emph{vs} the mean network output ($n=140,554$). The dashed line indicates ideal performance (i.e. $y=x$) and the thickness of the lines at each point shows standard error.
-		The possible values of elevation and azimuth were constrained by the size of the fruit fly visual field (approx. $120\degree \times 270\degree$). Within this range there were 22 possible values.
-		C and D: Average network performance (r.m.s. error) for networks trained to recover elevation (C) or azimuth (D) for each type of visual input (colour code as above; $n(\mathrm{train}) = 4259, n(\mathrm{test}) = 6389$). Standard error is shown, but is very small.
-		E and F: Network performance in recovering stimulus orientation and size. Orientation was constrained between 0\degree\ and 90\degree, to avoid the problem of aliasing, and varied with 22 levels.
-		G and H: Average network performance (r.m.s. error) for networks trained to recover orientation (G) or size (H) and for each type of visual input (colour code as previously). Standard error is shown, but is very small.
-	}
-	\label{fig:elazorsi}
-\end{figure}
-
-% Figure 5 (naturalstim)
-\begin{figure}[htp]
-	\caption{
-		{\bf Mean output of R4d RFs as they are shifted azimuthally across two natural panoramic images.}
-		Mean across all R4d RFs is shown in yellow together with the left- and right-side RFs (blue and red dashed lines, respectively) with values normalised to the greatest absolute mean value of left or right RFs across all azimuths and both images (i.e. the $y$-scale is the same for A and B).
-		A: Response of filters to distant trees. Many R4d RFs respond preferentially to the positions of trees, meaning outputs -- both mean, left and right -- peak in the centre of trees and tend to dip when facing azimuths with more sky or lighter areas. There are minor differences between the direction at which left and right signals peak, but there is sufficient information in the mean responses to allow a fly to head towards large vertical objects from a distance.
-		B: Response of filters to a nearby tree. Mean responses again peak when facing salient, vertically oriented portions of the image (hanging branches) and dip at lighter portions, meaning flies could identify and head towards these regions. While left and right responses peak together in some cases, for the peaks at --120\degree\ and 60\degree\ there is an asymmetry in the left and right signals which could provide steering information to allow a fly to navigate towards these targets in a similar fashion to the model used in Figure~\ref{fig:recap}A--D.
-	}
-	\label{fig:naturalstim}
-\end{figure}
-
-% Figure 6 (avkernels)
-\begin{figure}[htp]
-	\caption{
-		{\bf The algorithm for obtaining average RFs.}
-		A: The raw image (left; fly glomerulus 1) is thresholded so as to give excitatory and inhibitory regions of uniform intensity (right).
-		The `centre' is then calculated as the centroid of the largest excitatory region (+).
-		B: Aligning two RFs.
-		The new centre is taken as the average of the centre of both RFs and the RFs are then shifted so that the centres are aligned.
-		C: Averaging the RFs for this glomerulus over all flies ($n=7$), following alignment.
-		Note that this the left-side version; the right-side version is its mirror.
-		D: Averaged R2 and R4d filters.
-	}
-	\label{fig:avkernels}
-\end{figure}
 
 \end{document}
