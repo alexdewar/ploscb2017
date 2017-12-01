@@ -50,7 +50,7 @@ function main(kstruct)
             alpha(r,outlines(r,:)) = 1;
         end
 
-        mapim = albsxfun(@times,newim,alpha) + albsxfun(@times,mapim,1-alpha);
+        mapim = bsxfun(@times,newim,alpha) + bsxfun(@times,mapim,1-alpha);
     end
 
     %% convert to polygons
@@ -63,8 +63,8 @@ function main(kstruct)
     cols = cols(notwhites,:);
     
     [yi,xi] = ind2sub(imsz,1:vsz);
-    Xim = albsxfun(@plus,xi(notwhites)',[-1 0 0 -1]);
-    Yim = albsxfun(@plus,yi(notwhites)',[-1 -1 0 0]);
+    Xim = bsxfun(@plus,xi(notwhites)',[-1 0 0 -1]);
+    Yim = bsxfun(@plus,yi(notwhites)',[-1 -1 0 0]);
     
     %% wrap round cylinder
     xlimsr = pi*xlims/180;

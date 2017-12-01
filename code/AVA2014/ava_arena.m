@@ -3,7 +3,7 @@ clear all
 
 %% constants
 dosave = true;
-imfn = [mfiledir '/../dispatchrecap/antoinestim/touse/09_3_34_162_1_+232_triangles.png'];
+imfn = [mfiledir '/../drosodata/antoinestim/touse/09_3_34_162_1_+232_triangles.png'];
 nth = 1000;
 degpersec = 100; %deg/s
 drumht = 1;

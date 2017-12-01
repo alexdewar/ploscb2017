@@ -26,7 +26,7 @@ function main(kstruct)
     
     %% draw stim
     fov = 270;
-    im = im2double(rgb2gray(imread('./dispatchrecap/antoinestim/new/triangles.png')));
+    im = im2double(rgb2gray(imread('drosodata/antoinestim/touse/09_3_34_162_1_+232_triangles.png')));
     xoff = size(im,2)-fov;
     im = im(:,xoff/2+1:end-xoff/2);
     draw3d(~im,'k',1,false);

@@ -3,8 +3,8 @@ clear all
 
 %% constants
 dosave = true;
-fnprefix = '~/sync/neuroscience day 2015 talk/arenavid';
-imfn = [mfiledir '/../../data/antoinestim/touse/09_3_34_162_1_+232_triangles.png'];
+fnprefix = '~/nsd/arenavid';
+imfn = [mfiledir '/../drosodata/antoinestim/touse/09_3_34_162_1_+232_triangles.png'];
 nth = 1000;
 degpersec = 100; %deg/s
 drumht = 1;
