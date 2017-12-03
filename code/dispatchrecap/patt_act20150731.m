@@ -6,8 +6,8 @@ ymax = 0.45;
 
 set(0,'defaulttextfontsize',8,'defaulttextfontname','Arial')
 
-patt1 = rgb2gray(im2double(imread(sprintf('%s/../../data/antoinestim/touse/09_3_34_162_1_+232_triangles.png',mfiledir))));
-patt2 = rgb2gray(im2double(imread(sprintf('%s/../../data/antoinestim/touse/09_4_00_162_1_-107_triangles_com.png',mfiledir))));
+patt1 = rgb2gray(im2double(imread(sprintf('%s/../drosodata/antoinestim/touse/09_3_34_162_1_+232_triangles.png',mfiledir))));
+patt2 = rgb2gray(im2double(imread(sprintf('%s/../drosodata/antoinestim/touse/09_4_00_162_1_-107_triangles_com.png',mfiledir))));
 
 patt1 = patt1(:,[1:180, 180:-1:1]);
 patt2 = patt2(:,[1:180, 180:-1:1]);
@@ -42,7 +42,7 @@ if dosave
     savefig('triacts',[13 4.560])
 end
 
-dump2base(true)
+% dump2base(true)
 end
 
 function [mact,ths]=mypanoconv(im,rk)
