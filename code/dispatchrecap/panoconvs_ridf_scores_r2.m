@@ -220,8 +220,8 @@ function panoconvs_ridf_scores_r2(dosave)
         fid = fopen(outfn,'w');
         fprintf(fid,outtxt);
         fclose(fid);
-    else
-        dump2base(true)
+%     else
+%         dump2base(true)
     end
     
     function figcorr(Y,whrow,whindex,ylab)

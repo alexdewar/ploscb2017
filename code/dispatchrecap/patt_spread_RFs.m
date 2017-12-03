@@ -1,6 +1,6 @@
 clear
 
-patt = rgb2gray(im2double(imread(sprintf('%s/../../data/antoinestim/touse/09_4_00_162_1_-107_triangles_com.png',mfiledir))));
+patt = rgb2gray(im2double(imread(sprintf('%s/../drosodata/antoinestim/touse/09_4_00_162_1_-107_triangles_com.png',mfiledir))));
 load('rx_idf_kerns2.mat','rkernnum','rkerns');
 kr1 = rkerns(:,:,rkernnum==1);
 kr2 = rkerns(:,:,rkernnum==2);

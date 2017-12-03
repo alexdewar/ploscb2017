@@ -17,12 +17,12 @@ figure(2);clf
 pcacts(imfn2,rkerns);
 savefig('nsd_pattcomp2',figsz,'eps')
 
-dump2base(true)
+% dump2base(true)
 
 end
 
 function acts=pcacts(imfn,rkerns)
-    im = im2double(rgb2gray(imread([mfiledir '/../../data/antoinestim/touse/' imfn])));
+    im = im2double(rgb2gray(imread([mfiledir '/../drosodata/antoinestim/touse/' imfn])));
     
     acts1=getacts(im(:,45+(1:270)),rkerns);
     rim = circshift(im,[0 90]);

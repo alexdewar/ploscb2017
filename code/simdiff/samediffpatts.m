@@ -3,7 +3,7 @@ if ~nargin
     dosave = false;
 end
 
-dname = fullfile(mfiledir,'../../data/antoinestim/touse');
+dname = fullfile(mfiledir,'../drosodata/antoinestim/touse');
 patts = {'*triangles.png','*triangles_com.png'};
 load('vf_kernels_nothresh.mat','vf_avkernels_r2');
 rk = resizekernel_nothresh(vf_avkernels_r2,[120 270]);

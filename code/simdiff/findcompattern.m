@@ -245,7 +245,7 @@ function findcompattern(gennew,dosave)
         end
     end
 
-    dump2base(true)
+%     dump2base(true)
     
     function [errval,evact,evparam]=errfunc(params)
         vcomoff2 = ~csimblobs*comdiff;
